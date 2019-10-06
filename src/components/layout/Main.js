@@ -6,7 +6,7 @@ import {
     // Icon
 } from 'antd';
 import axios from "axios";
-
+import  'antd'
 // const {SubMenu} = Menu;
 const {
     Header,
@@ -68,7 +68,6 @@ class Main extends React.Component {
 
 
     /////////////
-
     render() {
 
         return (
