@@ -1,0 +1,13 @@
+
+/*顶栏样式*/
+.topBar {
+    height:44px;
+    line-height: 44px;
+    text-align: center;
+    background: palevioletred;
+}
+.topBar a{
+    height:40px;
+    color: #fff;
+    padding:0px 20px;
+}

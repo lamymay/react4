@@ -11,3 +11,51 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/*顶栏样式*/
+topBar {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+
+.red{
+
+    color:red;
+}
+
+.news img{
+
+
+    width:100px;
+
+}
+.list{
+
+    padding: 10px;
+}
+
+.list li{
+
+    line-height: 40px;
+}
+
+.title{
+
+    height: 44px;
+
+    line-height: 44px;
+
+    text-align: center;
+
+    background: #000;
+
+    color:#fff;
+}
+
+.title a{
+
+    color: #fff;
+
+    padding:0px 20px;
+}
