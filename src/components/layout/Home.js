@@ -2,6 +2,8 @@ import React from "react";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import User from '../system/user/User';
 import Role from '../system/rbac/Role';
+import RoleInsert from '../system/rbac/RoleInsert';
+
 import axios from "axios";
 
 import home from '../../assets/css/layout/home.css'
@@ -22,10 +24,9 @@ class Home extends React.Component {
     //初始化函数触发
     componentDidMount() {
         // To disabled submit button at the beginning.
-        console.log("----------------------------");
+        // console.log("----------------------------");
         console.log("componentDidMount--初始化的时候去获取菜单数据");
         this.getMenusFun();
-        console.log("----------------------------");
         // this.props.form.validateFields();
     }
 
@@ -83,11 +84,10 @@ class Home extends React.Component {
 
                 </div>
 
-
-
-
                 <Route exact path="/user" component={User}/>
                 <Route exact path="/role" component={Role}/>
+                <Route exact path="/role" component={Role}/>
+                <Route exact path="/roleInsert/:aid" component={RoleInsert}/>
             </Router>
 
         </div>)

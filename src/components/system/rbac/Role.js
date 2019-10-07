@@ -1,12 +1,13 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import  RoleDetails from './RoleDetails'
+import RoleInsert from './RoleInsert'
+import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+
 class Role extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            list: [
+            roles: [
                 {
                     aid: '1',
                     title: '标题1'
@@ -30,7 +31,9 @@ class Role extends React.Component {
 
     componentDidMount() {
         //获取列表数据
-        // this.getUsers();
+        // this.getRoles();
+        //赋值给 roles
+        //渲染 表格 在页面中做 新增 编辑 删除 等
 
     }
 
@@ -49,18 +52,16 @@ class Role extends React.Component {
             <h2>GET 角色-动态传值测试</h2>
 
             <ul>
-                {this.state.list.map((value, key) => {
+                {this.state.roles.map((value, key) => {
                     return <li key={key}>
-                        <Link to={`/RoleDetails/${value.aid}`}>  {value.title}
-                        </Link>
-
-
+                        <Link to={`/roleInsert/${value.aid}`}>{value.title}</Link>
                     </li>
 
                 })}
             </ul>
 
-
+            <hr/>
+            <RoleInsert/>
         </div>)
     }
 }
