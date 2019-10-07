@@ -1,11 +1,14 @@
 import React from "react";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-import User from '../system/user/User';
+import axios from "axios";
 import Role from '../system/rbac/Role';
+import User from '../system/user/User';
+import UserInsert from '../system/user/UserInsert';
+
+
 import RoleInsert from '../system/rbac/RoleInsert';
 
-import axios from "axios";
-
+//css
 import home from '../../assets/css/layout/home.css'
 
 class Home extends React.Component {
@@ -13,10 +16,7 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: [
-
-
-            ]
+            list: []
         }
     }
 
@@ -73,13 +73,13 @@ class Home extends React.Component {
                 <div className="title">
                     {/*<Link to='/User'>User</Link>*/}
                     {/*<Link to='/Role'>Role</Link>*/}
-                        {
-                            this.state.list.map((value, key) => {
-                                return (
-                                    <Link key={key} to={value.name}>{value.name}</Link>
-                                )
-                            })
-                        }
+                    {
+                        this.state.list.map((value, key) => {
+                            return (
+                                <Link key={key} to={value.name}>{value.name}</Link>
+                            )
+                        })
+                    }
 
 
                 </div>
@@ -88,6 +88,7 @@ class Home extends React.Component {
                 <Route exact path="/role" component={Role}/>
                 <Route exact path="/role" component={Role}/>
                 <Route exact path="/roleInsert/:aid" component={RoleInsert}/>
+                <Route exact path="/userInsert" component={UserInsert}/>
             </Router>
 
         </div>)

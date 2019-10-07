@@ -1,8 +1,7 @@
 import React from "react";
-import RoleInsert from './RoleInsert'
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-
-class Role extends React.Component {
+import url from 'url';
+class UserInsert extends React.Component {
 
     constructor(props) {
         super(props);
@@ -31,9 +30,14 @@ class Role extends React.Component {
 
     componentDidMount() {
         //获取列表数据
-        // this.getRoles();
-        //赋值给 roles
+        // this.getList();
+        //赋值给 list
         //渲染 表格 在页面中做 新增 编辑 删除 等
+        //1可以获取到值了，需要自己解析 console.log(this.props.location.search);
+        //2 使用现成的类库来解析
+        let query = url.parse(this.props.location.search, true).query;
+        console.log(query);
+        console.log(query.aid);
 
     }
 
@@ -47,21 +51,13 @@ class Role extends React.Component {
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////  render
     render() {
-        return (
-            <div>
-                <h2>GET 角色-动态传值测试</h2>
+        return (<div>
 
-                <ul>
-                    {this.state.roles.map((value, key) => {
-                        return <li key={key}>
-                            <Link to={`/roleInsert/${value.aid}`}>{value.title}</Link>
-                        </li>
+            <h1>UserInsert</h1>
 
-                    })}
-                </ul>
-            </div>
-        )
+            <hr/>
+        </div>)
     }
 }
 
-export default Role;
+export default UserInsert;
