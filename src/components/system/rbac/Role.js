@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-
+import  RoleDetails from './RoleDetails'
 class Role extends React.Component {
 
     constructor(props) {
