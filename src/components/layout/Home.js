@@ -4,9 +4,9 @@ import axios from "axios";
 import Role from '../system/rbac/Role';
 import User from '../system/user/User';
 import UserInsert from '../system/user/UserInsert';
-
-
 import RoleInsert from '../system/rbac/RoleInsert';
+import Food from '../system/food/Food';
+import FoodDetails from '../system/food/FoodDetails';
 
 //css
 import home from '../../assets/css/layout/home.css'
@@ -89,6 +89,8 @@ class Home extends React.Component {
                 <Route exact path="/role" component={Role}/>
                 <Route exact path="/roleInsert/:aid" component={RoleInsert}/>
                 <Route exact path="/userInsert" component={UserInsert}/>
+                <Route exact path="/food" component={Food}/>
+                <Route exact path="/foodDetails" component={FoodDetails}/>
             </Router>
 
         </div>)
