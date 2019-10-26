@@ -7,6 +7,7 @@ import UserInsert from '../system/user/UserInsert';
 import RoleInsert from '../system/rbac/RoleInsert';
 import Food from '../system/food/Food';
 import FoodDetails from '../system/food/FoodDetails';
+import File from '../system/file/File';
 
 //css
 import home from '../../assets/css/layout/home.css'
@@ -38,6 +39,7 @@ class Home extends React.Component {
         // var url = "http://arc.com/zero/menus/" + menuId + "/levels/" + level;
         var url = "http://127.0.0.1:8001/zero/menus/" + systemId + "/levels/" + level;
         console.log(url);
+
         axios.get(url).then(response => {
             console.log(response.data);
 
@@ -62,6 +64,7 @@ class Home extends React.Component {
                 console.log('异常 被 catch',);
             });
         ;
+
     };
 
 
@@ -91,6 +94,7 @@ class Home extends React.Component {
                 <Route exact path="/userInsert" component={UserInsert}/>
                 <Route exact path="/food" component={Food}/>
                 <Route exact path="/foodDetails" component={FoodDetails}/>
+                <Route exact path="/file" component={File}/>
             </Router>
 
         </div>)
