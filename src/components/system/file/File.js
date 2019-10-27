@@ -1,8 +1,8 @@
 import React from "react";
-import {Upload, Icon, message} from 'antd';
+import {Upload, Icon, message, Button} from 'antd';
 import axios from "axios";
 
-const Dragger = Upload.Dragger;
+// const Dragger = Upload.Dragger;
 
 class File extends React.Component {
 
@@ -11,6 +11,7 @@ class File extends React.Component {
         this.state = {
             previewVisible: false,
             previewImage: '',
+
             fileList: [
                 {
                     uid: '-1',
@@ -20,6 +21,7 @@ class File extends React.Component {
                     url: 'http://127.0.0.1:8001/zero/file/upload',
                 },
             ],
+
         }
     }
 
@@ -56,32 +58,59 @@ class File extends React.Component {
 
     }
 
-
     render() {
 
-        // const props = {
-        //     name: 'file',
-        //     multiple: true,
-        //     //action: 'http://127.0.0.1:8001/zero/file',
-        //
-        //     onChange(file) {
-        //         // postFileFun(info);
-        // };
-
-
-        const props_ = {
+        const props = {
             name: 'file',
-            directory: true,
-            //     multiple: true,
-            action: 'http://127.0.0.1:8001/zero/file/upload',
+            // action: 'http://127.0.0.1:8001/zero/file/upload',
+            action: 'http://122.51.110.127:8001/zero/file/upload',
+            headers: {
+                authorization: 'authorization-text',
+            },
+            //上传中、完成、失败都会调用这个函数。
             onChange(info) {
-                if (info.file.status === 'done') {
-                    message.success(`${info.file.name} 文件上传成功`);
+
+                if (info.file.status === 'done' && info.file.response.code == 1) {
+                    console.log("################################");
+                    console.log(info);
+                    console.log("--------------------info.file");
+                    console.log(info.file);
+                    console.log("--------------------info.fileList");
+                    console.log(info.fileList);
+                    console.log("--------------------info.event");
+                    console.log(info.event);
+                    console.log("--------------------文件上传成功");
+
+                    console.log(info.file.response.code);
+                    console.log(info.file.response.msg);
+                    console.log(info.file.response.data);
+
+                    console.log("--------------------info.file.response");
+                    console.log(info.file.response);
+                    message.success(`${info.file.name}-->${info.file.response.data} 文件上传成功`);
+                    let fileName = info.file.response.data;
+                    //info.flie.name = fileName;
+
                 } else if (info.file.status === 'error') {
                     message.error(`${info.file.name} 文件上传失败`);
+                } else {
+                    //console.log("失败" + info.file.response.msg);
+                    console.log("失败");
                 }
+
+                console.log("################################");
             },
         };
+
+        /*        const props_ = {
+                    name: 'file',
+                    directory: true,
+                    //     multiple: true,
+                    action: 'http://127.0.0.1:8001/zero/file/upload',
+                    onChange(info) {
+
+                    },
+                };*/
 
         return (
 
@@ -89,20 +118,32 @@ class File extends React.Component {
 
                 <h1>欢迎|WELCOME File</h1>
                 <hr/>
+                <br/>
+                <br/>
+                <br/>
+
+                <Upload {...props}>
+                    <Button>
+                        <Icon type="upload"/> Click to Upload
+                    </Button>
+                </Upload>
 
 
-                <Dragger>
-                    <p className="ant-upload-drag-icon">
-                        <Icon type="inbox"/>
-                    </p>
+                {/*<Upload {...props}>*/}
+                {/*    <Button>*/}
+                {/*        <Icon type="upload"/> Click to Upload*/}
+                {/*    </Button>*/}
+                {/*</Upload>*/}
 
-                    <p className="ant-upload-text" onChange={this.postFileFun}>点击或者拖拽到此即可上传</p>
-                    {/*<p className="ant-upload-hint">*/}
-                    {/*    Support for a single or bulk upload. Strictly prohibit from uploading company data or other*/}
-                    {/*    band files*/}
-                    {/*</p>*/}
-                </Dragger>
+                {/*<input>文件上传</input>*/}
 
+
+                {/*<p className="ant-upload-text" onChange={this.postFileFun}>点击或者拖拽到此即可上传</p>*/}
+                {/*<p className="ant-upload-hint">*/}
+                {/*    Support for a single or bulk upload. Strictly prohibit from uploading company data or other*/}
+                {/*    band files*/}
+                {/*</p>*/}
+                <hr/>
             </div>);
     }
 
