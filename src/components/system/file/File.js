@@ -1,6 +1,7 @@
 import React from "react";
 import {Upload, Icon, message, Button} from 'antd';
 import axios from "axios";
+// import img1 from "*.jpg";
 
 // const Dragger = Upload.Dragger;
 
@@ -11,6 +12,7 @@ class File extends React.Component {
         this.state = {
             previewVisible: false,
             previewImage: '',
+            src: '',
 
             fileList: [
                 {
@@ -90,6 +92,11 @@ class File extends React.Component {
                     message.success(`${info.file.name}-->${info.file.response.data} 文件上传成功`);
                     let fileName = info.file.response.data;
                     //info.flie.name = fileName;
+                    this.setState(
+                        {
+                            url: "http://122.51.110.127:8001/zero/file/钱钱_157218676334196f8105b-a454-45fe-9323-8ca8b/"
+                        }
+                    )
 
                 } else if (info.file.status === 'error') {
                     message.error(`${info.file.name} 文件上传失败`);
@@ -144,6 +151,15 @@ class File extends React.Component {
                 {/*    band files*/}
                 {/*</p>*/}
                 <hr/>
+
+                <br/>aaa
+                {/*<img src="http://122.51.110.127:8001/zero/file/钱钱_157218676334196f8105b-a454-45fe-9323-8ca8b/" />*/}
+                <br/>
+                <hr/>
+                {/*<img src={img1}/>*/}
+
+                {/*<img src={require('../assets/images/1.jpg')}/>*/}
+
             </div>);
     }
 
