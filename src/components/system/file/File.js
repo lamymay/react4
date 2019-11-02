@@ -28,37 +28,36 @@ class File extends React.Component {
     }
 
 
-    postFileFun = (file) => {
-        console.log(file);
-        console.log("#################");
-        let url = 'http://127.0.0.1:8001/zero/file/upload';
-        axios.post(url).then(response => {
-            console.log(response.data);
-
-            //失败  小于1 失败
-            if (null === response && response.data.code == 1) {
-                //成功，获取到后台返回的数据，可以做缓存
-                console.log(" 成功" + response.data.msg);
-                // this.props.history.push("/Success");
-                this.setState({
-                    list: response.data.data
-                })
-
-            } else {
-                alert(response.data.msg);
-                console.log("FAIL");
-
-                this.props.history.push("/index");
-            }
-        })
-            .catch(function (error) {
-                //异常
-                console.log(error);
-                console.log('异常 被 catch',);
-            });
-        ;
-
-    }
+    // postFileFun = (file) => {
+    //     console.log(file);
+    //     console.log("#################");
+    //     let url = 'http://127.0.0.1:8001/zero/file/upload';
+    //     axios.post(url).then(response => {
+    //         console.log(response.data);
+    //
+    //         //失败  小于1 失败
+    //         if (null === response && response.data.code == 1) {
+    //             //成功，获取到后台返回的数据，可以做缓存
+    //             console.log(" 成功" + response.data.msg);
+    //             // this.props.history.push("/Success");
+    //             this.setState({
+    //                 list: response.data.data
+    //             })
+    //
+    //         } else {
+    //             alert(response.data.msg);
+    //             console.log("FAIL");
+    //
+    //             this.props.history.push("/index");
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             //异常
+    //             console.log(error);
+    //             console.log('异常 被 catch',);
+    //         });
+    //     ;
+    // }
 
     render() {
 
@@ -153,7 +152,7 @@ class File extends React.Component {
                 <hr/>
 
                 <br/>aaa
-                {/*<img src="http://122.51.110.127:8001/zero/file/钱钱_157218676334196f8105b-a454-45fe-9323-8ca8b/" />*/}
+                <img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />
                 <br/>
                 <hr/>
                 {/*<img src={img1}/>*/}

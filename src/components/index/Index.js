@@ -10,7 +10,7 @@ class Index extends React.Component {
     render() {
         return (<div>
 
-            <h1>欢迎|WELCOME</h1>
+            <h1>欢迎主页|WELCOME</h1>
 
         </div>)
     }

@@ -2,12 +2,15 @@ import React from "react";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import axios from "axios";
 import Role from '../system/rbac/Role';
+import UserList from '../system/user/UserList';
 import User from '../system/user/User';
 import UserInsert from '../system/user/UserInsert';
 import RoleInsert from '../system/rbac/RoleInsert';
 import Food from '../system/food/Food';
 import FoodDetails from '../system/food/FoodDetails';
 import File from '../system/file/File';
+import Login from '../index/Login';
+import Index from '../index/Index';
 
 //css
 import home from '../../assets/css/layout/home.css'
@@ -95,6 +98,9 @@ class Home extends React.Component {
                 <Route exact path="/food" component={Food}/>
                 <Route exact path="/foodDetails" component={FoodDetails}/>
                 <Route exact path="/file" component={File}/>
+                <Route exact path="/login" component={Login}/>
+                <Route exact path="/index" component={Index}/>
+                <Route exact path="/user-list" component={UserList}/>
             </Router>
 
         </div>)

@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 // import {Form, Icon, Input, Button, Checkbox,} from 'antd';
 // import "antd/dist/antd.css";
+import login from '../../assets/css/layout/login.css'
 
 class Login extends React.Component {
 
@@ -44,7 +45,7 @@ class Login extends React.Component {
 
     keyUpFun = (e) => {
         console.log(e.keyCode === 13);
-        if (13=== e.keyCode ) {
+        if (13 === e.keyCode) {
             this.loginFun(e);
         }
     };
@@ -52,17 +53,23 @@ class Login extends React.Component {
     //在密码框中点了回车就直接发请求登陆
     //login
     loginFun = (e) => {
+
+
+        let host = "http://127.0.0.1";
+        let port = 8001;
+        let uri = "/zero/v2/login/json/process";
+        let url = host + ":" + port + uri;
         console.log(this.state.username);
         console.log(this.state.pwd);
-        console.log(this.state.sex);
         console.log(this.state.info);
 
-        var url = "http://127.0.0.1:8001/test/login";
+
         console.log(url);
         let user = {
             'identifier': this.state.username,
             "credential": this.state.pwd,
-            "identifierType": 1
+            "identityType": 1
+            //identityType
         };
 
         axios.post(url, user)
@@ -70,13 +77,13 @@ class Login extends React.Component {
                 console.log("response  then ==获取到后台返回的数据");
                 console.log(response.data);
                 //登录失败  小于1 失败
-                if (null === response&& response.data.code < 1) {
+                if (null === response && response.data.code < 1) {
                     alert(response.data.msg);
-                    this.props.history.push("/login");
+                    this.props.history.push("/user");
                 } else {
                     //登录成功，获取到后台返回的数据，可以做缓存
                     console.log(" 登录成功" + response.data.msg);
-                    this.props.history.push("/Blog");
+                    // this.props.history.push("/blog");
                 }
 
             })
@@ -84,25 +91,58 @@ class Login extends React.Component {
                 //异常
                 console.log(error);
                 console.log('登陆异常  catch =====',);
-                this.props.history.push("/login");
+                //this.props.history.push("/login");
             });
         ;
 
     };
 
+
     render() {
         return (
             <div>
-                <h2>登陆页面</h2>
-                <hr/>
-                名称: <input type='text' value={this.state.username} onChange={this.handleUsername}/><br/>
-                密码: <input type='text' value={this.state.pwd} onChange={this.handlePwd} onKeyUp={this.keyUpFun}/><br/>
-
-                <button onClick={this.loginFun}>测试 与后台交互</button>
-
+                <h3> 获取输入值账号{this.state.username}</h3>
+                <h3> 获取输入值密码{this.state.pwd} </h3>
                 <br/>
-                <br/>
-                <h3>账号：{this.state.username}-- 密码：{this.state.pwd}-- </h3>
+
+
+                <div>
+                    <h2 className="form-login-heading">Please sign in</h2>
+
+                    <p>
+                        <label htmlFor="username" className="sr-only">名称</label>
+                        <input type="text"
+                               value={this.state.username}
+                               onChange={this.handleUsername}
+                               id="username" name="identifier"
+                               className="form-control"
+                               placeholder="账号"
+                               required
+                               autoFocus/>
+                    </p>
+
+                    <p>
+                        <label htmlFor="password"
+                               className="sr-only"
+                        >密码</label>
+                        <input type="password"
+                               value={this.state.pwd}
+                               onChange={this.handlePwd}
+                               onKeyUp={this.keyUpFun}
+                               className="form-control"
+                               placeholder="密码"
+                               id="password"
+                               name="credential"
+                               required/>
+                    </p>
+
+
+                    <input name="identityType" type="hidden" value="1"/>
+                    <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+                    <button onClick={this.loginFun}>测试 与后台交互</button>
+                </div>
+
             </div>
         );
     }
