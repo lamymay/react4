@@ -100,14 +100,13 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3> 获取输入值账号{this.state.username}</h3>
-                <h3> 获取输入值密码{this.state.pwd} </h3>
-                <br/>
+            <div className="center-all">
+                <div className="center-all">
 
+                    <div className="heading   ">
+                        <h2>登录 Please sign in</h2>
+                    </div>
 
-                <div>
-                    <h2 className="form-login-heading">Please sign in</h2>
 
                     <p>
                         <label htmlFor="username" className="sr-only">名称</label>
@@ -115,11 +114,14 @@ class Login extends React.Component {
                                value={this.state.username}
                                onChange={this.handleUsername}
                                id="username" name="identifier"
+
                                className="form-control"
-                               placeholder="账号"
+                               placeholder="手机号、邮箱或用户名"
                                required
+                               placeholder="手机号、邮箱或用户名"
                                autoFocus/>
                     </p>
+
 
                     <p>
                         <label htmlFor="password"
@@ -135,15 +137,46 @@ class Login extends React.Component {
                                name="credential"
                                required/>
                     </p>
-
+{/*                    <input name="rememberMe" id="rememberMe" type="checkbox"
+                           className="checkbox" value="true"/><label
+                    htmlFor="rememberMe">30 天内记住我</label>*/}
 
                     <input name="identityType" type="hidden" value="1"/>
-                    <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
-                    <button onClick={this.loginFun}>测试 与后台交互</button>
+                    <div>
+                        <button onClick={this.loginFun} className="btn-login-submit ">点我登录</button>
+                    </div>
+
+                    <div className="forgotPasswordContainer CanBePulledDown"
+                         id="forgotPasswordDiv">
+                        <a href="https://app.yinxiang.com/ForgotPassword.action"
+                           target="_top" className="forgot-password">
+                            忘记密码？</a>
+                    </div>
+
+                    {/*                 <div className="Btn Btn_emph Btn_super Btn_Yx">
+                        <img
+                            src="https://static.app.yinxiang.com/embedded-web/web/static/media/wechat_icon@2x.e20b7172.png"/>
+                        <span>使用微信登录</span>
+                    </div>*/}
+
+
+                    <div className="footer wrapper">
+                        <a href="https://www.yinxiang.com/tos/" className="footer-entry"
+                           target="_blank">服务条款</a>
+                        <a href="https://www.yinxiang.com/privacy/" className="footer-entry"
+                           target="_blank">|隐私政策</a>
+                        <span className="footer-entry last">    版权所有 2007 - 2019 笔记。保留所有权利。</span>
+                    </div>
                 </div>
 
+                <hr/>
+                <h3> 获取输入值账号{this.state.username}</h3>
+                <h3> 获取输入值密码{this.state.pwd} </h3>
+
             </div>
+
+
         );
     }
 
