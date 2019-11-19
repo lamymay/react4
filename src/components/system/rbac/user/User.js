@@ -7,7 +7,7 @@ class User extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            bgColor:'beige',
+            bgColor:'blue',
             list: [
                 {
                     aid: '1',

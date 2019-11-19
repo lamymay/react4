@@ -2,6 +2,12 @@
 @import "~antd/dist/antd.css";
 
 
+
+.login title {
+    background-color: aquamarine;
+    /*padding: 10px;*/
+}
+
 .form-control {
     /*background-color: aquamarine;*/
     color: blueviolet;

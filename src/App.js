@@ -1,13 +1,13 @@
 import React from 'react';
-// import Home from './components/layout/Home';
+import Home from './components/layout/Home';
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-import User from "./components/system/rbac/user/User";
+// import User from "./components/system/rbac/user/User";
 
 function App() {
     return (
         <div>
-            {/*<Home/>*/}
-            <User/>
+            <Home/>
+            {/*<User/>*/}
         </div>
     )
         ;
