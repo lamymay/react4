@@ -18,7 +18,7 @@ class File extends React.Component {
             img: 'http://127.0.0.1:8001/zero/file/sunhina_157434301011046cbf990e98546bb859b5fad',
             //T:\Project\REACT\react4\src\components\system\file
             //T:\Project\REACT\react4\public\img
-            localImg: '%PUBLIC_URL%/image/404.jpg',
+            localImg: process.env.PUBLIC_URL + 'image/404.jpg',
 
             fileList: [
                 {
@@ -68,8 +68,8 @@ class File extends React.Component {
     render() {
         const props = {
             name: 'file',
-            // action: 'http://127.0.0.1:8001/zero/file/upload',
-            action: 'http://122.51.110.127:8001/zero/file/upload',
+            action: 'http://127.0.0.1:8001/zero/file/upload',
+            // action: 'http://122.51.110.127:8001/zero/file/upload',
             headers: {
                 authorization: 'authorization-text',
             },
@@ -155,16 +155,13 @@ class File extends React.Component {
                 {/*</p>*/}
                 <hr/>
 
-                <br/>aaa
-                {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
-                {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
                 <br/>
                 <hr/>
-                {/*<img src={img1}/>*/}
 
-
+                <div>从[接口]去读去图片</div>
+                {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
+                {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
                 <div>从后台去读去图片</div>
-
                 <img src={this.state.img} alt="" style={{
                     width: '400px',
                     height: '400px',
@@ -178,6 +175,7 @@ class File extends React.Component {
 
                 <div>下面是[PUBLIC]文件中的IMG</div>
                 <img src={process.env.PUBLIC_URL + '/image/404.jpg'} className='img-body'/>
+                <img src={this.state.localImg} className='img-body'/>
 
 
                 <img src="{this.img}" alt=""/>
