@@ -15,7 +15,9 @@ class File extends React.Component {
             previewVisible: false,
             previewImage: '',
             src: '',
+            url: '',
             img: 'http://127.0.0.1:8001/zero/file/sunhina_157434301011046cbf990e98546bb859b5fad',
+            img2: '',
             //T:\Project\REACT\react4\src\components\system\file
             //T:\Project\REACT\react4\public\img
             localImg: process.env.PUBLIC_URL + 'image/404.jpg',
@@ -95,10 +97,20 @@ class File extends React.Component {
                     console.log(info.file.response);
                     message.success(`${info.file.name}-->${info.file.response.data} 文件上传成功`);
                     let fileName = info.file.response.data;
+                    console.log(fileName);
+                    console.log(fileName);
+                    console.log(fileName);
+                    console.log(fileName);
+                    console.log(fileName);
+                    console.log(fileName);
+                    console.log(fileName);
+                    console.log(this);
+                    console.log(this);
                     //info.flie.name = fileName;
                     this.setState(
                         {
-                            url: "http://122.51.110.127:8001/zero/file/钱钱_157218676334196f8105b-a454-45fe-9323-8ca8b/"
+                            img2: 'http://127.0.0.1:8001/zero/file/sunhina_157434301011046cbf990e98546bb859b5fad',
+
                         }
                     )
 
