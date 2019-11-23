@@ -11,6 +11,7 @@ import Login from '../index/Login';
 import Food from '../app/food/Food';
 import Index from '../index/Index';
 import FoodDetails from '../app/food/FoodDetails';
+import FileSearch from '../system/file/FileSearch';
 
 //css
 import home from '../../assets/css/layout/home.css'
@@ -76,7 +77,7 @@ class Home extends React.Component {
         return (<div>
 
             <Router>
-                <div className="title">
+                <div>
                     {/*<Link to='/User'>User</Link>*/}
                     {/*<Link to='/Role'>Role</Link>*/}
                     {
@@ -101,6 +102,7 @@ class Home extends React.Component {
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/index" component={Index}/>
                 <Route exact path="/user-list" component={UserList}/>
+                <Route exact path="/file-search" component={FileSearch}/>
             </Router>
 
         </div>)

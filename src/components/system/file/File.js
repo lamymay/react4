@@ -137,46 +137,41 @@ class File extends React.Component {
 
         return (
             <div>
+                <p>
 
-                <h1>欢迎|WELCOME File</h1>
-                <hr/>
-                <br/>
-                <br/>
-                <br/>
+                    <h1>欢迎|WELCOME File</h1>
 
-                <Upload {...props}>
-                    <Button>
-                        <Icon type="upload"/> Click to Upload
-                    </Button>
-                </Upload>
+                    <Upload {...props}>
+                        <Button>
+                            <Icon type="upload"/> Click to Upload
+                        </Button>
+                    </Upload>
 
 
-                {/*<Upload {...props}>*/}
-                {/*    <Button>*/}
-                {/*        <Icon type="upload"/> Click to Upload*/}
-                {/*    </Button>*/}
-                {/*</Upload>*/}
+                    {/*<Upload {...props}>*/}
+                    {/*    <Button>*/}
+                    {/*        <Icon type="upload"/> Click to Upload*/}
+                    {/*    </Button>*/}
+                    {/*</Upload>*/}
 
-                {/*<input>文件上传</input>*/}
+                    {/*<input>文件上传</input>*/}
 
 
-                {/*<p className="ant-upload-text" onChange={this.postFileFun}>点击或者拖拽到此即可上传</p>*/}
-                {/*<p className="ant-upload-hint">*/}
-                {/*    Support for a single or bulk upload. Strictly prohibit from uploading company data or other*/}
-                {/*    band files*/}
-                {/*</p>*/}
-                <hr/>
+                    {/*<p className="ant-upload-text" onChange={this.postFileFun}>点击或者拖拽到此即可上传</p>*/}
+                    {/*<p className="ant-upload-hint">*/}
+                    {/*    Support for a single or bulk upload. Strictly prohibit from uploading company data or other*/}
+                    {/*    band files*/}
+                    {/*</p>*/}
+                </p>
 
-                <br/>
-                <hr/>
 
                 <div>从[接口]去读去图片</div>
                 {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
                 {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
-                <div>从后台去读去图片</div>
+                <div className='img-title'>从后台去读去图片</div>
                 <img src={this.state.img} alt="" style={{
-                    width: '400px',
-                    height: '400px',
+                    width: '250px',
+                    height: '250px',
                     textAlign: 'center'
                 }}/>
 
@@ -185,13 +180,24 @@ class File extends React.Component {
                 <img src={[require("../../../assets/image/avatar.jpeg")]} className='img-body'/>
                 {/*<img src={require('../../../../public/image/404.jpg')}/>*/}
 
-                <div>下面是[PUBLIC]文件中的IMG</div>
-                <img src={process.env.PUBLIC_URL + '/image/404.jpg'} className='img-body'/>
+                <div>下面是[PUBLIC]文件中的IMG(两种方式都可以读取)</div>
+                {/*<img src={process.env.PUBLIC_URL + '/image/404.jpg'} className='img-body'/>*/}
                 <img src={this.state.localImg} className='img-body'/>
 
 
-                <img src="{this.img}" alt=""/>
-            </div>);
+                <hr/>
+                <div>
+                    <p className='front-ms'>字体 front-ms</p>
+                    <p className='front-Aria'>字体 front-Aria</p>
+                    <p className='front-Helvetica'>字体 front-Helvetica</p>
+                    <p className='front-song'>字体 front-song</p>
+                    <p className='front-sans-serif'>字体 front-sans-serif</p>
+                    <p className='front-black'>字体 front-black</p>
+                </div>
+
+
+            </div>
+        );
     }
 
 }
