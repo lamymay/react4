@@ -1,6 +1,6 @@
 import React from "react";
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-import user from '../../../../assets/css/system/rbac/user.css'
+// import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+// import user from '../../../../assets/css/system/rbac/user.css'
 
 class User extends React.Component {
 

@@ -1,5 +1,4 @@
 import React from "react";
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import url from 'url';
 class FoodDetails extends React.Component {
 

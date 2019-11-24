@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios';
 // import {Form, Icon, Input, Button, Checkbox,} from 'antd';
 // import "antd/dist/antd.css";
-import login from '../../assets/css/layout/login.css'
+import '../../assets/css/layout/login.css'
 
 class Login extends React.Component {
 
@@ -159,10 +159,8 @@ class Login extends React.Component {
 
 
                 <div className="footer wrapper">
-                    <a href="https://www.yinxiang.com/tos/" className="footer-entry"
-                       target="_blank">服务条款</a>
-                    <a href="https://www.yinxiang.com/privacy/" className="footer-entry"
-                       target="_blank">|隐私政策</a>
+                    <a href="https://www.yinxiang.com/tos/" className="footer-entry">服务条款</a>
+                    <a href="https://www.yinxiang.com/privacy/" className="footer-entry">|隐私政策</a>
                     <span className="footer-entry last">    版权所有 2007 - 2019 笔记。保留所有权利。</span>
                 </div>
 

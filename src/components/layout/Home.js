@@ -7,14 +7,14 @@ import User from '../system/rbac/user/User';
 import UserInsert from '../system/user/UserInsert';
 import RoleInsert from '../system/rbac/RoleInsert';
 import File from '../system/file/File';
-import Login from '../index/Login';
+import Login from '../basic/Login';
 import Food from '../app/food/Food';
-import Index from '../index/Index';
+import Index from '../basic/Index';
 import FoodDetails from '../app/food/FoodDetails';
 import FileSearch from '../system/file/FileSearch';
 
 //css
-import home from '../../assets/css/layout/home.css'
+import '../../assets/css/layout/home.css'
 
 class Home extends React.Component {
 
@@ -29,7 +29,6 @@ class Home extends React.Component {
     //初始化函数触发
     componentDidMount() {
         // To disabled submit button at the beginning.
-        // console.log("----------------------------");
         console.log("componentDidMount--初始化的时候去获取菜单数据");
         this.getMenusFun();
         // this.props.form.validateFields();
@@ -45,21 +44,32 @@ class Home extends React.Component {
         console.log(url);
 
         axios.get(url).then(response => {
+            console.log("########## response #########");
+            console.log(response);
+            console.log("###################");
+            console.log("########## response.data #########");
             console.log(response.data);
+            console.log("###################");
+
+
+            if (response != null) {
+                console.log("########## response.data.data #########");
+                //成功，获取到后台返回的数据，可以做缓存
+                console.log(response.data.msg);
+                console.log(response.data.data);
+                console.log("###################");
+                // this.props.history.push("/Success");
+                this.setState({
+                    list: response.data.data
+                })
+            }
+
 
             //失败  小于1 失败
             if (null === response && response.data.code < 1) {
                 alert(response.data.msg);
                 console.log("FAIL");
                 this.props.history.push("/index");
-            } else {
-                //成功，获取到后台返回的数据，可以做缓存
-                console.log(" 成功" + response.data.msg);
-                // this.props.history.push("/Success");
-
-                this.setState({
-                    list: response.data.data
-                })
             }
         })
             .catch(function (error) {
@@ -74,38 +84,35 @@ class Home extends React.Component {
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////  render
     render() {
-        return (<div>
+        return (
 
-            <Router>
-                <div>
-                    {/*<Link to='/User'>User</Link>*/}
-                    {/*<Link to='/Role'>Role</Link>*/}
-                    {
-                        this.state.list.map((value, key) => {
-                            return (
-                                <Link key={key} to={value.name}>{value.name}</Link>
-                            )
-                        })
-                    }
+            <div>
+                <Router>
+                    <div className="title">
+                        {
+                            this.state.list.map((value, key) => {
+                                return (
+                                    <Link key={key} to={value.name}>{value.url}</Link>
+                                )
+                            })
+                        }
+                    </div>
 
+                    <Route exact path="/user" component={User}/>
+                    <Route exact path="/role" component={Role}/>
+                    <Route exact path="/role" component={Role}/>
+                    <Route exact path="/roleInsert/:aid" component={RoleInsert}/>
+                    <Route exact path="/userInsert" component={UserInsert}/>
+                    <Route exact path="/food" component={Food}/>
+                    <Route exact path="/foodDetails" component={FoodDetails}/>
+                    <Route exact path="/file" component={File}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact path="/index" component={Index}/>
+                    <Route exact path="/user-list" component={UserList}/>
+                    <Route exact path="/file-search" component={FileSearch}/>
+                </Router>
 
-                </div>
-
-                <Route exact path="/user" component={User}/>
-                <Route exact path="/role" component={Role}/>
-                <Route exact path="/role" component={Role}/>
-                <Route exact path="/roleInsert/:aid" component={RoleInsert}/>
-                <Route exact path="/userInsert" component={UserInsert}/>
-                <Route exact path="/food" component={Food}/>
-                <Route exact path="/foodDetails" component={FoodDetails}/>
-                <Route exact path="/file" component={File}/>
-                <Route exact path="/login" component={Login}/>
-                <Route exact path="/index" component={Index}/>
-                <Route exact path="/user-list" component={UserList}/>
-                <Route exact path="/file-search" component={FileSearch}/>
-            </Router>
-
-        </div>)
+            </div>)
     }
 }
 

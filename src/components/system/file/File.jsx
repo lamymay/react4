@@ -1,7 +1,12 @@
 import React from "react";
-import {Upload, Icon, message, Button} from 'antd';
-import axios from "axios";
-import file from '../../../assets/css/system/file/file.css'
+import {
+    Upload,
+    Icon,
+    message,
+    Button
+} from 'antd';
+// import axios from "axios";
+import '../../../assets/css/system/file/file.css'
 
 // import img1 from "*.jpg";
 
@@ -78,7 +83,7 @@ class File extends React.Component {
             //上传中、完成、失败都会调用这个函数。
             onChange(info) {
 
-                if (info.file.status === 'done' && info.file.response.code == 1) {
+                if (info.file.status === 'done' && info.file.response.code === 1) {
                     console.log("################################");
                     console.log(info);
                     console.log("--------------------info.file");
@@ -107,12 +112,12 @@ class File extends React.Component {
                     console.log(this);
                     console.log(this);
                     //info.flie.name = fileName;
-                    this.setState(
-                        {
-                            img2: 'http://127.0.0.1:8001/zero/file/sunhina_157434301011046cbf990e98546bb859b5fad',
-
-                        }
-                    )
+                    // this.setState(
+                    //     {
+                    //         img2: 'http://127.0.0.1:8001/zero/file/sunhina_157434301011046cbf990e98546bb859b5fad',
+                    //
+                    //     }
+                    // )
 
                 } else if (info.file.status === 'error') {
                     message.error(`${info.file.name} 文件上传失败`);
@@ -169,20 +174,22 @@ class File extends React.Component {
                 {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
                 {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
                 <div className='img-title'>从后台去读去图片</div>
-                <img src={this.state.img} alt="" style={{
+                <img src={this.state.img} style={{
                     width: '250px',
                     height: '250px',
                     textAlign: 'center'
-                }}/>
+                }}
+                     alt=""
+                />
 
 
                 <div>下面是[../../../assets/image]文件中的IMG</div>
-                <img src={[require("../../../assets/image/avatar.jpeg")]} className='img-body'/>
+                <img src={[require("../../../assets/image/avatar.jpeg")]} className='img-body' alt="" />
                 {/*<img src={require('../../../../public/image/404.jpg')}/>*/}
 
                 <div>下面是[PUBLIC]文件中的IMG(两种方式都可以读取)</div>
                 {/*<img src={process.env.PUBLIC_URL + '/image/404.jpg'} className='img-body'/>*/}
-                <img src={this.state.localImg} className='img-body'/>
+                <img src={this.state.localImg} className='img-body' alt=""/>
 
 
                 <hr/>

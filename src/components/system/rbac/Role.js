@@ -1,6 +1,6 @@
 import React from "react";
-import RoleInsert from './RoleInsert'
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+// import RoleInsert from './RoleInsert'
+import {Link} from "react-router-dom";
 
 class Role extends React.Component {
 
