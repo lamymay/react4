@@ -64,7 +64,7 @@ class FileSearch extends React.Component {
             //     //成功，获取到后台返回的数据，可以做缓存
             //     console.log(" 成功" + response.data.msg);
             //     // this.props.history.push("/Success");
-            if (code == 1) {
+            if (code === 1) {
                 this.setState({
                     images: response.data.data
                 });
@@ -150,23 +150,20 @@ class FileSearch extends React.Component {
                 </p>
 
 
-                        {
-                            this.state.images.map((value, key) => {
-                                return (
-                                    <div >
-                                        <img
-                                            // key={key}
-                                            src={value.url}
-                                            className='image-node'
-                                            alt=''></img>
-                                        {/*<p key={index}*/}
-                                        {/*   className='front-black'>{value.name}</p>*/}
-                                    </div>
-                                )
-                            })
-                        }
+                {this.state.images.map((value, key) => {
+                    return (
+                        <div key={value.name}>
+                            <img
+                                key={`${value.name}${value.id}`}
+                                src={value.url}
+                                className='image-node'
+                                alt=''></img>
+                            <p className='front-black'>{value.name}</p>
+                        </div>
+                    )
+                })}
 
-
+                <h2>完</h2>
             </div>
         );
     }
