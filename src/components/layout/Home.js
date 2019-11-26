@@ -12,6 +12,7 @@ import Food from '../app/food/Food';
 import Index from '../basic/Index';
 import FoodDetails from '../app/food/FoodDetails';
 import FileSearch from '../system/file/FileSearch';
+import Menu from '../system/menu/Menu';
 
 //css
 import '../../assets/css/layout/home.css'
@@ -110,6 +111,7 @@ class Home extends React.Component {
                     <Route exact path="/index" component={Index}/>
                     <Route exact path="/user-list" component={UserList}/>
                     <Route exact path="/file-search" component={FileSearch}/>
+                    <Route exact path="/Menu" component={Menu}/>
                 </Router>
 
             </div>)
