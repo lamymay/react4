@@ -68,6 +68,11 @@ class File extends React.Component {
         }
     }
 
+    componentDidMount() {
+        console.log("########### this.props.routes) ###########");
+        console.log(this.props.routes);
+        console.log("######################");
+    }
 
     render() {
         const props = {

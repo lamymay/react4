@@ -19,7 +19,6 @@ import routers from '../../config/router.js';
 import '../../assets/css/layout/home.css'
 
 
-
 // const host= "http://127.0.0.1:8001";
 const host = "http://122.51.110.127:80";
 
@@ -41,6 +40,7 @@ class Home extends React.Component {
         this.getMenusFun();
         // this.props.form.validateFields();
     }
+
 
     // 初始化的时候去获取菜单数据
     getMenusFun = (e) => {
@@ -107,9 +107,16 @@ class Home extends React.Component {
                     </div>
                     {
                         routers.map((route, key) => {
-
                             if (route.exact) {
-                                return <Route exact path={route.path} component={route.component} key={route.path}/>
+                                return <Route exact path={route.path}
+                                              render={props => (
+                                                  <route.component{...props} routes={route.routes}/>
+                                              )}/>;
+                            } else {
+                                return <Route path={route.path}
+                                              render={props => (
+                                                  <route.component{...props} routes={route.routes}/>
+                                              )}/>;
                             }
                         })
 
@@ -137,3 +144,14 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+
+// 原始的
+//              {
+//                         routers.map((route, key) => {
+//                             if (route.exact) {
+//                                 return <Route exact path={route.path} component={route.component} key={route.path}/>
+//                             }
+//                         })
+//
+//                     }

@@ -10,6 +10,7 @@ import File from "../components/system/file/File";
 import Login from "../components/basic/Login";
 import FileSearch from "../components/system/file/FileSearch";
 import Menu from "../components/system/menu/Menu";
+import React from "react";
 
 const routers = [
     {
@@ -53,9 +54,21 @@ const routers = [
         exact: true
     },
     {
-        path: "/File",
+        path: "/file",
         component: File,
-        exact: true
+        exact: true,
+        routes:[
+            {
+                path: "/file-add",
+                component: Login,
+                exact: true
+            },      {
+                path: "/file-update",
+                component: Login,
+                exact: true
+            },
+
+        ]
     },
     {
         path: "/login",
@@ -76,3 +89,6 @@ const routers = [
 
 export default routers;
 
+//                        reder={props=>(
+//                             <route.component{... props} routers={route.children}>
+//                         )
