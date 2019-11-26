@@ -4,10 +4,31 @@ import axios from "axios";
 
 import '../../../assets/css/system/file/file.css'
 
+const uriListFile = "listFile";
+const profileLocal = "local";
+const profileProd160 = "prod_160";
 
-// function searchImageList(name) {
-//     this.searchForImageList(name);
-// }
+function getUriPrefix(key) {
+    if (key === profileLocal) {
+        //local
+        return "http://127.0.0.1:8001";
+    } else if (key === profileProd160) {
+        //160
+        return "http://122.51.110.127:80";
+    }
+}
+
+
+function getUri(key) {
+    let host = getUriPrefix(profileProd160);
+
+    if (key === uriListFile) {
+        return host+"/zero/sys/file/list";
+    } else if (key === "saveMenu") {
+        return host+"/zero/111111/sys/file/list";
+    }
+}
+
 
 class FileSearch extends React.Component {
 
@@ -28,7 +49,7 @@ class FileSearch extends React.Component {
     //搜索 获取图片的集合
     searchForImageList = (filename) => {
         console.log("######## 搜索 获取图片的集合 #########");
-        let url = 'http://127.0.0.1:8001/zero/sys/file/list';
+        let url = getUri(uriListFile);
         let query = {};
         console.log(filename);
         query.name = this.state.name;

@@ -17,6 +17,9 @@ import Menu from '../system/menu/Menu';
 //css
 import '../../assets/css/layout/home.css'
 
+
+
+
 class Home extends React.Component {
 
     constructor(props) {

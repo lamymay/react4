@@ -12,6 +12,34 @@ import '../../../assets/css/system/file/file.css'
 
 // const Dragger = Upload.Dragger;
 
+
+const profileLocal = "local";
+const profileProd160 = "prod_160";
+
+//key
+const uriUploadFile = "listFile";
+
+
+function getUriPrefix(key) {
+    if (key === profileLocal) {
+        //local
+        return "http://127.0.0.1:8001";
+    } else if (key === profileProd160) {
+        //160
+        return "http://122.51.110.127:80";
+    }
+}
+
+
+function getUri(key) {
+    let host = getUriPrefix(profileProd160);
+    if (key === uriUploadFile) {
+        return host+"/zero/file/upload";
+    } else if (key === "test") {
+        return host+"/zero/111111/sys/file/list";
+    }
+}
+
 class File extends React.Component {
 
     constructor(props) {
@@ -41,41 +69,10 @@ class File extends React.Component {
     }
 
 
-    // postFileFun = (file) => {
-    //     console.log(file);
-    //     console.log("#################");
-    //     let url = 'http://127.0.0.1:8001/zero/file/upload';
-    //     axios.post(url).then(response => {
-    //         console.log(response.data);
-    //
-    //         //失败  小于1 失败
-    //         if (null === response && response.data.code == 1) {
-    //             //成功，获取到后台返回的数据，可以做缓存
-    //             console.log(" 成功" + response.data.msg);
-    //             // this.props.history.push("/Success");
-    //             this.setState({
-    //                 list: response.data.data
-    //             })
-    //
-    //         } else {
-    //             alert(response.data.msg);
-    //             console.log("FAIL");
-    //
-    //             this.props.history.push("/index");
-    //         }
-    //     })
-    //         .catch(function (error) {
-    //             //异常
-    //             console.log(error);
-    //             console.log('异常 被 catch',);
-    //         });
-    //     ;
-    // }
-
     render() {
         const props = {
             name: 'file',
-            action: 'http://127.0.0.1:8001/zero/file/upload',
+            action: getUri(uriUploadFile),
             // action: 'http://122.51.110.127:8001/zero/file/upload',
             headers: {
                 authorization: 'authorization-text',
