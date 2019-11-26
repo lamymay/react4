@@ -7,38 +7,9 @@ import {
 } from 'antd';
 // import axios from "axios";
 import '../../../assets/css/system/file/file.css'
+// api接口地址抽取
+import apis from '../../../config/urls.js';
 
-// import img1 from "*.jpg";
-
-// const Dragger = Upload.Dragger;
-
-
-// const profile= "local";
-const profile= "prod_160";
-
-//key
-const uriUploadFile = "listFile";
-
-
-function getUriPrefix(key) {
-    if (key === "local") {
-        //local
-        return "http://127.0.0.1:8001";
-    } else if (key === "prod_160") {
-        //160
-        return "http://122.51.110.127:80";
-    }
-}
-
-
-function getUri(key) {
-    let host = getUriPrefix(profile);
-    if (key === uriUploadFile) {
-        return host+"/zero/file/upload";
-    } else if (key === "test") {
-        return host+"/zero/111111/sys/file/list";
-    }
-}
 
 class File extends React.Component {
 
@@ -77,7 +48,7 @@ class File extends React.Component {
     render() {
         const props = {
             name: 'file',
-            action: getUri(uriUploadFile),
+            action: apis.file.uploadFile,
             // action: 'http://122.51.110.127:8001/zero/file/upload',
             headers: {
                 authorization: 'authorization-text',
@@ -104,8 +75,6 @@ class File extends React.Component {
                     console.log(info.file.response);
                     message.success(`${info.file.name}-->${info.file.response.data} 文件上传成功`);
                     let fileName = info.file.response.data;
-                    console.log(fileName);
-                    console.log(fileName);
                     console.log(fileName);
                     console.log(fileName);
                     console.log(fileName);
@@ -144,16 +113,12 @@ class File extends React.Component {
 
         return (
             <div>
-                <p>
-
-                    <h1>欢迎|WELCOME File</h1>
 
                     <Upload {...props}>
                         <Button>
                             <Icon type="upload"/> Click to Upload
                         </Button>
                     </Upload>
-
 
                     {/*<Upload {...props}>*/}
                     {/*    <Button>*/}
@@ -169,7 +134,6 @@ class File extends React.Component {
                     {/*    Support for a single or bulk upload. Strictly prohibit from uploading company data or other*/}
                     {/*    band files*/}
                     {/*</p>*/}
-                </p>
 
 
                 <div>从[接口]去读去图片</div>

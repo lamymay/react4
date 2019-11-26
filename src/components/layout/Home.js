@@ -13,14 +13,13 @@ import axios from "axios";
 // import FoodDetails from '../app/food/FoodDetails';
 // import FileSearch from '../system/file/FileSearch';
 // import Menu from '../system/menu/Menu';
+
+//路由与 api接口地址抽取
 import routers from '../../config/router.js';
+import apis from '../../config/urls.js';
 
 //css
 import '../../assets/css/layout/home.css'
-
-
-// const host= "http://127.0.0.1:8001";
-const host = "http://122.51.110.127:80";
 
 
 class Home extends React.Component {
@@ -48,7 +47,10 @@ class Home extends React.Component {
         var level = 0;//0 全部
         //localhost:8001/zero/menus/2/levels/0
         // var url = "http://arc.com/zero/menus/" + menuId + "/levels/" + level;
-        var url = host + "/zero/menus/" + systemId + "/levels/" + level;
+
+        let url = apis.listMenusBySystemIdAndLevel;
+        url = url.replace("SYSTEM_ID", systemId);
+        url = url.replace("LEVEL", level);
         console.log(url);
 
         axios.get(url).then(response => {
@@ -108,15 +110,19 @@ class Home extends React.Component {
                     {
                         routers.map((route, key) => {
                             if (route.exact) {
-                                return <Route exact path={route.path}
+                                return <Route exact
+                                              key={route.path}
+                                              path={route.path}
                                               render={props => (
                                                   <route.component{...props} routes={route.routes}/>
                                               )}/>;
                             } else {
-                                return <Route path={route.path}
-                                              render={props => (
-                                                  <route.component{...props} routes={route.routes}/>
-                                              )}/>;
+                                return <Route
+                                    key={route.path}
+                                    path={route.path}
+                                    render={props => (
+                                        <route.component{...props} routes={route.routes}/>
+                                    )}/>;
                             }
                         })
 

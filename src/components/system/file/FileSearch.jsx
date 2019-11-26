@@ -3,31 +3,9 @@ import axios from "axios";
 // import {Link} from "react-router-dom";
 
 import '../../../assets/css/system/file/file.css'
-
-const uriListFile = "listFile";
-// const profile = "local";
-const profile = "prod_160";
-
-function getUriPrefix(key) {
-    if (key === "local") {
-        //local
-        return "http://127.0.0.1:8001";
-    } else if (key === "prod_160") {
-        //160
-        return "http://122.51.110.127:80";
-    }
-}
+import apis from '../../../config/urls.js';
 
 
-function getUri(key) {
-    let host = getUriPrefix(profile);
-
-    if (key === uriListFile) {
-        return host + "/zero/sys/file/list";
-    } else if (key === "saveMenu") {
-        return host + "/zero/111111/sys/file/list";
-    }
-}
 
 
 class FileSearch extends React.Component {
@@ -49,7 +27,8 @@ class FileSearch extends React.Component {
     //搜索 获取图片的集合
     searchForImageList = (filename) => {
         console.log("######## 搜索 获取图片的集合 #########");
-        let url = getUri(uriListFile);
+        let url = apis.file.listFileByQuery;
+
         let query = {};
         console.log(filename);
         query.name = this.state.name;
@@ -107,7 +86,6 @@ class FileSearch extends React.Component {
             });
         ;
     };
-
 
 
     componentDidMount() {
@@ -179,7 +157,7 @@ class FileSearch extends React.Component {
 
                 {this.state.images.map((value, key) => {
                     return (
-                        <div key={value.name}>
+                        <div key={`${value.name}${value.id}`}>
                             <img
                                 key={`${value.name}${value.id}`}
                                 src={value.url}
