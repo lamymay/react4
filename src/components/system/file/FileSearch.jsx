@@ -5,11 +5,11 @@ import axios from "axios";
 import '../../../assets/css/system/file/file.css'
 
 const uriListFile = "listFile";
-const profileLocal = "local";
-const profileProd160 = "prod_160";
+// const profile = "local";
+const profile = "prod_160";
 
 function getUriPrefix(key) {
-    if (key === profileLocal) {
+    if (key === profile) {
         //local
         return "http://127.0.0.1:8001";
     } else if (key === profileProd160) {
@@ -23,9 +23,9 @@ function getUri(key) {
     let host = getUriPrefix(profileProd160);
 
     if (key === uriListFile) {
-        return host+"/zero/sys/file/list";
+        return host + "/zero/sys/file/list";
     } else if (key === "saveMenu") {
-        return host+"/zero/111111/sys/file/list";
+        return host + "/zero/111111/sys/file/list";
     }
 }
 

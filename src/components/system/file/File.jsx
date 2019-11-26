@@ -13,15 +13,15 @@ import '../../../assets/css/system/file/file.css'
 // const Dragger = Upload.Dragger;
 
 
-const profileLocal = "local";
-const profileProd160 = "prod_160";
+// const profile= "local";
+const profile= "prod_160";
 
 //key
 const uriUploadFile = "listFile";
 
 
 function getUriPrefix(key) {
-    if (key === profileLocal) {
+    if (key === profile) {
         //local
         return "http://127.0.0.1:8001";
     } else if (key === profileProd160) {
