@@ -19,6 +19,8 @@ import '../../assets/css/layout/home.css'
 
 
 
+// const host= "http://127.0.0.1:8001";
+const host = "http://122.51.110.127:80";
 
 class Home extends React.Component {
 
@@ -44,7 +46,7 @@ class Home extends React.Component {
         var level = 0;//0 全部
         //localhost:8001/zero/menus/2/levels/0
         // var url = "http://arc.com/zero/menus/" + menuId + "/levels/" + level;
-        var url = "http://127.0.0.1:8001/zero/menus/" + systemId + "/levels/" + level;
+        var url = host+"/zero/menus/" + systemId + "/levels/" + level;
         console.log(url);
 
         axios.get(url).then(response => {

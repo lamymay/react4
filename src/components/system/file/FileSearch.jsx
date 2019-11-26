@@ -9,10 +9,10 @@ const uriListFile = "listFile";
 const profile = "prod_160";
 
 function getUriPrefix(key) {
-    if (key === profile) {
+    if (key === "local") {
         //local
         return "http://127.0.0.1:8001";
-    } else if (key === profileProd160) {
+    } else if (key === "prod_160") {
         //160
         return "http://122.51.110.127:80";
     }
@@ -20,7 +20,7 @@ function getUriPrefix(key) {
 
 
 function getUri(key) {
-    let host = getUriPrefix(profileProd160);
+    let host = getUriPrefix(profile);
 
     if (key === uriListFile) {
         return host + "/zero/sys/file/list";
@@ -108,6 +108,12 @@ class FileSearch extends React.Component {
         ;
     };
 
+
+
+    componentDidMount() {
+        //获取列表数据
+        this.searchForImageList(null);
+    }
 
     //获取表单的值
     handleGetInputValue = (event) => {
