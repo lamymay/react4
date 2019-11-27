@@ -14,7 +14,7 @@ const urls = {
     },
     menu:{
         listMenu: host + "/zero/menus/list",
-        saveMenu: host + "/zero/menus/save'",
+        saveMenu: host + "/zero/menus/save",
     }
 };
 
