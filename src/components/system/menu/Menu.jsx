@@ -3,60 +3,14 @@ import axios from "axios";
 // import {Link} from "react-router-dom";
 // import  Home from '../../../components/layout/Home'
 import '../../../assets/css/system/menu/menu.css'
+import apis from '../../../config/urls.js';
 
-
-function getUri(key) {
-
-    //local
-    let protocol = "http://";
-    let host = "127.0.0.1";
-    let port = 8001;
-    // let listMenu = protocol+host+':'+port+'/zero/menus/list';
-    // let saveMenu = protocol+host+':'+port+'/zero/menus/save';
-
-    let httpLocal = new Object();
-    httpLocal.listMenu = protocol + host + ':' + port + '/zero/menus/list';
-    httpLocal.saveMenu = protocol + host + ':' + port + '/zero/menus/save';
-
-
-    //  160
-    let protocol_160 = "http://";
-    let host_160 = "122.51.110.127";
-    let port_160 = 80;
-
-    let http160 = new Object();
-    http160.listMenu = protocol_160 + host_160 + ':' + port_160 + '/zero/menus/list';
-    http160.saveMenu = protocol_160 + host_160 + ':' + port_160 + '/zero/menus/save';
-
-
-    //数据封装到map
-    let map = new Map();
-    let local = "local";
-    let prod_160 = "prod_160";
-    map.set(local, httpLocal);
-    map.set(prod_160, http160);
-    console.log("------------------------- get ------------");
-    console.log(map);
-    console.log(map.size);
-    console.log(map.keys());
-    console.log(map.entries());
-    //从map中获取value  每次只要修改这里即可
-    // let uris = map.get(local);
-    let uris = map.get(prod_160);
-    if (key === "listMenu") {
-        return uris.listMenu;
-    } else if (key === "saveMenu") {
-        return uris.saveMenu;
-    }
-}
 
 class Menu extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-
-
             id: null,
             parentId: null,
             systemId: null,//适用系统的id
@@ -97,58 +51,32 @@ class Menu extends React.Component {
     }
 
     //请求服务器获取数据集合
-    searchForMenuList = (filename) => {
-        let url = getUri("listMenu");
+    searchForMenuList = (e) => {
+        let url = apis.menu.listMenu;
+        console.log("--- url ---");
         console.log(url);
         console.log(url);
         console.log(url);
         console.log(url);
-
-        console.log("######## 搜索 获取图片的集合 #########");
-        // let query = {};
-        // console.log(filename);
-        // query.name = this.state.name;
-        // query.name = this.state.name;
-        axios.post(url).then(response => {
+        let query = {};
+        // axios.get("http://127.0.0.1:8001/zero/menus/list2").then(response => {
+        axios.post(url,query).then(response => {
             console.log("##### response ####");
+            console.log(response);
+            console.log(response.config);
             console.log(response.status);
             console.log(response.headers);
-            console.log(response.config);
-            console.log(response);
             console.log("###################");
-
-
-            console.log("##### response.data ####");
-            console.log(response.data.data);
-            console.log("###################");
-
-            console.log("##### response.data.data ####");
-            console.log(response.data.data);
-            console.log("###################");
-            console.log("##### response.data.code ####");
-            let code = response.data.code;
-            console.log(code);
-            console.log("###################");
-
-            console.log("##### response.data.msg ####");
-            console.log(response.data.msg);
-            console.log("###################");
-
 
             // //失败  小于1 失败
             // if (null === response && response.data.code == 1) {
             //     //成功，获取到后台返回的数据，可以做缓存
             //     console.log(" 成功" + response.data.msg);
             //     // this.props.history.push("/Success");
+            let code = response.data.code;
             if (code === 1) {
-                let arr = [];
-                // arr.push(this.state.raw);
-                // console.log("arr.push(response.data.data);");
-                // console.log(response.data.data);
-                let resultArray = arr.concat(response.data.data);
-                console.log(resultArray);
                 this.setState({
-                    list: resultArray
+                    list: response.data.data
                 });
                 console.table(this.state.images);
             }
@@ -167,12 +95,66 @@ class Menu extends React.Component {
                 console.log('catch 异常',);
             });
         ;
+
+
     };
+
+
+    /*
+        searchForMenuList = (name) => {
+            let url = apis.menu.listMenu;
+            console.log(url);
+            console.log(url);
+            console.log(url);
+            console.log(url);
+
+            console.log("######## 搜索 获取图片的集合 #########");
+            let query = {};
+            // console.log(filename);
+            // query.name = this.state.name;
+            // query.name = this.state.name;
+            axios.post(url,query).then(response => {
+                console.log("##### response ####");
+                console.log(response);
+                console.log("###################");
+                let code = response.data.code;
+                // //失败  小于1 失败
+                // if (null === response && response.data.code == 1) {
+                //     // this.props.history.push("/Success");
+                if (code === 1) {
+                    let arr = [];
+                    // arr.push(this.state.raw);
+                    // console.log("arr.push(response.data.data);");
+                    // console.log(response.data.data);
+                    let resultArray = arr.concat(response.data.data);
+                    console.log(resultArray);
+                    this.setState({
+                        list: resultArray
+                    });
+                    console.table(this.state.images);
+                }
+                //
+                // } else {
+                //     alert(response.data.msg);
+                //     alert("FAIL");
+                //     console.log("FAIL");
+                //     console.log(response);
+                //     // this.props.history.push("/file-search");
+                // }
+            })
+                // .catch(function (error) {
+                //     //异常
+                //     console.log(error);
+                //     console.log('catch 异常',);
+                // });
+            ;
+        };
+    */
 
     //请求服务器 保存数据
     saveMenu = (e) => {
         console.log("######## saveMenu #########");
-        let url = getUri("saveMenu");
+        let url = apis.menu.saveMenu;
         console.log(url);
         //input 的参数怎么获取
 

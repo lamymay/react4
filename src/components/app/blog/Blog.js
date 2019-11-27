@@ -1,6 +1,7 @@
 import React from "react";
 import {Timeline} from 'antd';
 import axios from 'axios';
+import apis from '../../../config/urls.js';
 
 class Blog extends React.Component {
 
@@ -28,7 +29,6 @@ class Blog extends React.Component {
     componentDidMount() {
         // To disabled submit button at the beginning.
         console.log("----------------------------");
-        console.log(new Date());
         console.log("componentDidMount");
         this.getTimelineListFun();
         console.log("----------------------------");
@@ -39,33 +39,67 @@ class Blog extends React.Component {
     // 获取博客数据  图片 + 文字，这里应该获取的是文字数据 阅读数等
     getTimelineListFun = (e) => {
         var uId = 1;
-        var url = "http://arc.com/zero/blogs/timeline/" + uId;
+        let url = apis.blog.listBlogByAuthorId+uId;
+        console.log("--- url ---");
         console.log(url);
+        console.log(url);
+        console.log(url);
+
+
         axios.get(url).then(response => {
-            console.log(response.data);
+            console.log("##### response ####");
+            console.log(response.status);
+            console.log(response.headers);
+            console.log(response.config);
+            console.log(response);
+            console.log("###################");
 
-            //失败  小于1 失败
 
-            if (null === response&&response.data.code < 1) {
-                alert(response.data.msg);
-                console.log("FAIL");
-                this.props.history.push("/index");
-            } else {
-                //成功，获取到后台返回的数据，可以做缓存
-                console.log(" 成功" + response.data.msg);
-                // this.props.history.push("/Success");
+            console.log("##### response.data ####");
+            console.log(response.data.data);
+            console.log("###################");
 
+            console.log("##### response.data.data ####");
+            console.log(response.data.data);
+            console.log("###################");
+            console.log("##### response.data.code ####");
+            let code = response.data.code;
+            console.log(code);
+            console.log("###################");
+
+            console.log("##### response.data.msg ####");
+            console.log(response.data.msg);
+            console.log("###################");
+
+
+            // //失败  小于1 失败
+            // if (null === response && response.data.code == 1) {
+            //     //成功，获取到后台返回的数据，可以做缓存
+            //     console.log(" 成功" + response.data.msg);
+            //     // this.props.history.push("/Success");
+            if (code === 1) {
                 this.setState({
-                    list: response.data.data
-                })
+                        list: response.data.data
+                });
+                console.table(this.state.images);
             }
+            //
+            // } else {
+            //     alert(response.data.msg);
+            //     alert("FAIL");
+            //     console.log("FAIL");
+            //     console.log(response);
+            //     // this.props.history.push("/file-search");
+            // }
         })
             .catch(function (error) {
                 //异常
                 console.log(error);
-                console.log('异常 被 catch',);
+                console.log('catch 异常',);
             });
         ;
+
+
     };
 
     /////////////
@@ -92,4 +126,5 @@ class Blog extends React.Component {
             </div>);
     }
 }
+
 export default Blog;

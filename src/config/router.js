@@ -5,6 +5,8 @@ import Role from "../components/system/rbac/Role";
 import RoleInsert from "../components/system/rbac/RoleInsert";
 import UserInsert from "../components/system/user/UserInsert";
 import Food from "../components/app/food/Food";
+import Blog from "../components/app/blog/Blog";
+import ManageBlog from "../components/app/blog/ManageBlog";
 import FoodDetails from "../components/app/food/FoodDetails";
 import File from "../components/system/file/File";
 import Login from "../components/basic/Login";
@@ -41,6 +43,17 @@ const routers = [
     {
         path: "/userInsert",
         component: UserInsert,
+        exact: true
+    },
+    //app 模块的
+    {
+        path: "/blog",
+        component: Blog,
+        exact: true
+    },
+    {
+        path: "/manage-blog",
+        component: ManageBlog,
         exact: true
     },
     {
