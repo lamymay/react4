@@ -1,6 +1,8 @@
 import React from "react";
 import {Timeline} from 'antd';
 import axios from 'axios';
+import {Link} from "react-router-dom";
+
 import apis from '../../../config/urls.js';
 
 class Blog extends React.Component {
@@ -8,7 +10,7 @@ class Blog extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: '', //账号
+            id: 13,
             authorId: '', // 作者，所属用户ID[多作者请在描述中填充第二作者信息]
             tagId: '', // 栏目ID
             sortId: '',// 所属分类
@@ -39,7 +41,7 @@ class Blog extends React.Component {
     // 获取博客数据  图片 + 文字，这里应该获取的是文字数据 阅读数等
     getTimelineListFun = (e) => {
         var uId = 1;
-        let url = apis.blog.listBlogByAuthorId+uId;
+        let url = apis.blog.listBlogByAuthorId + uId;
         console.log("--- url ---");
         console.log(url);
         console.log(url);
@@ -79,7 +81,7 @@ class Blog extends React.Component {
             //     // this.props.history.push("/Success");
             if (code === 1) {
                 this.setState({
-                        list: response.data.data
+                    list: response.data.data
                 });
                 console.table(this.state.images);
             }
@@ -98,9 +100,11 @@ class Blog extends React.Component {
                 console.log('catch 异常',);
             });
         ;
-
-
     };
+
+    onClick = (e) => {
+        console.log(new Date());
+    }
 
     /////////////
     render() {
@@ -118,7 +122,12 @@ class Blog extends React.Component {
                     {
                         this.state.list.map((value, key) => {
                             return (
-                                <Timeline.Item key={key}>{value.timeLine}</Timeline.Item>
+                                <Timeline.Item key={key}
+                                               // onClick={this.onClick()}
+                                >
+                                    <Link to={'/blog-detail'} type="span">{value.timeLine}     </Link>
+                                </Timeline.Item>
+
                             )
                         })
                     }

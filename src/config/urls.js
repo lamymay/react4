@@ -17,7 +17,7 @@ const urls = {
         saveBlog: prefixUri + "/v1/blogs/save",
         updateBlog: prefixUri + "/v1/blogs/update",
         getBlogArticleByUserId: prefixUri + "/v1/blogs/",
-        listBlogByAuthorId: prefixUri + "/blogs/timeline/",
+        listBlogByAuthorId: prefixUri + "/v1/blogs/timeline/",
     },
     menu: {
         listMenu: prefixUri + "/menus/list",
