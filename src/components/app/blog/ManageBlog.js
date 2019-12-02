@@ -28,7 +28,7 @@ class ManageBlog extends React.Component {
             status: 2,
             title: "测试 title",
             description: "测试description",
-            content: "测试 content content content content",
+            content: null,
             version: 1,
             sortWeight: 1
         }

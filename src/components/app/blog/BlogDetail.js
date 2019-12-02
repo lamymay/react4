@@ -9,22 +9,12 @@ import deflist from 'markdown-it-deflist'
 import abbreviation from 'markdown-it-abbr'
 import insert from 'markdown-it-ins'
 import mark from 'markdown-it-mark'
-// import tasklists from 'markdown-it-task-lists'
 
-//网络请求
 import axios from 'axios';
 import apis from '../../../config/urls.js';
 
+class BlogDetail extends React.Component {
 
-// import hljs from 'highlight.js'
-// import 'highlight.js/styles/atom-one-light.css'
-// import './index.less';
-// import 'highlight.js/styles/github.css'
-
-//blog 的详情
-//两种写法 导出一个类
-//export default class BlogMd extends React.Component {
-class BlogMd extends React.Component {
 
     mdEditor = null;
     mdParser = null;
@@ -77,44 +67,16 @@ class BlogMd extends React.Component {
         }
     }
 
-
     /////////////
-    //输入文本后 异步渲染Markdown
-    renderHTML(text) {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(this.mdParser.render(text))
-            }, 200)
-        })
-    }
-
-
     componentDidMount() {
-        // this.props.form.validateFields();
-        console.log("----------- md -----------------");
+        console.log("----------------------------");
+        console.log("componentDidMount");
+//todo 组件间传值
         let id = 13;
         this.getArticle(13);
-        //定时器
-        //todo 定时器 触发
-        this.interval = setInterval(() => this.tick(), 10000);
 
-
+        console.log("----------------------------");
     }
-
-    tick() {
-        //循环更新
-        this.updateArticleFun();
-
-        // this.setState((prevState) => ({
-        //     secondsElapsed: prevState.secondsElapsed + 1
-        // }));
-    }
-
-    componentWillUnmount() {
-        //清除
-        clearInterval(this.interval);
-    }
-
 
     getArticle = (id) => {
         let url = apis.blog.getBlogArticleByUserId + id;
@@ -148,37 +110,16 @@ class BlogMd extends React.Component {
 
     };
 
+    /////////////
+    //输入文本后 异步渲染Markdown
+    renderHTML(text) {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(this.mdParser.render(text))
+            }, 200)
+        })
+    }
 
-    //编辑器有变化的话执行 更新文章
-    handleEditorChange = ({html, text}) => {
-        // console.log("html 是md 输入框中文本转换为html的文本---text 是md 输入框中的文本");
-        //console.log(html);
-        //console.log(text);
-
-        //编辑
-        if (this.state.id != null) {
-            console.log(this.state.id);
-            //文章正文
-            this.setState({
-                content: text
-            });
-            //编辑文章 更新即可
-            this.updateArticleFun();
-        } else {
-            //todo 新增文章
-
-        }
-    };
-
-    updateArticleFun = () => {
-        let uri = apis.blog.updateBlog;
-        let body = new Object();
-        body.id = this.state.id;
-        body.content = this.state.content;
-        this.postBody(uri, body);
-    };
-
-    //
     postBody = (url, body) => {
         console.log(url);
         console.log(body);
@@ -213,95 +154,34 @@ class BlogMd extends React.Component {
         return true;
     }
 
-
-    // handleGetMdValue = () => {
-    //     this.mdEditor && alert(this.mdEditor.getMdValue())
-    // }
-
-    // handleGetHtmlValue = () => {
-    //     this.mdEditor && alert(this.mdEditor.getHtmlValue())
-    // }
-
-
-    //创建文章
-    crateArticleFun() {
-        // console.log(this.state.username);
-        var url = "http://arc.com/zero/blogs";
-        console.log(url);
-        let article = {
-            "authorId": this.state.authorId,
-            "tagId": this.state.tagId,
-            "category": this.state.category,
-            "status": this.state.status,
-            "title": this.state.title,
-            "description": this.state.description,
-            "content": this.state.content,
-            "version": this.state.version,
-            "sortWeight": this.state.sortWeight
-        };
-
-        let ret = this.postBody(url, article);
-        console.log(article);
-        console.log(ret);
-    };
-
-
-    //上传图片
-    handleImageUpload(file, callback) {
-
-        console.log(file);
-        console.log(callback);
-        const reader = new FileReader();
-        console.log(reader);
-        // reader.onload = () => {
-        //     // const convertBase64UrlToBlob = (urlData) => {
-        //     //     let arr = urlData.split(','), mime = arr[0].match(/:(.*?);/)[1]
-        //     //     let bstr = atob(arr[1]);
-        //     //     let n = bstr.length;
-        //     //     let u8arr = new Uint8Array(n);
-        //     //     while (n--) {
-        //     //         u8arr[n] = bstr.charCodeAt(n)
-        //     //     }
-        //     //     return new Blob([u8arr], {type: mime})
-        //     };
-        //     const blob = convertBase64UrlToBlob(reader.result);
-        //     setTimeout(() => {
-        //         // setTimeout 模拟异步上传图片
-        //         // 当异步上传获取图片地址后，执行calback回调（参数为imageUrl字符串），即可将图片地址写入markdown
-        //         callback('https://avatars0.githubusercontent.com/u/21263805?s=40&v=4')
-        //     }, 1000)
-        // };
-        // reader.readAsDataURL(file)
-    }
-
-    //-----------------------------------------------------------------------------
-    //react渲染DOM的节点
+    /////////////
     render() {
+
         return (
             <div>
-                {/*<div>Seconds Elapsed: {this.state.secondsElapsed}</div>*/}
-                <hr/>
+                BlogDetail
+
                 <MdEditor
                     ref={node => this.mdEditor = node}
                     value={this.state.markdown}
-                    style={{height: '400px'}}
+                    // style={{height: '400px'}}
                     renderHTML={this.renderHTML}
 
                     config={{
                         view: {
-                            menu: true,
-                            md: true,
+                            menu: false,
+                            md: false,
                             html: true
                         },
                         imageUrl: 'https://octodex.github.com/images/minion.png'
                     }}
-                    onChange={this.handleEditorChange}
-                    onImageUpload={this.handleImageUpload}
+                    // onChange={this.handleEditorChange}
+                    // onImageUpload={this.handleImageUpload}
                 />
 
-            </div>
-        );
+
+            </div>);
     }
 }
 
-export default BlogMd;
+export default BlogDetail;
