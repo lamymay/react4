@@ -102,7 +102,7 @@ class Home extends React.Component {
                         {
                             this.state.list.map((value, key) => {
                                 return (
-                                    <Link key={key} to={value.name}>{value.url}</Link>
+                                    <Link key={key} to={value.url}>{value.name}</Link>
                                 )
                             })
                         }

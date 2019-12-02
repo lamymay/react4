@@ -1,6 +1,6 @@
-const host = "http://127.0.0.1:8001";
+// const host = "http://127.0.0.1:8001";
+const host = "http://122.51.110.127:80";
 const prefixUri = host + "/zero";
-// const host = "http://122.51.110.127:80";
 
 // 说明 通常来说
 // GET 方法的uri，变量名称的关键字一般有：get
