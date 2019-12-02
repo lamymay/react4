@@ -53,13 +53,7 @@ class Menu extends React.Component {
     //请求服务器获取数据集合
     searchForMenuList = (e) => {
         let url = apis.menu.listMenu;
-        console.log("--- url ---");
-        console.log(url);
-        console.log(url);
-        console.log(url);
-        console.log(url);
         let query = {};
-        // axios.get("http://127.0.0.1:8001/zero/menus/list2").then(response => {
         axios.post(url,query).then(response => {
             console.log("##### response ####");
             console.log(response);
@@ -162,7 +156,6 @@ class Menu extends React.Component {
         let request = {};
         request.parentId = this.state.parentId;
         request.code = null;
-
         request.name = this.state.name;
         request.systemId = this.state.systemId;
         request.sort = this.state.sort;
@@ -172,13 +165,10 @@ class Menu extends React.Component {
         request.icon = this.state.icon;
         request.note = this.state.note;
 
-
         //request  .nameEnglish = this.state.nameEnglish;
         console.table(this.state);
         console.table(request);
         console.log(request);
-
-        alert("saveMenu");
 
         // query.name = this.state.name;
         axios.post(url, request).then(response => {

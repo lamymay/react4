@@ -1,22 +1,30 @@
-const host= "http://127.0.0.1:8001";
+const host = "http://127.0.0.1:8001";
+const prefixUri = host + "/zero";
 // const host = "http://122.51.110.127:80";
 
+// 说明 通常来说
+// GET 方法的uri，变量名称的关键字一般有：get
+// POST 方法的uri，变量名称的关键字一般有：listXXXByyy
 
 const urls = {
-    listMenusBySystemIdAndLevel: host + "/zero/menus/SYSTEM_ID/levels/LEVEL",
+    listMenusBySystemIdAndLevel: prefixUri + "/menus/SYSTEM_ID/levels/LEVEL",
     file: {
-        uploadFile: host + "/zero/file/upload",
-        listFileByQuery: host + "/zero/sys/file/list",
+        uploadFile: prefixUri + "/file/upload",
+        listFileByQuery: prefixUri + "/sys/file/list",
 
     },
     blog: {
-        listBlogByAuthorId: host + "/zero/blogs/timeline/",
+        saveBlog: prefixUri + "/v1/blogs/save",
+        updateBlog: prefixUri + "/v1/blogs/update",
+        getBlogArticleByUserId: prefixUri + "/v1/blogs/",
+        listBlogByAuthorId: prefixUri + "/blogs/timeline/",
     },
-    menu:{
-        listMenu: host + "/zero/menus/list",
-        saveMenu: host + "/zero/menus/save",
+    menu: {
+        listMenu: prefixUri + "/menus/list",
+        saveMenu: prefixUri + "/menus/save",
     }
 };
+
 
 
 export default urls;

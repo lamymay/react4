@@ -7,6 +7,7 @@ import UserInsert from "../components/system/user/UserInsert";
 import Food from "../components/app/food/Food";
 import Blog from "../components/app/blog/Blog";
 import ManageBlog from "../components/app/blog/ManageBlog";
+import BlogMd from "../components/app/blog/BlogMd";
 import FoodDetails from "../components/app/food/FoodDetails";
 import File from "../components/system/file/File";
 import Login from "../components/basic/Login";
@@ -56,6 +57,16 @@ const routers = [
         component: ManageBlog,
         exact: true
     },
+    // {
+    //     path: "/md",
+    //     component: TestMdEditor,
+    //     exact: true
+    // },
+    {
+        path: "/bmd",
+        component: BlogMd,
+        exact: true
+    },
     {
         path: "/food",
         component: Food,
@@ -70,12 +81,12 @@ const routers = [
         path: "/file",
         component: File,
         exact: true,
-        routes:[
+        routes: [
             {
                 path: "/file-add",
                 component: Login,
                 exact: true
-            },      {
+            }, {
                 path: "/file-update",
                 component: Login,
                 exact: true
