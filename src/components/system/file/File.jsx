@@ -10,6 +10,7 @@ import '../../../assets/css/system/file/file.css'
 // api接口地址抽取
 import apis from '../../../config/urls.js';
 
+import FileGet from './FileGet';
 
 class File extends React.Component {
 
@@ -114,29 +115,43 @@ class File extends React.Component {
         return (
             <div>
 
-                    <Upload {...props}>
-                        <Button>
-                            <Icon type="upload"/> Click to Upload
-                        </Button>
-                    </Upload>
+                <Upload {...props}>
+                    <Button>
+                        <Icon type="upload"/> Click to Upload
+                    </Button>
+                </Upload>
 
-                    {/*<Upload {...props}>*/}
-                    {/*    <Button>*/}
-                    {/*        <Icon type="upload"/> Click to Upload*/}
-                    {/*    </Button>*/}
-                    {/*</Upload>*/}
+                {/*<Upload {...props}>*/}
+                {/*    <Button>*/}
+                {/*        <Icon type="upload"/> Click to Upload*/}
+                {/*    </Button>*/}
+                {/*</Upload>*/}
 
-                    {/*<input>文件上传</input>*/}
-
-
-                    {/*<p className="ant-upload-text" onChange={this.postFileFun}>点击或者拖拽到此即可上传</p>*/}
-                    {/*<p className="ant-upload-hint">*/}
-                    {/*    Support for a single or bulk upload. Strictly prohibit from uploading company data or other*/}
-                    {/*    band files*/}
-                    {/*</p>*/}
+                {/*<input>文件上传</input>*/}
 
 
-                <div>从[接口]去读去图片</div>
+                {/*<p className="ant-upload-text" onChange={this.postFileFun}>点击或者拖拽到此即可上传</p>*/}
+                {/*<p className="ant-upload-hint">*/}
+                {/*    Support for a single or bulk upload. Strictly prohibit from uploading company data or other*/}
+                {/*    band files*/}
+                {/*</p>*/}
+
+
+                <br/>
+                <br/>
+                <FileGet/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <h3>测试React多种加载图片的方法</h3>
+                <hr/>
                 {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
                 {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
                 <div className='img-title'>从后台去读去图片</div>
@@ -150,7 +165,7 @@ class File extends React.Component {
 
 
                 <div>下面是[../../../assets/image]文件中的IMG</div>
-                <img src={[require("../../../assets/image/avatar.jpeg")]} className='img-body' alt="" />
+                <img src={[require("../../../assets/image/avatar.jpeg")]} className='img-body' alt=""/>
                 {/*<img src={require('../../../../public/image/404.jpg')}/>*/}
 
                 <div>下面是[PUBLIC]文件中的IMG(两种方式都可以读取)</div>

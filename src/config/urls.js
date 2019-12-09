@@ -11,6 +11,7 @@ const urls = {
     file: {
         uploadFile: prefixUri + "/file/upload",
         listFileByQuery: prefixUri + "/sys/file/list",
+        getFileByCode: prefixUri + "/file/",
 
     },
     blog: {
