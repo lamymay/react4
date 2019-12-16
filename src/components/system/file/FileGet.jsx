@@ -42,7 +42,7 @@ class FileGet extends React.Component {
             let code = response.data.code;
             console.log(code);
 
-            FileDownload(response.data, '叶超-简历-v1.1.1.docx');
+            FileDownload(response.data, '叶超-简历-v1.docx');
         })
     };
 
