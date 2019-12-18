@@ -6,8 +6,6 @@ import '../../../assets/css/system/file/file.css'
 import apis from '../../../config/urls.js';
 
 
-
-
 class FileSearch extends React.Component {
 
     constructor(props) {

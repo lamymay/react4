@@ -35,14 +35,12 @@ class FileGet extends React.Component {
 
         let url = apis.file.getFileByCode + this.state.code;
         console.log(url);
-        console.log(url);
-        console.log(url);
         axios.get(url, {responseType: 'blob'}).then(response => {
             console.log(response);
             let code = response.data.code;
             console.log(code);
 
-            FileDownload(response.data, '叶超-简历-v1.docx');
+            FileDownload(response.data, '简历-v1.docx');
         })
     };
 
@@ -65,8 +63,6 @@ class FileGet extends React.Component {
         });
 
         if (13 === event.keyCode) {
-            console.log("按了回车键 ------>");
-            console.log("搜索的参数");
             console.log(this.state.code);
             this.getFile(event.target.value);
         }
@@ -81,7 +77,7 @@ class FileGet extends React.Component {
                     <input type="text"
                            id="name"
                            name="name"
-                           placeholder="name / code "
+                           placeholder="code"
                            className='file-search-input'
                            onKeyUp={this.handleGetInputValue}
                     />
