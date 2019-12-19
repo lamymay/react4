@@ -14,3 +14,25 @@ app.js的文件达到了1400多kb，腾讯云的访问速度大概需要15~20s�
 app.js明显减小，但vender.js明显增大。
 
 链接：https://www.jianshu.com/p/0064580adf8a
+
+
+# React Antd 按需加载
+https://www.jianshu.com/p/bb6bf56478a9
+
+安装 customize-cra
+//yarn add react-app-rewired customize-cra
+npm install react-app-rewired customize-cra --save
+npm install babel-plugin-import --save
+
+
+  "scripts": {
+//    "start": "react-scripts start",
+//    "build": "react-scripts build",
+//    "test": "react-scripts test",
+//    "eject": "react-scripts eject",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
+
+  },
