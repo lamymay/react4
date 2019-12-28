@@ -54,7 +54,7 @@ class Menu extends React.Component {
     searchForMenuList = (e) => {
         let url = apis.menu.listMenu;
         let query = {};
-        axios.post(url,query).then(response => {
+        axios.post(url, query).then(response => {
             console.log("##### response ####");
             console.log(response);
             console.log(response.config);
@@ -317,16 +317,15 @@ class Menu extends React.Component {
     render() {
         return (
             <div>
-                <h1>Menu</h1>
-                <h2>Menu</h2>
                 <h3>  {this.state.name}</h3>
                 <h4>  {this.state.note}</h4>
                 <h4>  {this.state.systemId}</h4>
                 <h4>  {this.state.sort}</h4>
-                <hr/>
 
 
-                <div className="front-black">检索菜单</div>
+                <h2>菜单管理</h2>
+
+                {/*<p className="front-black">检索菜单</p>*/}
                 <p>
                     {/*<label htmlFor="username" className="sr-only">名称</label>*/}
                     <input type="text"
@@ -341,7 +340,7 @@ class Menu extends React.Component {
                            onKeyUp={this.handleGetInputValue}
                     />
                     {/*搜索按钮*/}
-                    <button onClick={this.searchForMenuList}>搜索</button>
+                    <button onClick={this.searchForMenuList}>检索菜单</button>
                 </p>
 
 
@@ -465,6 +464,7 @@ class Menu extends React.Component {
                         </div>
                     )
                 })}
+
 
             </div>
         );

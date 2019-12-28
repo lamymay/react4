@@ -1,9 +1,10 @@
 import Index from "../components/basic/Index";
-import User from "../components/system/rbac/user/User";
-import UserList from "../components/system/user/UserList";
+import CssTest from "../components/test/CssTest";
+import ModalDemo from "../components/system/rbac/user/ModalDemo";
 import Role from "../components/system/rbac/Role";
+import User from "../components/system/rbac/user/User";
+import UserInsert from "../components/system/rbac/user/UserInsert";
 import RoleInsert from "../components/system/rbac/RoleInsert";
-import UserInsert from "../components/system/user/UserInsert";
 import Food from "../components/app/food/Food";
 import Blog from "../components/app/blog/Blog";
 import ManageBlog from "../components/app/blog/ManageBlog";
@@ -22,14 +23,23 @@ const routers = [
         component: Index,
         exact: true
     },
+    //system 模块的
     {
         path: "/user",
         component: User,
         exact: true
     },
     {
-        path: "/user-list",
-        component: UserList,
+        path: "/ModalDemo",
+        component: ModalDemo,
+        exact: true
+    },
+
+
+    // test
+    {
+        path: "/css-test",
+        component: CssTest,
         exact: true
     },
     {

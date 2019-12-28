@@ -1,101 +1,239 @@
 import React from "react";
-// import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-// import user from '../../../../assets/css/system/rbac/user.css'
+import "antd/dist/antd.css";
+import axios from 'axios';
 
+import UserInsert from "./UserInsert";
+
+import {
+    Table,
+    Card,
+    Button,
+    Modal,
+    Form,
+    Input,
+    // Tooltip,
+    // Icon,
+    // Cascader,
+    // Select,
+    // Row,
+    // Col,
+    // List,
+    // Checkbox,
+    // AutoComplete,
+}
+    from
+        'antd';
+
+// import ReactDOM from 'react-dom'
+// import Connection from '../common/Connection';
+//引入antd，本页面主要是对list数据做渲染
+
+
+//对于人员数据的CRUD
 class User extends React.Component {
+
 
     constructor(props) {
         super(props);
         this.state = {
-            bgColor:'blue',
-            list: [
-                {
-                    aid: '1',
-                    avatar: 'user1',
-                    nickname: 'user1',
-                    state: 'user1',
-                }, {
-                    aid: '1',
-                    avatar: 'user1',
-                    nickname: 'user1',
-                    state: 'user1',
-                }
-                , {
-                    aid: '1',
-                    avatar: 'user1',
-                    nickname: 'user1',
-                    state: 'user1',
-                }
-                , {
-                    aid: '1',
-                    avatar: 'user1',
-                    nickname: 'user1',
-                    state: 'user1',
-                }
+            tableTitle: "用户列表",
+            users: [],
+            insertModal: {
+                visible: true,
 
-            ]
 
+            },
         }
     }
 
 
     componentDidMount() {
+        //获取列表数据
+        this.getUsers();
 
     }
 
 
+    //在密码框中点了回车就直接发请求登陆
+    //login
     getUsers = () => {
+        var port = 8001;
+        var url = "http://127.0.0.1:" + port + "/zero/sys/user/page";
+        console.log("######################################");
+        console.log(url);
+        console.log("######################################");
+        let user = {};
+        axios.post(url, user)
+            .then(response => {
+                console.log("response  then ==获取到后台返回的数据");
+                console.log(response.data);
+                //登录失败
+                if (null == response.data.data) {
+                    alert(response.data.msg);
+                }
+                //登录成功，获取到后台返回的数据，可以做缓存
+                var fromDb = response.data.data;
+                console.log(fromDb);
+                //赋值
+                this.setState({users: fromDb});
+                console.log(this.state.users);
+
+            })
+            .catch(function (error) {
+                //异常
+                console.log(error);
+                console.log('异常  catch =====',);
+
+            });
 
     };
 
+    //更新用户
+    updateUser = (e) => {
+        console.log("uuuuuuuuuuuu");
+    };
+
+    //子父组件传值
+    userInsert = (e) => {
+        console.log("子父组件传值");
+        console.log("子父组件传值");
+        console.log("子父组件传值");
+        console.log("子父组件传值");
+    };
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////  render
     render() {
-        const textStyles = {
-            color: 'black',
-            backgroundColor: this.state.bgColor
-        };
+        //定义表头，一般放在render()中
+        const columns = [
+            //列名称--数据源的字段名
+            {
+                key: 'id',
+                title: '测试合并',
+                render: (text, record) => (
+                    <span>
+                       {record.nickname}--
+                        {record.avatar}>
+                        </span>
+                )
+            },
+            {
+                key: 'nickname',
+                title: '昵称',
+                dataIndex: 'nickname',
+                width: 150
+            },
+            {
+                key: 'avatar',
+                title: '标识',
+                dataIndex: 'avatar'
+            },
+            {
+                key: 'state',
+                title: '启用状态',
+                dataIndex: 'state'
+            },
+            {
+                key: 'createDate',
+                title: '创建时间',
+                dataIndex: 'createDate'
+            },
+            {
+                key: 'updateDate',
+                title: '更新时间',
+                dataIndex: 'updateDate'
+            },
+            {
+                key: 'add-remove',
+                title: 'add/remove',
+                render: (text, record) => (
+                    <span>
+                        <Button onClick={this.add}>add {record.id}</Button>
+                        <Button onClick={this.remove.bind(this)}>remove-{record.id}</Button>
+                    </span>
+                )
+            }
+        ];
+        //////////////////////
+
         return (<div>
-            {/*<div  style="background-color:red;">style</div>*/}
-            <h1>User</h1>
 
-            <ul>
-                {this.state.list.map((value, key) => {
-                    return <li key={key}>
-                        {/*<Link to={`/userInsert?aid=${value.aid}`}>{value.nickname}</Link>*/}
-                        <p  className='user-item'>{value.aid}|{value.nickname}</p>
-                        {/*<p  style="background-color:red;">{value.aid}|{value.nickname}</p>*/}
-                    </li>
 
-                })}
-            </ul>
-            <br/>
-            <br/>
-            <hr/>
-            1. 行内样式
-            <div
-                style={{
-                    width:'200px',
-                    height:'80px',
-                    backgroundColor:'yellow',
-                    fontSize:'24px',
-                    textAlign:'center'
-                }}
-            >This is Page1!</div>
+            <Card title={this.state.tableTitle}>
+                <Button type="primary" onClick={this.userInsert}>测试 新增一个人员</Button>
+                {/*<Button type="dashed" onClick={this.updateUser}>测试 dashed与后台交互</Button>*/}
+                {/*<Button type="danger" onClick={this.updateUser}>测试 danger与后台交互</Button>*/}
 
-            2. 声明样式
-            <p style={textStyles}>inline style</p>
+                {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
+                {/*<Table  rowKey={record=>record.id} columns={columns} dataSource={this.state.users} bordered>*/}
 
+
+                <Table
+                    rowKey={record => record.id}
+                    columns={columns}
+                    dataSource={this.state.users}
+                    pageSize={10}
+                    bordered>
+                </Table>
+            </Card>
         </div>)
     }
+
+    remove(id) {
+        console.log("删除--" + id);
+        console.log(id);
+    }
+
+
+    add() {
+        console.log("add-start");
+        let start = new Date();
+        console.log(start);
+
+
+        //////////////////////////////////////////////////////////
+        var url = "http://127.0.0.1:80/sys/users";
+        console.log(url);
+        let user = {
+            'nickname': "AXIOS",
+            "avatar": "avatar-01",
+            "state": 1,
+            "createDate": 1123454444,
+            "updateDate": 1123455653
+        };
+
+        axios.post(url, user).then(response => {
+            console.log("111111111111111111111111response  then ==获取到后台返回的数据");
+            console.log(response.data);
+            //登录失败
+            if (null == response.data.data) {
+                alert(response.data.msg);
+            }
+            //登录成功，获取到后台返回的数据，可以做缓存
+            console.log(response.data.data);
+
+        })
+            .catch(function (error) {
+                //异常
+                console.log(error);
+                console.log('登陆异常  catch =====',);
+
+            });
+
+
+        //////////////////////////////////////////////////////////
+        console.log("add-end");
+        let end = new Date();
+        console.log(end);
+        console.log(end - start);
+
+    }
+
+    // hasErrors(fieldsError) {
+    //     return Object.keys(fieldsError).some(field => fieldsError[field]);
+    // }
+
+
 }
 
 export default User;
-
-//https://segmentfault.com/a/1190000016952542?utm_source=tag-newest
-//测试引入css的方式
-// 1、行内引入， 特点：即在行内直接写，未能测试通过，报错，切支持度按网上说法也不是很全要驼峰编写
-// 2、页内引入，特点：写const变量，这样数据与js会在一起，维护调试不是很方便
-//3、外部引入，推荐，特点：与原生几乎一样，
-// 第三种的用法：1js头部 “import user from '../../../../assets/css/system/rbac/user.css'” 2使用 "<p  className='user-item'>{value.aid}|{value.nickname}</p>"
