@@ -3,7 +3,7 @@
 /*顶栏样式*/
 
 .img-body {
-    width: 250px;
+    width: auto;
     height: 250px;
     textAlign: 'center'
 }
