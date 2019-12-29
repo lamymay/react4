@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import apis from '../../../config/urls.js';
+import urls from '../../../config/urls.js';
 
 import FileDownload from 'react-file-download';
 
@@ -18,7 +18,6 @@ class FileGet extends React.Component {
         }
     }
 
-    //            <p style={textStyles}>inline style</p>
 
     getFile = (code) => {
         this.setState({
@@ -33,11 +32,11 @@ class FileGet extends React.Component {
             return;
         }
 
-        let url = apis.file.getFileByCode + this.state.code;
+        let url = urls.file.getFileByCode + this.state.code;
         console.log(url);
         axios.get(url, {responseType: 'blob'}).then(response => {
 
-            let fileName = "简历-v1.docx";
+            let fileName = "temp.jpg";
             console.log(response);
             console.log(response.headers);
             console.log( response.data.code);
@@ -92,3 +91,4 @@ class FileGet extends React.Component {
 }
 
 export default FileGet;
+//            <p style={textStyles}>inline style</p>

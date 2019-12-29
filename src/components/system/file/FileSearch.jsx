@@ -1,9 +1,7 @@
 import React from "react";
 import axios from "axios";
-// import {Link} from "react-router-dom";
-
 import '../../../assets/css/system/file/file.css'
-import apis from '../../../config/urls.js';
+import urls from '../../../config/urls.js';
 
 
 class FileSearch extends React.Component {
@@ -25,62 +23,31 @@ class FileSearch extends React.Component {
     //搜索 获取图片的集合
     searchForImageList = (filename) => {
         console.log("######## 搜索 获取图片的集合 #########");
-        let url = apis.file.listFileByQuery;
 
         let query = {};
-        console.log(filename);
         query.name = this.state.name;
-        // query.name = this.state.name;
-        axios.post(url, query).then(response => {
+
+        console.log("查询参数");
+        console.log(query);
+
+        axios.post(urls.file.listFileByQuery, query).then(response => {
             console.log("##### response ####");
-            console.log(response.status);
-            console.log(response.headers);
-            console.log(response.config);
             console.log(response);
-            console.log("###################");
-
-
-            console.log("##### response.data ####");
-            console.log(response.data.data);
-            console.log("###################");
-
-            console.log("##### response.data.data ####");
-            console.log(response.data.data);
-            console.log("###################");
-            console.log("##### response.data.code ####");
-            let code = response.data.code;
-            console.log(code);
-            console.log("###################");
-
-            console.log("##### response.data.msg ####");
-            console.log(response.data.msg);
-            console.log("###################");
-
+            console.log("################");
 
             // //失败  小于1 失败
-            // if (null === response && response.data.code == 1) {
-            //     //成功，获取到后台返回的数据，可以做缓存
-            //     console.log(" 成功" + response.data.msg);
-            //     // this.props.history.push("/Success");
-            if (code === 1) {
+            if (response.data.code === 1) {
                 this.setState({
                     images: response.data.data
                 });
-                console.table(this.state.images);
+
+                console.log(this.state.images);                // this.props.history.push("/Success");
             }
-            //
-            // } else {
-            //     alert(response.data.msg);
-            //     alert("FAIL");
-            //     console.log("FAIL");
-            //     console.log(response);
-            //     // this.props.history.push("/file-search");
-            // }
+
         })
             .catch(function (error) {
-                //异常
-                console.log(error);
                 console.log('catch 异常',);
+                console.log(error);
             });
         ;
     };
@@ -110,10 +77,7 @@ class FileSearch extends React.Component {
 
 
         if (13 === event.keyCode) {
-            console.log("按了回车键 ------>");
-            console.log("搜索的参数");
-            console.log(this.state.name);
-            console.log(this.state.name);
+            console.log("按了回车键 ------> 搜索的参数");
             console.log(this.state.name);
             let name = event.target.value;
             // searchImageList(name);
@@ -130,13 +94,8 @@ class FileSearch extends React.Component {
         return (
             <div>
 
-                {this.state.name}
-
-                <div className="front-black">检索图片</div>
-
 
                 <p>
-                    {/*<label htmlFor="username" className="sr-only">名称</label>*/}
                     <input type="text"
                            id="name"
                            name="name"
@@ -149,7 +108,7 @@ class FileSearch extends React.Component {
                            onKeyUp={this.handleGetInputValue}
                     />
                     {/*搜索按钮*/}
-                    <button onClick={this.searchForImageList}>搜索</button>
+                    <button onClick={this.searchForImageList}>检索图片</button>
                 </p>
 
 
@@ -159,7 +118,7 @@ class FileSearch extends React.Component {
                             <img
                                 key={`${value.name}${value.id}`}
                                 src={value.url}
-                                className='image-node'
+                                className='image-node-1'
                                 alt=''></img>
                             <p className='front-black'>{value.name}</p>
                         </div>

@@ -47,11 +47,13 @@
 }
 
 /*FileSearch 用的css */
-.image-node {
-    /*width: 200px;*/
+.image-node-1 {
+    width: 100px;
     /*height: 200px;*/
-    width: 50%;
-    height: 50%;
+    /*width: 50%;*/
+    /*width: auto;*/
+    /*height: 50%;*/
+    height: auto;
     textAlign: 'center';
     font-family: 'sans-serif';
 

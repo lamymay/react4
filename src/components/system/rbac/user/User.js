@@ -213,7 +213,7 @@ class User extends React.Component {
                 render: (text, record) => (
                     <span>
                         {/*<Button onClick={this.add}>add {record.id}</Button>*/}
-                        <Button onClick={this.remove.bind(this, record.id)}>remove-{record.id}</Button>
+                        <Button onClick={this.remove.bind(this, record.id)}>删除-{record.id}</Button>
                     </span>
                 )
             }
@@ -225,7 +225,7 @@ class User extends React.Component {
             <Card title={this.state.tableTitle}>
 
                 {/*点击新增按钮：1、弹出输入框 2、获取输入数据保存 3、关闭输入框*/}
-                <Button type="primary" onClick={this.showModal}>测试 新增一个人员 </Button>
+                <Button type="primary" onClick={this.showModal}>新增人员 </Button>
                 {/*<Button type="dashed" onClick={this.updateUser}>测试 dashed与后台交互</Button>*/}
                 {/*<Button type="danger" onClick={this.updateUser}>测试 danger与后台交互</Button>*/}
 

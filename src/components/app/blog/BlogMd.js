@@ -284,7 +284,7 @@ class BlogMd extends React.Component {
                 <MdEditor
                     ref={node => this.mdEditor = node}
                     value={this.state.markdown}
-                    style={{height: '400px'}}
+                    style={{height: '700px'}}
                     renderHTML={this.renderHTML}
 
                     config={{
