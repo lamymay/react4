@@ -15,7 +15,7 @@ const urls = {
 
         //
         save: prefixUri + "/sys/file/save",
-        delete: prefixUri + "/sys/file/delete/",
+        delete: prefixUri + "/sys/file/delete/id/",
         listPage: prefixUri + "/sys/file/page",
     },
     blog: {

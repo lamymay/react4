@@ -61,6 +61,9 @@ class BlogMd extends React.Component {
             t1: null,
             t2: null,
             secondsElapsed: 0,
+            //  const MOCK_DATA = "Hello.\n\n * This is markdown.\n * It is fun\n * Love it or leave it.";
+            markdown: '# This is a H1  \n## This is a H2  \n###### This is a H6',
+            // #测试一级标题 ##副标题
             authorId: 1,
             tagId: 0,
             category: 0,
@@ -124,7 +127,7 @@ class BlogMd extends React.Component {
                 // 重新渲染
                 this.setState({
                     id: article.id,
-                    content: article.content
+                    markdown: article.content
                 });
             } else {
                 //访问接口失败
@@ -189,6 +192,7 @@ class BlogMd extends React.Component {
                 console.log(data);
                 // this.setState({
                 // id: article.id,
+                // markdown: article.content
                 // });
             } else {
                 //访问接口失败
@@ -277,9 +281,10 @@ class BlogMd extends React.Component {
 
                 <MdEditor
                     ref={node => this.mdEditor = node}
+                    value={this.state.markdown}
                     style={{height: '700px'}}
-                    value={this.state.content}
                     renderHTML={this.renderHTML}
+
                     config={{
                         view: {
                             menu: true,

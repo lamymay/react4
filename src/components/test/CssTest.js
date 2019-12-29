@@ -81,8 +81,10 @@ class CssTest extends React.Component {
                     backgroundColor:'yellow',
                     fontSize:'24px',
                     textAlign:'center'
-                }}
-            >This is Page1!</div>
+                }}>
+            <a href="https://github.com/lamymay/zero">后端源码 github</a>
+            <a href="https://github.com/lamymay/react4">前端源码 github</a>
+            </div>
 
             2. 声明样式
             <p style={textStyles}>inline style</p>
