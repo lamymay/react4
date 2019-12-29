@@ -25,8 +25,10 @@ const urls = {
         saveMenu: prefixUri + "/menus/save",
     },
     user: {
+        index: "/user",
         listUser: prefixUri + "/sys/users/list",
         saveUser: prefixUri + "/sys/users/save",
+        delete: prefixUri + "/sys/users/delete/",
         listPageUser: prefixUri + "/sys/users/page",
     }
 };

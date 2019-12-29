@@ -23,7 +23,7 @@ import {
 }
     from
         'antd';
-import apis from "../../../../config/urls";
+import urls from "../../../../config/urls";
 
 // import ReactDOM from 'react-dom'
 // import Connection from '../common/Connection';
@@ -47,33 +47,34 @@ class User extends React.Component {
 
     componentDidMount() {
         //获取列表数据
-        this.getUsers();
-
+        this.refreshTable();
     }
 
-
-    //在密码框中点了回车就直接发请求登陆
-    //login
-    getUsers = () => {
-        let url = apis.user.listPageUser;
-        console.log("######################################");
-        console.log(url);
-        console.log("######################################");
-        let user = {};
-        axios.post(url, user)
+    refreshTable = () => {
+        axios.post(urls.user.listPageUser, {})
             .then(response => {
                 console.log("response  then ==获取到后台返回的数据");
                 console.log(response.data);
-                //登录失败
+                if (response != null && response.data.code === 1) {
+                    console.log("refreshTable");
+                    console.log(response.data.msg);
+                    console.log(response.data.msg);
+                    console.log(response.data.msg);
+                }
+
+
+                //失败
                 if (null == response.data.data) {
                     alert(response.data.msg);
                 }
-                //登录成功，获取到后台返回的数据，可以做缓存
+
                 var fromDb = response.data.data;
                 console.log(fromDb);
+
                 //赋值
                 this.setState({users: fromDb});
                 console.log(this.state.users);
+
 
             })
             .catch(function (error) {
@@ -104,98 +105,50 @@ class User extends React.Component {
 
     //请求服务器 保存数据
     saveUser = (e) => {
-        console.log("######## save ！！！！");
-        let url = apis.user.saveUser;
-        console.log(url);
-        //input 的参数怎么获取
+        axios.post(urls.user.saveUser, {
+            nickname: this.state.nickname,
+            state: this.state.state == null ? 0 : this.state.state
 
-
-        let request = {};
-        request.nickname = this.state.nickname;
-        request.state = this.state.state;
-
-        console.log(request);
-        console.table(request);
-
-        axios.post(url, request).then(response => {
-            console.log("##### response.data.code ####");
+        }).then(response => {
             let code = response.data.code;
-            console.log(code);
-            console.log("###################");
-
-            console.log("##### response.data.msg ####");
-            console.log(response.data.msg);
-            console.log("###################");
-
             if (code === 1) {
                 console.log(response.data.msg);
-                console.log(response.data.msg);
-                console.log(response.data.msg);
-                console.log(response.data.msg);
+                //关闭弹出框
                 this.setState({
-                    visibleForInsert: true,
+                    visibleForInsert: false,
+                    nickname: "",
+                    state: 0
                 });
 
+                //刷新
+                this.refreshTable();
+
+                // location.reload();
+                // this.forceUpdate();
+                // this.props.history.push(urls.user.index);
+
             }
-            console.log("##### response ####");
-            console.log(response.status);
-            console.log(response.headers);
-            console.log(response.config);
-            console.log(response);
-            console.log("###################");
-
-
-            console.log("##### response.data ####");
-            console.log(response.data.data);
-            console.log("###################");
-
-            console.log("##### response.data.data ####");
-            console.log(response.data.data);
-            console.log("###################");
-
-
-            // //失败  小于1 失败
-            // if (null === response && response.data.code == 1) {
-            //     //成功，获取到后台返回的数据，可以做缓存
-            //     console.log(" 成功" + response.data.msg);
-            //     // this.props.history.push("/Success");
-
         })
-
-
 
 
         //异常
             .catch(function (response) {
                 console.log(response);
                 alert(response);
-                // if (response != null && response.errors[0] != null) {
-                //     msg = "http status=" + response.status + ", msg= " + response.errors[0].defaultMessage + " at path:" + response.path;
-                //     alert(msg);
-                // }
                 console.log('catch 异常',);
             });
         ;
     };
 
 
-    //
-    // getInitialState() {
-    //     return {
-    //         modal2Visible: false,
-    //     };
-    // }
-
     cancelInsertModal(visible) {
-        console.log(visible);
-        this.setState({visible: visible});
+        this.setState({visibleForInsert: visible});
         console.log("  ----------------->取消 填充数据 cancelInsertModal");
     }
 
     //executeInsertModal
     executeInsertModal(visible) {
-        console.log(visible);
-        this.setState({visible: visible});
+        this.setState({visibleForInsert: visible});
         console.log("  ----------------->保存用户 executeInsertModal");
         this.saveUser();
     }
@@ -210,10 +163,6 @@ class User extends React.Component {
         // this.state.raw.[inputName] = inputValue
         this.setState({
             [inputName]: inputValue
-
-            // raw: {
-            //     [inputName]: inputValue
-            // }
         })
     }
 
@@ -222,27 +171,27 @@ class User extends React.Component {
         //定义表头，一般放在render()中
         const columns = [
             //列名称--数据源的字段名
-            {
-                key: 'id',
-                title: '测试合并',
-                render: (text, record) => (
-                    <span>
-                       {record.nickname}--
-                        {record.avatar}>
-                        </span>
-                )
-            },
+            // {
+            //     key: 'id',
+            //     title: '测试合并',
+            //     render: (text, record) => (
+            //         <span>
+            //            {record.nickname}--
+            //             {record.avatar}>
+            //             </span>
+            //     )
+            // },
             {
                 key: 'nickname',
                 title: '昵称',
                 dataIndex: 'nickname',
                 width: 150
             },
-            {
-                key: 'avatar',
-                title: '标识',
-                dataIndex: 'avatar'
-            },
+            // {
+            //     key: 'avatar',
+            //     title: '标识',
+            //     dataIndex: 'avatar'
+            // },
             {
                 key: 'state',
                 title: '启用状态',
@@ -263,8 +212,8 @@ class User extends React.Component {
                 title: 'add/remove',
                 render: (text, record) => (
                     <span>
-                        <Button onClick={this.add}>add {record.id}</Button>
-                        <Button onClick={this.remove.bind(this)}>remove-{record.id}</Button>
+                        {/*<Button onClick={this.add}>add {record.id}</Button>*/}
+                        <Button onClick={this.remove.bind(this, record.id)}>remove-{record.id}</Button>
                     </span>
                 )
             }
@@ -345,35 +294,15 @@ class User extends React.Component {
     remove(id) {
         console.log("删除--" + id);
         console.log(id);
-    }
-
-
-    add() {
-        console.log("add-start");
-        let start = new Date();
-        console.log(start);
-
-
-        //////////////////////////////////////////////////////////
-        var url = "http://127.0.0.1:80/sys/users";
+        let url = urls.user.delete + id;
         console.log(url);
-        let user = {
-            'nickname': "AXIOS",
-            "avatar": "avatar-01",
-            "state": 1,
-            "createDate": 1123454444,
-            "updateDate": 1123455653
-        };
-
-        axios.post(url, user).then(response => {
-            console.log("111111111111111111111111response  then ==获取到后台返回的数据");
-            console.log(response.data);
-            //登录失败
-            if (null == response.data.data) {
-                alert(response.data.msg);
+        console.log(url);
+        axios.get(url).then(response => {
+            if (response != null && response.data.code === 1) {
+                console.log(response.data.msg);
+                //刷新
+                this.refreshTable();
             }
-            //登录成功，获取到后台返回的数据，可以做缓存
-            console.log(response.data.data);
 
         })
             .catch(function (error) {
@@ -384,17 +313,7 @@ class User extends React.Component {
             });
 
 
-        //////////////////////////////////////////////////////////
-        console.log("add-end");
-        let end = new Date();
-        console.log(end);
-        console.log(end - start);
-
     }
-
-    // hasErrors(fieldsError) {
-    //     return Object.keys(fieldsError).some(field => fieldsError[field]);
-    // }
 
 
 }
