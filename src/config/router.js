@@ -1,6 +1,5 @@
 import Index from "../components/basic/Index";
 import CssTest from "../components/test/CssTest";
-import ModalDemo from "../components/system/rbac/user/ModalDemo";
 import Role from "../components/system/rbac/Role";
 import User from "../components/system/rbac/user/User";
 import UserInsert from "../components/system/rbac/user/UserInsert";
@@ -12,6 +11,7 @@ import BlogDetail from "../components/app/blog/BlogDetail";
 import BlogMd from "../components/app/blog/BlogMd";
 import FoodDetails from "../components/app/food/FoodDetails";
 import File from "../components/system/file/File";
+import FileManage from "../components/system/file/FileManage";
 import Login from "../components/basic/Login";
 import FileSearch from "../components/system/file/FileSearch";
 import Menu from "../components/system/menu/Menu";
@@ -30,8 +30,8 @@ const routers = [
         exact: true
     },
     {
-        path: "/ModalDemo",
-        component: ModalDemo,
+        path: "/files",
+        component: FileManage,
         exact: true
     },
 

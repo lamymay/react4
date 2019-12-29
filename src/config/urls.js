@@ -1,5 +1,5 @@
-// const host = "http://127.0.0.1:8001";
-const host = "http://122.51.110.127:80";
+const host = "http://127.0.0.1:8001";
+// const host = "http://122.51.110.127:80";
 const prefixUri = host + "/zero";
 
 // 说明 通常来说
@@ -13,6 +13,10 @@ const urls = {
         listFileByQuery: prefixUri + "/sys/file/list",
         getFileByCode: prefixUri + "/file/",
 
+        //
+        save: prefixUri + "/sys/file/save",
+        delete: prefixUri + "/sys/file/delete/",
+        listPage: prefixUri + "/sys/file/page",
     },
     blog: {
         saveBlog: prefixUri + "/v1/blogs/save",

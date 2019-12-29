@@ -21,7 +21,7 @@ class File extends React.Component {
             previewImage: '',
             src: '',
             url: '',
-            img: 'http://127.0.0.1:8001/zero/file/sunhina_157434301011046cbf990e98546bb859b5fad',
+            img: 'http://127.0.0.1:8001/zero/file/girl05_1574763692856bc5cb251a83845909f2800a8e',
             img2: '',
             //T:\Project\REACT\react4\src\components\system\file
             //T:\Project\REACT\react4\public\img
@@ -121,39 +121,14 @@ class File extends React.Component {
                     </Button>
                 </Upload>
 
-                {/*<Upload {...props}>*/}
-                {/*    <Button>*/}
-                {/*        <Icon type="upload"/> Click to Upload*/}
-                {/*    </Button>*/}
-                {/*</Upload>*/}
 
-                {/*<input>文件上传</input>*/}
-
-
-                {/*<p className="ant-upload-text" onChange={this.postFileFun}>点击或者拖拽到此即可上传</p>*/}
-                {/*<p className="ant-upload-hint">*/}
-                {/*    Support for a single or bulk upload. Strictly prohibit from uploading company data or other*/}
-                {/*    band files*/}
-                {/*</p>*/}
-
-
-                <br/>
                 <br/>
                 <FileGet/>
                 <br/>
                 <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+
                 <h3>测试React多种加载图片的方法</h3>
                 <hr/>
-                {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
-                {/*<img src="http://122.51.110.127/zero/file/girl1_15725385342508ea81a509b8f4/" />*/}
                 <div className='img-title'>从后台去读去图片</div>
                 <img src={this.state.img} style={{
                     width: '250px',
@@ -163,26 +138,9 @@ class File extends React.Component {
                      alt=""
                 />
 
-
-                <div>下面是[../../../assets/image]文件中的IMG</div>
-                <img src={[require("../../../assets/image/avatar.jpeg")]} className='img-body' alt=""/>
-                {/*<img src={require('../../../../public/image/404.jpg')}/>*/}
-
-                <div>下面是[PUBLIC]文件中的IMG(两种方式都可以读取)</div>
-                {/*<img src={process.env.PUBLIC_URL + '/image/404.jpg'} className='img-body'/>*/}
+                {/*            <div>下面是[PUBLIC]文件中的IMG(两种方式都可以读取)</div>
                 <img src={this.state.localImg} className='img-body' alt=""/>
-
-
-                <hr/>
-                <div>
-                    <p className='front-ms'>字体 front-ms</p>
-                    <p className='front-Aria'>字体 front-Aria</p>
-                    <p className='front-Helvetica'>字体 front-Helvetica</p>
-                    <p className='front-song'>字体 front-song</p>
-                    <p className='front-sans-serif'>字体 front-sans-serif</p>
-                    <p className='front-black'>字体 front-black</p>
-                </div>
-
+*/}
 
             </div>
         );
