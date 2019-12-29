@@ -23,6 +23,7 @@ import {
 }
     from
         'antd';
+import apis from "../../../../config/urls";
 
 // import ReactDOM from 'react-dom'
 // import Connection from '../common/Connection';
@@ -38,11 +39,8 @@ class User extends React.Component {
         this.state = {
             tableTitle: "用户列表",
             users: [],
-            insertModal: {
-                visible: true,
-
-
-            },
+            visibleForInsert: false,
+            test: "453455454"
         }
     }
 
@@ -57,8 +55,7 @@ class User extends React.Component {
     //在密码框中点了回车就直接发请求登陆
     //login
     getUsers = () => {
-        var port = 8001;
-        var url = "http://127.0.0.1:" + port + "/zero/sys/user/page";
+        let url = apis.user.listPageUser;
         console.log("######################################");
         console.log(url);
         console.log("######################################");
@@ -88,19 +85,137 @@ class User extends React.Component {
 
     };
 
-    //更新用户
-    updateUser = (e) => {
-        console.log("uuuuuuuuuuuu");
-    };
-
     //子父组件传值
-    userInsert = (e) => {
-        console.log("子父组件传值");
-        console.log("子父组件传值");
-        console.log("子父组件传值");
-        console.log("子父组件传值");
+    showModal = () => {
+        this.setState({
+            visibleForInsert: true,
+        });
+
+
+        console.log("原始状态 " + this.state.visibleForInsert);
+        let flag = !this.state.visibleForInsert;
+        console.log("flag= " + flag);
+        //this.setState({visibleForInsert: flag});
+        console.log("子父组件传值 ，flag= " + flag + " 状态= " + this.state.visibleForInsert);
+
+
     };
 
+
+    //请求服务器 保存数据
+    saveUser = (e) => {
+        console.log("######## save ！！！！");
+        let url = apis.user.saveUser;
+        console.log(url);
+        //input 的参数怎么获取
+
+
+        let request = {};
+        request.nickname = this.state.nickname;
+        request.state = this.state.state;
+
+        console.log(request);
+        console.table(request);
+
+        axios.post(url, request).then(response => {
+            console.log("##### response.data.code ####");
+            let code = response.data.code;
+            console.log(code);
+            console.log("###################");
+
+            console.log("##### response.data.msg ####");
+            console.log(response.data.msg);
+            console.log("###################");
+
+            if (code === 1) {
+                console.log(response.data.msg);
+                console.log(response.data.msg);
+                console.log(response.data.msg);
+                console.log(response.data.msg);
+                this.setState({
+                    visibleForInsert: true,
+                });
+
+            }
+            console.log("##### response ####");
+            console.log(response.status);
+            console.log(response.headers);
+            console.log(response.config);
+            console.log(response);
+            console.log("###################");
+
+
+            console.log("##### response.data ####");
+            console.log(response.data.data);
+            console.log("###################");
+
+            console.log("##### response.data.data ####");
+            console.log(response.data.data);
+            console.log("###################");
+
+
+            // //失败  小于1 失败
+            // if (null === response && response.data.code == 1) {
+            //     //成功，获取到后台返回的数据，可以做缓存
+            //     console.log(" 成功" + response.data.msg);
+            //     // this.props.history.push("/Success");
+
+        })
+
+
+
+
+        //异常
+            .catch(function (response) {
+                console.log(response);
+                alert(response);
+                // if (response != null && response.errors[0] != null) {
+                //     msg = "http status=" + response.status + ", msg= " + response.errors[0].defaultMessage + " at path:" + response.path;
+                //     alert(msg);
+                // }
+                console.log('catch 异常',);
+            });
+        ;
+    };
+
+
+    //
+    // getInitialState() {
+    //     return {
+    //         modal2Visible: false,
+    //     };
+    // }
+
+    cancelInsertModal(visible) {
+        console.log(visible);
+        this.setState({visible: visible});
+        console.log("  ----------------->取消 填充数据 cancelInsertModal");
+    }
+
+    //executeInsertModal
+    executeInsertModal(visible) {
+        console.log(visible);
+        this.setState({visible: visible});
+        console.log("  ----------------->保存用户 executeInsertModal");
+        this.saveUser();
+    }
+
+
+    onInputChange(e) {
+        //es6变量名是一个变量
+        let inputValue = e.target.value,
+            inputName = e.target.name;
+        console.log("#####################");
+        console.log("inputName/inputValue：" + inputName + "/" + inputValue);
+        // this.state.raw.[inputName] = inputValue
+        this.setState({
+            [inputName]: inputValue
+
+            // raw: {
+            //     [inputName]: inputValue
+            // }
+        })
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////  render
     render() {
@@ -158,15 +273,62 @@ class User extends React.Component {
 
         return (<div>
 
-
             <Card title={this.state.tableTitle}>
-                <Button type="primary" onClick={this.userInsert}>测试 新增一个人员</Button>
+
+                {/*点击新增按钮：1、弹出输入框 2、获取输入数据保存 3、关闭输入框*/}
+                <Button type="primary" onClick={this.showModal}>测试 新增一个人员 </Button>
                 {/*<Button type="dashed" onClick={this.updateUser}>测试 dashed与后台交互</Button>*/}
                 {/*<Button type="danger" onClick={this.updateUser}>测试 danger与后台交互</Button>*/}
 
-                {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
-                {/*<Table  rowKey={record=>record.id} columns={columns} dataSource={this.state.users} bordered>*/}
 
+                {/*<UserInsert visibleForInsert={this.state.visibleForInsert} user={this}/>*/}
+
+                <Modal
+                    title="新增用户"
+                    wrapClassName="vertical-center-modal"
+                    visible={this.state.visibleForInsert}
+                    onOk={() => this.executeInsertModal(false)}
+                    onCancel={() => this.cancelInsertModal(false)}
+                >
+
+                    {/* save insert 创建    新增 新建的框框*/}
+                    <div>
+
+
+                        <div>
+                            昵称：<input type="text"
+                                      name="nickname"
+                                      name="nickname"
+                                      placeholder="nickname"
+                                      autoFocus
+                                      onChange={e => this.onInputChange(e)}
+                        />
+                        </div>
+                        <div>
+                            状态：<input type="text"
+                                      id="state"
+                                      name="state"
+                                      placeholder="state"
+                                      onChange={e => this.onInputChange(e)}
+                        />
+                        </div>
+                        {/*<div>*/}
+                        {/*    avatar：<input type="text"*/}
+                        {/*              id="avatar"*/}
+                        {/*              name="avatar"*/}
+                        {/*              placeholder="avatar"*/}
+                        {/*              onChange={e => this.onInputChange(e)}*/}
+                        {/*/>*/}
+                        {/*</div>*/}
+                    </div>
+
+
+                </Modal>
+
+
+                {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
+
+                {/*<Table  rowKey={record=>record.id} columns={columns} dataSource={this.state.users} bordered>*/}
 
                 <Table
                     rowKey={record => record.id}
@@ -176,7 +338,8 @@ class User extends React.Component {
                     bordered>
                 </Table>
             </Card>
-        </div>)
+        </div>);
+
     }
 
     remove(id) {

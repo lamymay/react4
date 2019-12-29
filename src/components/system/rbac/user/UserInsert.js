@@ -10,7 +10,7 @@ class UserInsert extends React.Component {
         this.state = {
 
             id: -1,
-            modalVisible: false,
+            visible: false
             //
             // roles: [
             //     {
@@ -36,6 +36,11 @@ class UserInsert extends React.Component {
 
 
     componentDidMount() {
+        console.log("ch ch ch");
+
+        console.log(this.props.visibleForInsert);
+        // console.log(this.state.visible);
+
         //获取列表数据
         // this.getList();
         //赋值给 list
@@ -44,29 +49,34 @@ class UserInsert extends React.Component {
         //2 使用现成的类库来解析
         // let query = url.parse(this.props.location.search, true).query;
         // console.log(query);
-        console.log(this.state.id);
-
+        // console.log(this.state.id);
     }
 
 
-    getUsers = () => {
-
+    saveUser = () => {
+        console.log("save!!!!!!");
     };
 
+    //
+    // getInitialState() {
+    //     return {
+    //         modal2Visible: false,
+    //     };
+    // }
 
-
-    getInitialState() {
-        return {
-            modal2Visible: false,
-        };
+    cancelInsertModal(visible) {
+        console.log(visible);
+        this.setState({visible: visible});
+        console.log("  ----------------->取消 填充数据 cancelInsertModal");
     }
 
-    setModal2Visible(modal2Visible) {
-        this.setState({modal2Visible});
+    //executeInsertModal
+    executeInsertModal(visible) {
+        console.log(visible);
+        this.setState({visible: visible});
+        console.log("  ----------------->保存用户 executeInsertModal");
+        this.saveUser();
     }
-
-
-
 
 
     //字符串拼接
@@ -79,13 +89,13 @@ class UserInsert extends React.Component {
             <Modal
                 title="垂直居中的对话框"
                 wrapClassName="vertical-center-modal"
-                visible={this.state.modalVisible}
-                // onOk={() => this.setModal2Visible(false)}
-                //  onCancel={() => this.setModal2Visible(false)}
+                visible={this.props.visibleForInsert}
+                onOk={() => this.executeInsertModal(false)}
+                onCancel={() => this.cancelInsertModal(false)}
             >
 
 
-                <p>对话框的内容</p>
+                <p>对话框的内容= {this.props.visibleForInsert}</p>
                 <Form layout="inline" onSubmit={this.updateUser}>
 
                     <Form.Item> <Input placeholder="nickname" onChange={event => this.handleMaxBackUp(event)}/>

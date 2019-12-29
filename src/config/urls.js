@@ -23,9 +23,13 @@ const urls = {
     menu: {
         listMenu: prefixUri + "/menus/list",
         saveMenu: prefixUri + "/menus/save",
+    },
+    user: {
+        listUser: prefixUri + "/sys/users/list",
+        saveUser: prefixUri + "/sys/users/save",
+        listPageUser: prefixUri + "/sys/users/page",
     }
 };
-
 
 
 export default urls;
