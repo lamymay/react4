@@ -105,12 +105,7 @@ class FileManage extends React.Component {
             // {key: 'updateTime', title: '更新时间', dataIndex: 'updateTime'},
 
             //列名称--数据源的字段名
-            {
-                key: 'id',
-                title: '文件大小',
-                render: (text, record) => (
-                    <span>                       {record.size} {record.sizeUnit}>                        </span>)
-            },
+            {key: 'id', title: '文件大小', render: (text, record) => (<span>    {record.size} {record.sizeUnit}</span>)},
 
             {
                 key: 'remove', title: '操作',

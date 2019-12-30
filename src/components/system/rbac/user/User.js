@@ -20,17 +20,9 @@ import {
     // List,
     // Checkbox,
     // AutoComplete,
-}
-    from
-        'antd';
+} from 'antd';
 import urls from "../../../../config/urls";
 
-// import ReactDOM from 'react-dom'
-// import Connection from '../common/Connection';
-//引入antd，本页面主要是对list数据做渲染
-
-
-//对于人员数据的CRUD
 class User extends React.Component {
 
 

@@ -34,6 +34,13 @@ const urls = {
         saveUser: prefixUri + "/sys/users/save",
         delete: prefixUri + "/sys/users/delete/",
         listPageUser: prefixUri + "/sys/users/page",
+    },
+    receipt: {
+        index: "/receipt",
+        // list  : prefixUri + "/receipt/list",
+        // save  : prefixUri + "/receipt/save",
+        listPage: prefixUri + "/shopping/receipt/page",
+        delete: prefixUri + "/shopping/receipt/delete/",
     }
 };
 

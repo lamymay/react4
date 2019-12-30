@@ -17,6 +17,9 @@ import FileSearch from "../components/system/file/FileSearch";
 import Menu from "../components/system/menu/Menu";
 import React from "react";
 
+//购物小票
+import ShoppingReceipt from '../components/app/shop/ShoppingReceipt'
+
 const routers = [
     {
         path: "/index",
@@ -61,6 +64,10 @@ const routers = [
     {
         path: "/blog",
         component: Blog,
+        exact: true
+    },    {
+        path: "/sr",
+        component: ShoppingReceipt,
         exact: true
     },
     {

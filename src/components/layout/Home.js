@@ -35,11 +35,9 @@ class Home extends React.Component {
     //初始化函数触发
     componentDidMount() {
         // To disabled submit button at the beginning.
-        console.log("componentDidMount--初始化的时候去获取菜单数据");
         this.getMenusFun();
         // this.props.form.validateFields();
     }
-
 
     // 初始化的时候去获取菜单数据
     getMenusFun = (e) => {
@@ -54,20 +52,8 @@ class Home extends React.Component {
         console.log(url);
 
         axios.get(url).then(response => {
-            console.log("########## response #########");
-            console.log(response);
-            console.log("###################");
-            console.log("########## response.data #########");
-            console.log(response.data);
-            console.log("###################");
-
-
             if (response != null) {
-                console.log("########## response.data.data #########");
                 //成功，获取到后台返回的数据，可以做缓存
-                console.log(response.data.msg);
-                console.log(response.data.data);
-                console.log("###################");
                 // this.props.history.push("/Success");
                 this.setState({
                     list: response.data.data
