@@ -1,7 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
 import axios from 'axios';
-import ShoppingReceiptInsert from "./ShoppingReceiptInsert";
 import urls from "../../../config/urls";
 
 import {
