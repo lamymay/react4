@@ -2,6 +2,7 @@ import Index from "../components/basic/Index";
 import CssTest from "../components/test/CssTest";
 import Role from "../components/system/rbac/Role";
 import User from "../components/system/rbac/user/User";
+import Resource from "../components/system/resource/Resource";
 import UserInsert from "../components/system/rbac/user/UserInsert";
 import RoleInsert from "../components/system/rbac/RoleInsert";
 import Food from "../components/app/food/Food";
@@ -21,23 +22,6 @@ import React from "react";
 import ShoppingReceipt from '../components/app/shop/ShoppingReceipt'
 
 const routers = [
-    {
-        path: "/index",
-        component: Index,
-        exact: true
-    },
-    //system 模块的
-    {
-        path: "/user",
-        component: User,
-        exact: true
-    },
-    {
-        path: "/files",
-        component: FileManage,
-        exact: true
-    },
-
 
     // test
     {
@@ -65,7 +49,8 @@ const routers = [
         path: "/blog",
         component: Blog,
         exact: true
-    },    {
+    },
+    {
         path: "/sr",
         component: ShoppingReceipt,
         exact: true
@@ -113,20 +98,43 @@ const routers = [
         ]
     },
     {
-        path: "/login",
-        component: Login,
+        path: "/file-search",
+        component: FileSearch,
+        exact: true
+    },
+
+    //system 模块的
+
+    {
+        path: "/index",
+        component: Index,
         exact: true
     },
     {
-        path: "/file-search",
-        component: FileSearch,
+        path: "/user",
+        component: User,
         exact: true
     },
     {
         path: "/menu",
         component: Menu,
         exact: true
-    }
+    },
+    {
+        path: "/resource",
+        component: Resource,
+        exact: true
+    },
+    {
+        path: "/file1",
+        component: FileManage,
+        exact: true
+    },
+    {
+        path: "/login",
+        component: Login,
+        exact: true
+    },
 ];
 
 export default routers;
