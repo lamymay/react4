@@ -1,5 +1,5 @@
-const host = "http://127.0.0.1:8001";
-// const host = "http://122.51.110.127:80";
+// const host = "http://127.0.0.1:8001";
+const host = "http://122.51.110.127:80";
 const prefixUri = host + "/zero";
 
 // 说明 通常来说
@@ -12,11 +12,21 @@ const urls = {
         uploadFile: prefixUri + "/file/upload",
         listFileByQuery: prefixUri + "/sys/file/list",
         getFileByCode: prefixUri + "/file/",
-
-        //
         save: prefixUri + "/sys/file/save",
         delete: prefixUri + "/sys/file/delete/id/",
         listPage: prefixUri + "/sys/file/page",
+    },
+
+    //resource 完全使用 RESTFul  ?  ，项目中使用get + post 来实现
+    resource: {
+        // GET 扫描所有controller资源
+        scan: prefixUri + "/sys/resource/scan",
+        save: prefixUri + "/sys/resource",
+        delete: prefixUri + "/sys/resource/",
+        update: prefixUri + "/sys/resource/id",
+        getFileByCode: prefixUri + "/resource/",
+        listPage: prefixUri + "/sys/resource/page",
+        listFileByQuery: prefixUri + "/sys/resource/list",
     },
     blog: {
         saveBlog: prefixUri + "/v1/blogs/save",

@@ -8,7 +8,7 @@ import {
     Table,
     Card,
     Button,
-    Modal,
+    // Modal,
     // Form,
     // Input,
     // Tooltip,
@@ -27,7 +27,6 @@ import {
 // import ReactDOM from 'react-dom'
 // import Connection from '../common/Connection';
 //引入antd，本页面主要是对list数据做渲染
-
 
 //对于 File 的CRUD
 class FileManage extends React.Component {
@@ -133,7 +132,6 @@ class FileManage extends React.Component {
                 </Table>
             </Card>
         </div>);
-
     }
 
     remove(id) {
@@ -143,18 +141,13 @@ class FileManage extends React.Component {
                 //刷新
                 this.refreshTable();
             }
-
         })
             .catch(function (error) {
                 //异常
                 console.log(error);
-                console.log('登陆异常  catch =====',);
-
+                console.log('异常  catch =====',);
             });
-
-
     }
-
 
 }
 

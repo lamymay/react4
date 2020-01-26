@@ -1,67 +1,180 @@
 import React from "react";
-// import ResourceInsert from './ResourceInsert'
-import {Link} from "react-router-dom";
+import axios from 'axios';
+import urls from '../../../config/urls.js';
 
+import "antd/dist/antd.css";
+
+import {
+    Table,
+    Card,
+    Button,
+}
+    from
+        'antd';
+
+// import ReactDOM from 'react-dom'
+// import Connection from '../common/Connection';
+//引入antd，本页面主要是对list数据做渲染
+
+
+//对于 Resource 的CRUD
 class Resource extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            roles: [
-                {
-                    aid: '1',
-                    title: '标题1'
-                }, {
-                    aid: '2',
-                    title: '标题2'
-                }
-                , {
-                    aid: '3',
-                    title: '标题3'
-                }
-                , {
-                    aid: '4',
-                    title: '标题4'
-                }
-
-            ]
+            tableTitle: "资源列表",
+            visibleForInsert: false,
+            list: [],
         }
     }
 
 
     componentDidMount() {
-        //获取列表数据
-        // this.getResources();
-        //赋值给 roles
-        //渲染 表格 在页面中做 新增 编辑 删除 等
-
+        this.refreshTable();
     }
 
+    //刷新表格
+    refreshTable = () => {
+        axios.post(urls.resource.listPage, {})
+            .then(response => {
+                console.log("response  then ==获取到后台返回的数据");
+                console.log(response.data);
+                if (response != null && response.data.code === 1) {
 
-    getUsers = () => {
+                    var dataFromDb = response.data.data.content;
+
+                    //赋值
+                    this.setState({list: dataFromDb});
+                    console.log(this.state.list);
+
+                }
+
+
+            })
+            .catch(function (error) {
+                //异常
+                console.log(error);
+                console.log('异常  catch =====',);
+
+            });
+
+    };
+
+    scanResourceFromController = () => {
+        axios.get(urls.resource.scan, {})
+            .then(response => {
+                console.log("response  then ==获取到后台返回的数据");
+                console.log(response.data);
+                if (response != null && response.data.code === 1) {
+                    var dataFromDb = response.data.data.content;
+
+                    //赋值
+                    this.setState({list: response.data.data.content});
+                    console.log(this.state.list);
+
+                }
+
+
+            })
+            .catch(function (error) {
+                //异常
+                console.log(error);
+                console.log('异常  catch =====',);
+
+            });
+
+
+        console.log("############ scanResourceFromController ###########");
+        // this.refreshTable();
+
+    };
+
+    //子父组件传值
+    showModal = () => {
+        this.setState({
+            visibleForInsert: true,
+        });
+
+        console.log("原始状态 " + this.state.visibleForInsert);
+        let flag = !this.state.visibleForInsert;
+        console.log("flag= " + flag);
+        //this.setState({visibleForInsert: flag});
+        console.log("子父组件传值 ，flag= " + flag + " 状态= " + this.state.visibleForInsert);
 
     };
 
 
-    //字符串拼接
-
     ///////////////////////////////////////////////////////////////////////////////////////////////////  render
     render() {
-        return (
-            <div>
-                <h2>GET Resource-动态传值测试</h2>
+        //定义表头，一般放在render()中
+        const columns = [
+            {key: 'id', title: 'id', dataIndex: 'id', high: 20},
+            // {key: 'code', title: 'code', dataIndex: 'code', width: 20, high: 20},
+            {key: 'name', title: 'name', dataIndex: 'name', high: 20},
+            {key: 'parentId', title: 'parentId', dataIndex: 'parentId'},
+            {key: 'note', title: 'note', dataIndex: 'note'},
+            {key: 'priority', title: 'priority', dataIndex: 'priority'},
+            {key: 'type', title: 'type', dataIndex: 'type'},
+            {key: 'resourceName', title: 'resourceName', dataIndex: 'resourceName', high: 20},
+            {key: 'method', title: 'method', dataIndex: 'method', width: 20, high: 20},
+            {key: 'path', title: 'path', dataIndex: 'path'},
+            // {key: 'createTime', title: '创建时间', dataIndex: 'createTime'},
+            // {key: 'updateTime', title: '更新时间', dataIndex: 'updateTime'},
 
-                <ul>
-                    {this.state.roles.map((value, key) => {
-                        return <li key={key}>
-                            <Link to={`/roleInsert/${value.aid}`}>{value.title}</Link>
-                        </li>
+            //列名称--数据源的字段名
+            // {key: 'id', title: '文件大小', render: (text, record) => (<span>    {record.size} {record.sizeUnit}</span>)},
 
-                    })}
-                </ul>
-            </div>
-        )
+            {
+                key: 'remove', title: '操作',
+                render: (text, record) => (
+                    <span>
+                        {/*<Button onClick={this.add}>add {record.id}</Button>*/}
+                        <Button onClick={this.remove.bind(this, record.id)}>remove-{record.id}</Button>
+                    </span>
+                )
+            }
+        ];
+        //////////////////////
+
+        return (<div>
+            <button onClick={this.scanResourceFromController}>扫描</button>
+
+            <Card title={this.state.tableTitle}>
+
+                {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
+                <Table
+                    rowKey={record => record.id}
+                    columns={columns}
+                    dataSource={this.state.list}
+                    pageSize={10}
+                    bordered>hh
+                </Table>
+            </Card>
+        </div>);
+
     }
+
+    remove(id) {
+        axios.get(urls.file.delete + id).then(response => {
+            if (response != null && response.data.code === 1) {
+                console.log(response.data.msg);
+                //刷新
+                this.refreshTable();
+            }
+
+        })
+            .catch(function (error) {
+                //异常
+                console.log(error);
+                console.log('异常  catch =====',);
+
+            });
+
+
+    }
+
+
 }
 
 export default Resource;
