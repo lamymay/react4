@@ -11,7 +11,13 @@ const urls = {
     file: {
         uploadFile: prefixUri + "/file/upload",
         listFileByQuery: prefixUri + "/sys/file/list",
+
+        // 建议废弃 换用 getFileByIdOrCode
         getFileByCode: prefixUri + "/file/",
+
+        getFileByIdOrCode: prefixUri + "/files/",
+
+
         save: prefixUri + "/sys/file/save",
         delete: prefixUri + "/sys/file/delete/id/",
         listPage: prefixUri + "/sys/file/page",
@@ -20,7 +26,7 @@ const urls = {
     //resource 完全使用 RESTFul  ?  ，项目中使用get + post 来实现
     resource: {
         // GET 扫描所有controller资源
-        scan: prefixUri + "/sys/resource/scan",
+        scan: prefixUri + "/sys/resource/scan/controller",
         save: prefixUri + "/sys/resource",
         delete: prefixUri + "/sys/resource/",
         update: prefixUri + "/sys/resource/id",

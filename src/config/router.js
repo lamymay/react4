@@ -11,11 +11,13 @@ import ManageBlog from "../components/app/blog/ManageBlog";
 import BlogDetail from "../components/app/blog/BlogDetail";
 import BlogMd from "../components/app/blog/BlogMd";
 import FoodDetails from "../components/app/food/FoodDetails";
+import Menu from "../components/system/menu/Menu";
+import Login from "../components/basic/Login";
+
 import File from "../components/system/file/File";
 import FileManage from "../components/system/file/FileManage";
-import Login from "../components/basic/Login";
 import FileSearch from "../components/system/file/FileSearch";
-import Menu from "../components/system/menu/Menu";
+
 import React from "react";
 
 //购物小票
@@ -83,19 +85,20 @@ const routers = [
     {
         path: "/file",
         component: File,
-        exact: true,
-        routes: [
-            {
-                path: "/file-add",
-                component: Login,
-                exact: true
-            }, {
-                path: "/file-update",
-                component: Login,
-                exact: true
-            },
+        exact: true
+        //,
+        // routes: [
+        //     {
+        //         path: "/file-add",
+        //         component: Login,
+        //         exact: true
+        //     }, {
+        //         path: "/file-update",
+        //         component: Login,
+        //         exact: true
+        //     },
 
-        ]
+        // ]
     },
     {
         path: "/file-search",

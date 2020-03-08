@@ -103,7 +103,7 @@ class FileUpload extends React.Component {
 
                 <Upload {...props}>
                     <Button>
-                        <Icon type="upload"/> 点击以上传图片
+                        <Icon type="upload"/> 上传
                     </Button>
                 </Upload>
             </div>
