@@ -1,5 +1,5 @@
-// const host = "http://127.0.0.1:8001";
-const host = "http://122.51.110.127:80";
+const host = "http://127.0.0.1:8001";
+// const host = "http://122.51.110.127:80";
 const prefixUri = host + "/zero";
 
 // 说明 通常来说

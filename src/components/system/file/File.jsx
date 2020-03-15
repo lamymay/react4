@@ -8,6 +8,7 @@ import FileUpload from "./FileUpload";
 import FileDownload2 from './FileDownload2';
 //旧版本文件下载 //import FileGet from './FileGet';
 import FileSearch from "./FileSearch";
+import FileManage from "./FileManage";
 
 class File extends React.Component {
 
@@ -45,9 +46,23 @@ class File extends React.Component {
     render() {
         return (
             <div>
+                    <div
+                        style={{
+                            // width: '50px',
+                            // height: '50px',
+                            // float: 'left',
+                            // backgroundColor: 'yellow',
+                            // fontSize: '24px'
+                        }}>
+                        <FileUpload/>
+                        <FileDownload2/>
+                </div>
 
-                <br/>
+                <hr/>
 
+                <FileManage/>
+                <FileSearch/>
+                <hr/>
                 <button onClick={this.showFileDownload}>附加功能开关</button>
                 <div style={{
                     background: '#fff',
@@ -56,9 +71,6 @@ class File extends React.Component {
                     <FileUpload2/>
                 </div>
                 <hr/>
-                <FileUpload/>
-                <FileDownload2/>
-                <FileSearch/>
 
 
             </div>
