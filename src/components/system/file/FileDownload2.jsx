@@ -22,7 +22,7 @@ class FileDownload2 extends React.Component {
 
     getFile = (symbol) => {
         //  检索条件 symbol  校验与赋值
-        if (this.state.symbol == null||this.state.symbol.trim() == "") {
+        if (this.state.symbol == null || this.state.symbol.trim() == "") {
             alert(this.state.alertMessage);
             return;
         }
@@ -36,7 +36,8 @@ class FileDownload2 extends React.Component {
         console.log(url);
         axios.get(url, {responseType: 'blob'}).then(response => {
 
-            let fileName = "temp.jpg";
+            // let fileName = "temp.jpg";
+            let fileName = response.headers['filename'];
             console.log(response);
             console.log(response.headers);
             console.log(response.data.symbol);

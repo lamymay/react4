@@ -16,8 +16,6 @@ const urls = {
         getFileByCode: prefixUri + "/file/",
 
         getFileByIdOrCode: prefixUri + "/files/",
-
-
         save: prefixUri + "/sys/file/save",
         delete: prefixUri + "/sys/file/delete/id/",
         listPage: prefixUri + "/sys/file/page",
