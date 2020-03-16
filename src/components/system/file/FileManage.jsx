@@ -23,6 +23,7 @@ import {
 }
     from
         'antd';
+import FileDownload from "react-file-download";
 
 // import ReactDOM from 'react-dom'
 // import Connection from '../common/Connection';
@@ -36,6 +37,7 @@ class FileManage extends React.Component {
         this.state = {
             tableTitle: "文件列表",
             visibleForInsert: false,
+            symbol: '',
             list: [],
         }
     }
@@ -102,25 +104,68 @@ class FileManage extends React.Component {
             });
     }
 
+
     // download
     download(id) {
-        axios.get(urls.file.downloadFileByIdOrCode + id).then(response => {
-            console.log("download");
-            console.log("download");
-            console.log("download");
-            if (response != null && response.data.code === 1) {
-                console.log(response.data.msg);
-                //刷新
-                //this.refreshTable();
-            }
-        })
-            .catch(function (error) {
-                //异常
-                console.log(error);
-                console.log('异常  catch =====',);
-            });
+        console.log("download");
+        console.log("id=" + id);
+
+        console.log(this.state.symbol);
+        console.log(this.state.symbol);
+        console.log(this.state.symbol);
+        console.log(this.state.symbol);
+        let url = urls.file.downloadFileByIdOrCode + id;
+        axios.get(url, {responseType: 'blob'})
+            .then(response => {
+                console.log("---------------------------------------");
+                console.log(response.data);
+                console.log(response.status);
+                console.log(response.statusText);
+                console.log(response.headers);
+                console.log(response.config);
+                console.log("---------------------------------------");
+
+
+                // let fileName = "temp.jpg";
+                let fileName = response.headers['filename'];
+                let contentType = response.headers['content-type'];
+                let contentDisposition = response.headers['content-disposition'];
+                console.log("##############fileName########");
+                console.log(fileName);
+                console.log(contentDisposition);
+                console.log(contentType);
+                console.log("######################");
+                console.log(response);
+                console.log(response.headers);
+                console.log("symbol symbol symbol symbol");
+                console.log(response.data.symbol);
+
+                FileDownload(response.data, fileName);
+            }).catch(function (error) {
+            //异常
+            console.log(error);
+            console.log('异常  catch =====',);
+        });
     }
 
+//  错误
+//    axios.post('/api',{
+//     // 传参
+// },
+// {
+//     responseType:'blob'    // 设置响应数据类型
+// })
+// .then(res=>{
+//     if (res.status == 200) {
+//         let url = window.URL.createObjectURL(new Blob([res.data]))
+//         let link= document.createElement('a')
+//         link.style.display='none'
+//         link.href=url
+//         link.setAttribute('download', fileName)    // 自定义下载文件名（如exemple.txt）
+//         document.body.appendChild(link)
+//         link.click()
+//     }
+// })
     ///////////////////////////////////////////////////////////////////////////////////////////////////  render
     render() {
         //定义表头，一般放在render()中
@@ -136,7 +181,11 @@ class FileManage extends React.Component {
             // {key: 'updateTime', title: '更新时间', dataIndex: 'updateTime'},
 
             //列名称--数据源的字段名
-            {key: 'id', title: '文件大小', render: (text, record) => (<span>    {record.size} {record.sizeUnit}</span>)},
+            {
+                key: 'id',
+                title: '文件大小',
+                render: (text, record) => (<span>    {record.length} {record.lengthUnit}</span>)
+            },
 
             {
                 key: 'remove', title: '操作',
