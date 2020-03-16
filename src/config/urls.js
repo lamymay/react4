@@ -1,5 +1,5 @@
-// const host = "http://127.0.0.1:8001";
-const host = "http://122.51.110.127:80";
+const host = "http://127.0.0.1:8001";
+// const host = "http://122.51.110.127:80";
 const prefixUri = host + "/zero";
 
 // 说明 通常来说
@@ -8,16 +8,22 @@ const prefixUri = host + "/zero";
 
 const urls = {
     listMenusBySystemIdAndLevel: prefixUri + "/menus/SYSTEM_ID/levels/LEVEL",
+
+    //文件相关
     file: {
-        uploadFile: prefixUri + "/file/upload",
-        listFileByQuery: prefixUri + "/sys/file/list",
+        //文件下载 download 返回流
+        downloadFileByIdOrCode: prefixUri + "/files/",
+        //上传文件
+        uploadFile: prefixUri + "/files/upload",
 
-        // 建议废弃 换用 getFileByIdOrCode
-        getFileByCode: prefixUri + "/file/",
+        //文件操作 删除文件 & 文件记录
+        deleteFile: prefixUri + "/files/delete/",
 
-        getFileByIdOrCode: prefixUri + "/files/",
+        //文件记录
         save: prefixUri + "/sys/file/save",
-        delete: prefixUri + "/sys/file/delete/id/",
+        getByIdOrCode: prefixUri + "/files/",
+        listFileByQuery: prefixUri + "/sys/file/list",
+        // delete: prefixUri + "/sys/file/delete/id/",
         listPage: prefixUri + "/sys/file/page",
     },
 
@@ -28,7 +34,7 @@ const urls = {
         save: prefixUri + "/sys/resource",
         delete: prefixUri + "/sys/resource/",
         update: prefixUri + "/sys/resource/id",
-        getFileByCode: prefixUri + "/resource/",
+        getByCode: prefixUri + "/resource/",
         listPage: prefixUri + "/sys/resource/page",
         listFileByQuery: prefixUri + "/sys/resource/list",
     },

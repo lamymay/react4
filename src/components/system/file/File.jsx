@@ -3,7 +3,6 @@ import '../../../assets/css/system/file/file.css'
 
 
 import FileUpload2 from './FileUpload2';
-import FileUpload from "./FileUpload";
 //说明 FileDownload2 是因为名称冲突二取名的， 是用于下载文件的
 import FileDownload2 from './FileDownload2';
 //旧版本文件下载 //import FileGet from './FileGet';
@@ -46,28 +45,32 @@ class File extends React.Component {
     render() {
         return (
             <div>
-                    <div
-                        style={{
-                            // width: '50px',
-                            // height: '50px',
-                            // float: 'left',
-                            // backgroundColor: 'yellow',
-                            // fontSize: '24px'
-                        }}>
-                        <FileUpload/>
-                        <FileDownload2/>
+                <div
+                    style={{
+                        // width: '50px',
+                        // height: '50px',
+                        // float: 'left',
+                        // backgroundColor: 'yellow',
+                        // fontSize: '24px'
+                    }}>
+                    <FileUpload2/>
+                    <FileDownload2/>
                 </div>
 
                 <hr/>
 
+                {/*文件列表*/}
                 <FileManage/>
                 <FileSearch/>
+
+
                 <hr/>
                 <button onClick={this.showFileDownload}>附加功能开关</button>
                 <div style={{
                     background: '#fff',
                     display: this.state.display_name
-                }}>    {/* 通过状态机display_name获取diaplay取值 */}
+                }}>
+                    {/* 通过状态机display_name获取diaplay取值 */}
                     <FileUpload2/>
                 </div>
                 <hr/>

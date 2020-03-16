@@ -31,8 +31,7 @@ class FileDownload2 extends React.Component {
             symbol: symbol,
         });
 
-
-        let url = urls.file.getFileByIdOrCode + this.state.symbol;
+        let url = urls.file.downloadFileByIdOrCode + this.state.symbol;
         console.log(url);
         axios.get(url, {responseType: 'blob'}).then(response => {
 
@@ -40,7 +39,7 @@ class FileDownload2 extends React.Component {
             let fileName = response.headers['filename'];
             console.log(response);
             console.log(response.headers);
-            console.log(response.data.symbol);
+            // console.log(response.data.symbol);
 
             FileDownload(response.data, fileName);
         })
@@ -94,3 +93,23 @@ export default FileDownload2;
 //            <p style={textStyles}>inline style</p>
 
 //返回数据中获取 文件名称
+
+
+//https://www.jianshu.com/p/eb785e4318f4
+//download(){
+//         const url = "文件地址"
+//         axios.get(url,{
+//             responseType:'blob'
+//         }).then( res => {
+//             let blob = new Blob([res.data])
+//             let downloadElement = document.createElement('a')
+//             let href = window.URL.createObjectURL(blob); //创建下载的链接
+//             downloadElement.href = href;
+//             downloadElement.download = `new name`; //下载后文件名
+//             document.body.appendChild(downloadElement);
+//             downloadElement.click(); //点击下载
+//             document.body.removeChild(downloadElement); //下载完成移除元素
+//             window.URL.revokeObjectURL(href); //释放blob对象
+//         })
+//
+//     }

@@ -108,7 +108,7 @@ class FileSearch extends React.Component {
                            onKeyUp={this.handleGetInputValue}
                     />
                     {/*搜索按钮*/}
-                    <button onClick={this.searchForImageList}>检索图片</button>
+                    <button onClick={this.searchForImageList}>检索文件</button>
                 </p>
 
 

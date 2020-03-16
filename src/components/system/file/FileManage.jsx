@@ -31,7 +31,6 @@ import {
 //对于 File 的CRUD
 class FileManage extends React.Component {
 
-
     constructor(props) {
         super(props);
         this.state = {
@@ -88,6 +87,39 @@ class FileManage extends React.Component {
 
     };
 
+    remove(id) {
+        axios.get(urls.file.deleteFile + id).then(response => {
+            if (response != null && response.data.code === 1) {
+                console.log(response.data.msg);
+                //刷新
+                this.refreshTable();
+            }
+        })
+            .catch(function (error) {
+                //异常
+                console.log(error);
+                console.log('异常  catch =====',);
+            });
+    }
+
+    // download
+    download(id) {
+        axios.get(urls.file.downloadFileByIdOrCode + id).then(response => {
+            console.log("download");
+            console.log("download");
+            console.log("download");
+            if (response != null && response.data.code === 1) {
+                console.log(response.data.msg);
+                //刷新
+                //this.refreshTable();
+            }
+        })
+            .catch(function (error) {
+                //异常
+                console.log(error);
+                console.log('异常  catch =====',);
+            });
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////  render
     render() {
@@ -110,7 +142,7 @@ class FileManage extends React.Component {
                 key: 'remove', title: '操作',
                 render: (text, record) => (
                     <span>
-                        {/*<Button onClick={this.add}>add {record.id}</Button>*/}
+                        <Button onClick={this.download.bind(this, record.id)}>download-{record.id}</Button>
                         <Button onClick={this.remove.bind(this, record.id)}>remove-{record.id}</Button>
                     </span>
                 )
@@ -134,20 +166,6 @@ class FileManage extends React.Component {
         </div>);
     }
 
-    remove(id) {
-        axios.get(urls.file.delete + id).then(response => {
-            if (response != null && response.data.code === 1) {
-                console.log(response.data.msg);
-                //刷新
-                this.refreshTable();
-            }
-        })
-            .catch(function (error) {
-                //异常
-                console.log(error);
-                console.log('异常  catch =====',);
-            });
-    }
 
 }
 

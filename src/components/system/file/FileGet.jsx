@@ -32,7 +32,7 @@ class FileGet extends React.Component {
             return;
         }
 
-        let url = urls.file.getFileByCode + this.state.code;
+        let url = urls.file.downloadFileByIdOrCode + this.state.code;
         console.log(url);
         axios.get(url, {responseType: 'blob'}).then(response => {
 
