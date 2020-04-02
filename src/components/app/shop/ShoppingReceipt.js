@@ -18,10 +18,11 @@ class ShoppingReceipt extends React.Component {
             tableTitle: "列表",
             list: [],
             visibleForInsert: false,
+            totalFinalPriceTax: 10000,
 
             name: "",
             transactionTime: null,//交易时间
-            totalFinalPrice: 0,//成交价
+            totalFinalPrice: 0,//成交价 四位小数
             state: true,
         }
     }
@@ -266,9 +267,9 @@ class ShoppingReceipt extends React.Component {
             {
                 name: this.state.name,
                 // transactionTime: this.state.transactionTime,
-                totalFinalPrice: this.state.totalFinalPrice,
+                totalFinalPrice: this.state.totalFinalPrice * 10000,
                 //null / 0  其他为true
-                state: this.state.state == null||this.state.state==0 ? false : true
+                state: this.state.state == null || this.state.state == 0 ? false : true
 
             }
         ).then(response => {
@@ -293,7 +294,7 @@ class ShoppingReceipt extends React.Component {
         })
 
 
-        //异常
+            //异常
             .catch(function (response) {
                 console.log(response);
                 alert(response);
