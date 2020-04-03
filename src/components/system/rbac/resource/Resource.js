@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import urls from '../../../config/urls.js';
+import urls from '../../../../config/urls.js';
 
 import "antd/dist/antd.css";
 

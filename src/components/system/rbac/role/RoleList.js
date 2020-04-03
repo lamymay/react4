@@ -1,16 +1,14 @@
 import React from "react";
-import "antd/dist/antd.css";
-import axios from 'axios';
-
-import UserInsert from "./UserInsert";
+import urls from '../../../../config/urls';
+import axios from "axios";
 
 import {
     Table,
     Card,
     Button,
     Modal,
-    Form,
-    Input,
+    // Form,
+    // Input,
     // Tooltip,
     // Icon,
     // Cascader,
@@ -21,62 +19,27 @@ import {
     // Checkbox,
     // AutoComplete,
 } from 'antd';
-import urls from "../../../../config/urls";
 
-class User extends React.Component {
+class RoleList extends React.Component {
 
 
     constructor(props) {
         super(props);
         this.state = {
-            tableTitle: "用户列表",
+            deleteUrl: urls.role.delete,
+            tableTitle: "角色列表",
             users: [],
             visibleForInsert: false,
-            test: "453455454"
+            test: "0002"
         }
     }
 
 
     componentDidMount() {
         //获取列表数据
-        this.refreshTable();
+        this.refreshTableForRole();
     }
 
-    refreshTable = () => {
-        axios.post(urls.user.listPageUser, {})
-            .then(response => {
-                console.log("response  then ==获取到后台返回的数据");
-                console.log(response.data);
-                if (response != null && response.data.code === 1) {
-                    console.log("refreshTable");
-                    console.log(response.data.msg);
-                    console.log(response.data.msg);
-                    console.log(response.data.msg);
-                }
-
-
-                //失败
-                if (null == response.data.data) {
-                    alert(response.data.msg);
-                }
-
-                var fromDb = response.data.data;
-                console.log(fromDb);
-
-                //赋值
-                this.setState({users: fromDb});
-                console.log(this.state.users);
-
-
-            })
-            .catch(function (error) {
-                //异常
-                console.log(error);
-                console.log('异常  catch =====',);
-
-            });
-
-    };
 
     //子父组件传值
     showModal = () => {
@@ -84,52 +47,11 @@ class User extends React.Component {
             visibleForInsert: true,
         });
 
-
         console.log("原始状态 " + this.state.visibleForInsert);
         let flag = !this.state.visibleForInsert;
         console.log("flag= " + flag);
         //this.setState({visibleForInsert: flag});
         console.log("子父组件传值 ，flag= " + flag + " 状态= " + this.state.visibleForInsert);
-
-
-    };
-
-
-    //请求服务器 保存数据
-    saveUser = (e) => {
-        axios.post(urls.user.saveUser, {
-            nickname: this.state.nickname,
-            state: this.state.state == null ? 0 : this.state.state
-
-        }).then(response => {
-            let code = response.data.code;
-            if (code === 1) {
-                console.log(response.data.msg);
-                //关闭弹出框
-                this.setState({
-                    visibleForInsert: false,
-                    nickname: "",
-                    state: 0
-                });
-
-                //刷新
-                this.refreshTable();
-
-                // location.reload();
-                // this.forceUpdate();
-                // this.props.history.push(urls.user.index);
-
-            }
-        })
-
-
-            //异常
-            .catch(function (response) {
-                console.log(response);
-                alert(response);
-                console.log('catch 异常',);
-            });
-        ;
     };
 
 
@@ -141,7 +63,7 @@ class User extends React.Component {
     //executeInsertModal
     executeInsertModal(visible) {
         this.setState({visibleForInsert: visible});
-        console.log("  ----------------->保存用户 executeInsertModal");
+        console.log("  ----------------->保存 executeInsertModal");
         this.saveUser();
     }
 
@@ -168,36 +90,44 @@ class User extends React.Component {
             //     title: '测试合并',
             //     render: (text, record) => (
             //         <span>
-            //            {record.nickname}--
+            //            {record.name}--
             //             {record.avatar}>
             //             </span>
             //     )
             // },
             {
-                key: 'nickname',
-                title: '昵称',
-                dataIndex: 'nickname',
+                key: 'id',
+                title: 'id',
+                dataIndex: 'id'
+            }, {
+                key: 'name',
+                title: '名称',
+                dataIndex: 'name',
                 width: 150
             },
-            // {
-            //     key: 'avatar',
-            //     title: '标识',
-            //     dataIndex: 'avatar'
-            // },
+            {
+                key: 'root',
+                title: 'root',
+                dataIndex: 'root'
+            }, {
+                key: 'note',
+                title: 'note',
+                dataIndex: 'note'
+            },
             {
                 key: 'state',
                 title: '启用状态',
                 dataIndex: 'state'
             },
             {
-                key: 'createDate',
+                key: 'createTime',
                 title: '创建时间',
-                dataIndex: 'createDate'
+                dataIndex: 'createTime'
             },
             {
-                key: 'updateDate',
+                key: 'updateTime',
                 title: '更新时间',
-                dataIndex: 'updateDate'
+                dataIndex: 'updateTime'
             },
             {
                 key: 'add-remove',
@@ -205,27 +135,25 @@ class User extends React.Component {
                 render: (text, record) => (
                     <span>
                         {/*<Button onClick={this.add}>add {record.id}</Button>*/}
-                        <Button onClick={this.remove.bind(this, record.id)}>删除-{record.id}</Button>
+                        <Button onClick={this.remove.bind(this, record.id, this.state.deleteUrl)}>删除</Button>
                     </span>
                 )
             }
         ];
-        //////////////////////
+        //////////////////////  return  //////////////////////
 
         return (<div>
 
             <Card title={this.state.tableTitle}>
 
                 {/*点击新增按钮：1、弹出输入框 2、获取输入数据保存 3、关闭输入框*/}
-                <Button type="primary" onClick={this.showModal}>新增人员 </Button>
+                <Button type="primary" onClick={this.showModal}>新增 </Button>
                 {/*<Button type="dashed" onClick={this.updateUser}>测试 dashed与后台交互</Button>*/}
                 {/*<Button type="danger" onClick={this.updateUser}>测试 danger与后台交互</Button>*/}
 
-
                 {/*<UserInsert visibleForInsert={this.state.visibleForInsert} user={this}/>*/}
-
                 <Modal
-                    title="新增用户"
+                    title="新增"
                     wrapClassName="vertical-center-modal"
                     visible={this.state.visibleForInsert}
                     onOk={() => this.executeInsertModal(false)}
@@ -238,9 +166,9 @@ class User extends React.Component {
 
                         <div>
                             昵称：<input type="text"
-                                      name="nickname"
-                                      name="nickname"
-                                      placeholder="nickname"
+                                      name="name"
+                                      name="name"
+                                      placeholder="name"
                                       autoFocus
                                       onChange={e => this.onInputChange(e)}
                         />
@@ -283,31 +211,91 @@ class User extends React.Component {
 
     }
 
-    remove(id) {
+
+    // 发请求去查询分页数据
+    refreshTableForRole(listPage, query) {
+        this.listPageForRole(urls.role.listPage, {});
+    }
+
+    //查分页数据
+    listPageForRole(listPage, query) {
+        let roleList = new Array();
+        axios.post(listPage, query).then(response => {
+            console.log(response.data);
+            if (response != null && response.data.code === 1) {
+                console.log("refreshTable");
+                console.log(response.data.msg);
+            }
+            //失败
+            if (null == response.data.data) {
+                alert(response.data.msg);
+            }
+
+
+            var fromDb = response.data.data;
+            console.log(fromDb);
+            //赋值
+            this.setState({users: fromDb});
+
+            console.log(this.state.users);
+        }).catch(function (error) {
+            //异常
+            console.log(error);
+            console.log('异常  catch  list page role====',);
+        });
+    }
+
+
+    //请求服务器 保存数据
+    saveUser = (e) => {
+        axios.post(urls.user.saveUser, {
+            name: this.state.name,
+            state: this.state.state == null ? 0 : this.state.state
+
+        }).then(response => {
+            let code = response.data.code;
+            if (code === 1) {
+                console.log(response.data.msg);
+                //关闭弹出框
+                this.setState({
+                    visibleForInsert: false,
+                    name: "",
+                    state: 0
+                });
+
+                //刷新
+                this.refreshTable();
+
+                // location.reload();
+                // this.forceUpdate();
+                // this.props.history.push(urls.user.index);
+
+            }
+        }).catch(function (response) {
+            console.log(response);
+            alert(response);
+            console.log('catch 异常',);
+        });
+        ;
+    };
+
+    //删除
+    remove(id, deleteUrl) {
         console.log("删除--" + id);
         console.log(id);
-        let url = urls.user.delete + id;
+        let url = deleteUrl + id;
         console.log(url);
-        console.log(url);
-        axios.get(url).then(response => {
+        axios.delete(url).then(response => {
             if (response != null && response.data.code === 1) {
                 console.log(response.data.msg);
                 //刷新
                 this.refreshTable();
             }
-
-        })
-            .catch(function (error) {
-                //异常
-                console.log(error);
-                console.log('catch 异常',);
-
-            });
-
-
+        }).catch(function (error) {
+            console.log(error);
+            console.log('异常',);
+        });
     }
-
-
 }
 
-export default User;
+export default RoleList;

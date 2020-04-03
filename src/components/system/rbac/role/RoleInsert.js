@@ -18,10 +18,10 @@ class RoleInsert extends React.Component {
         //赋值给 roles
         //渲染 表格 在页面中做 新增 编辑 删除 等
         //生命周期函数中获取 GET传值
-        console.log(this.props.match.params.aid);
-        console.log(this.props.match.params.aid);
-        console.log(this.props.match.params.aid);
-        console.log(this.props.match.params.aid);
+        // console.log(this.props.match.params.aid);
+        // console.log(this.props.match.params.aid);
+        // console.log(this.props.match.params.aid);
+        // console.log(this.props.match.params.aid);
 
         console.log("*******************");
         console.log(this.props);

@@ -1,5 +1,7 @@
 import React from "react";
 // import RoleInsert from './RoleInsert'
+import RoleList from './RoleList'
+import RoleInsert from './RoleInsert'
 import {Link} from "react-router-dom";
 
 class Role extends React.Component {
@@ -49,16 +51,22 @@ class Role extends React.Component {
     render() {
         return (
             <div>
-                <h2>GET 角色-动态传值测试</h2>
+                <div>
+                    <RoleList/>
+                    <RoleInsert/>
+                </div>
+                <div>
+                    <h2>GET 角色-动态传值测试</h2>
 
-                <ul>
-                    {this.state.roles.map((value, key) => {
-                        return <li key={key}>
-                            <Link to={`/roleInsert/${value.aid}`}>{value.title}</Link>
-                        </li>
+                    <ul>
+                        {this.state.roles.map((value, key) => {
+                            return <li key={key}>
+                                <Link to={`/roleInsert/${value.aid}`}>{value.title}</Link>
+                            </li>
 
-                    })}
-                </ul>
+                        })}
+                    </ul>
+                </div>
             </div>
         )
     }

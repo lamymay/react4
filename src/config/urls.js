@@ -39,6 +39,22 @@ const urls = {
         listPage: prefixUri + "/sys/resource/page",
         listFileByQuery: prefixUri + "/sys/resource/list",
     },
+    role: {
+        // GET 扫描所有controller资源
+        save: prefixUri + "/sys/roles",
+        delete: prefixUri + "/sys/roles/",
+        update: prefixUri + "/sys/roles/id",
+        getByCode: prefixUri + "/roles/",
+        listPage: prefixUri + "/sys/roles/page",
+        listFileByQuery: prefixUri + "/sys/roles/list",
+    },
+    user: {
+        index: "/user",
+        listUser: prefixUri + "/sys/users/list",
+        saveUser: prefixUri + "/sys/users/save",
+        delete: prefixUri + "/sys/users/delete/",
+        listPageUser: prefixUri + "/sys/users/page",
+    },
     blog: {
         saveBlog: prefixUri + "/v1/blogs/save",
         updateBlog: prefixUri + "/v1/blogs/update",
@@ -48,13 +64,6 @@ const urls = {
     menu: {
         listMenu: prefixUri + "/menus/list",
         saveMenu: prefixUri + "/menus/save",
-    },
-    user: {
-        index: "/user",
-        listUser: prefixUri + "/sys/users/list",
-        saveUser: prefixUri + "/sys/users/save",
-        delete: prefixUri + "/sys/users/delete/",
-        listPageUser: prefixUri + "/sys/users/page",
     },
     receipt: {
         index: "/receipt",
