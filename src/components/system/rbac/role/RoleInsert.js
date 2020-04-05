@@ -1,4 +1,5 @@
 import React from "react";
+import {Modal} from "antd";
 
 
 class RoleInsert extends React.Component {
@@ -46,6 +47,36 @@ class RoleInsert extends React.Component {
             <h4> 新增角色</h4>
             <h5> 新增角色</h5>
             <h6> 新增角色</h6>
+            {/* save insert 创建    新增 新建的框框*/}
+            <div>
+
+
+                <div>
+                    昵称：<input type="text"
+                              name="name"
+                              name="name"
+                              placeholder="name"
+                              autoFocus
+                              onChange={e => this.onInputChange(e)}
+                />
+                </div>
+                <div>
+                    状态：<input type="text"
+                              id="state"
+                              name="state"
+                              placeholder="state"
+                              onChange={e => this.onInputChange(e)}
+                />
+                </div>
+                {/*<div>*/}
+                {/*    avatar：<input type="text"*/}
+                {/*              id="avatar"*/}
+                {/*              name="avatar"*/}
+                {/*              placeholder="avatar"*/}
+                {/*              onChange={e => this.onInputChange(e)}*/}
+                {/*/>*/}
+                {/*</div>*/}
+            </div>
 
 
         </div>)

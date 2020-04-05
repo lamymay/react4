@@ -1,6 +1,7 @@
 import React from "react";
 import urls from '../../../../config/urls';
 import axios from "axios";
+import RoleAddResource from "./RoleAddResource"
 
 import {
     Table,
@@ -19,6 +20,7 @@ import {
     // Checkbox,
     // AutoComplete,
 } from 'antd';
+import RoleInsert from "./RoleInsert";
 
 class RoleList extends React.Component {
 
@@ -28,8 +30,9 @@ class RoleList extends React.Component {
         this.state = {
             deleteUrl: urls.role.delete,
             tableTitle: "角色列表",
-            users: [],
+            list: [],
             visibleForInsert: false,
+            visibleForAddResource: false,
             test: "0002"
         }
     }
@@ -43,15 +46,38 @@ class RoleList extends React.Component {
 
     //子父组件传值
     showModal = () => {
-        this.setState({
-            visibleForInsert: true,
-        });
+        // console.log(model);
+        // console.log(model);
+        // console.log(model);
+        // if ("RoleInsert" == model) {
+        //     this.setState({
+        //         visibleForInsert: true,
+        //     });
+        // }else if("RoleAddResource"==model){
+        //     console.log("RoleAddResource");
+        // }
 
-        console.log("原始状态 " + this.state.visibleForInsert);
-        let flag = !this.state.visibleForInsert;
-        console.log("flag= " + flag);
-        //this.setState({visibleForInsert: flag});
-        console.log("子父组件传值 ，flag= " + flag + " 状态= " + this.state.visibleForInsert);
+        console.log("原始的状态 " + this.state.visibleForInsert);
+        this.setState({
+            visibleForInsert: !this.state.visibleForInsert,
+        });
+        console.log("修改后的状态 " + this.state.visibleForInsert);
+
+        console.log("子父组件传值 ，flag=  " + this.state.visibleForInsert);
+    };
+
+    ///////// todo 抽取
+    showModalForRoleAddResource = () => {
+        // let showAddResourceFlag = !this.state.visibleForAddResource;
+        let showAddResourceFlag = true;
+        console.log(showAddResourceFlag);
+        console.log(showAddResourceFlag);
+        console.log(showAddResourceFlag);
+        console.log(showAddResourceFlag);
+        console.log("原始visibleForAddResource的状态 " + this.state.visibleForAddResource);
+        this.setState({visibleForAddResource: showAddResourceFlag});
+        console.log("修改后visibleForAddResource的状态 " + this.state.visibleForAddResource);
+        console.log("子父组件传值visibleForAddResource =  " + this.state.visibleForAddResource);
     };
 
 
@@ -159,50 +185,40 @@ class RoleList extends React.Component {
                     onOk={() => this.executeInsertModal(false)}
                     onCancel={() => this.cancelInsertModal(false)}
                 >
+                    <RoleInsert/>
+                </Modal>
 
-                    {/* save insert 创建    新增 新建的框框*/}
-                    <div>
-
-
-                        <div>
-                            昵称：<input type="text"
-                                      name="name"
-                                      name="name"
-                                      placeholder="name"
-                                      autoFocus
-                                      onChange={e => this.onInputChange(e)}
-                        />
-                        </div>
-                        <div>
-                            状态：<input type="text"
-                                      id="state"
-                                      name="state"
-                                      placeholder="state"
-                                      onChange={e => this.onInputChange(e)}
-                        />
-                        </div>
-                        {/*<div>*/}
-                        {/*    avatar：<input type="text"*/}
-                        {/*              id="avatar"*/}
-                        {/*              name="avatar"*/}
-                        {/*              placeholder="avatar"*/}
-                        {/*              onChange={e => this.onInputChange(e)}*/}
-                        {/*/>*/}
-                        {/*</div>*/}
-                    </div>
-
-
+                <Button type="primary" onClick={this.showModalForRoleAddResource}>RoleAddResource </Button>
+                <Modal
+                    title="RoleAddResource"
+                    wrapClassName="vertical-center-modal"
+                    visible={this.state.visibleForAddResource}
+                    onOk={() => this.executeInsertModal(false)}
+                    onCancel={() => this.cancelInsertModal(false)}
+                >
+                    <RoleAddResource/>
                 </Modal>
 
 
-                {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
+                {/*<Button type="primary" onClick={this.showModal}>测试RoleAddResource </Button>*/}
+                {/*<Modal*/}
+                {/*title="测试RoleAddResource"*/}
+                {/*wrapClassName="vertical-center-modal"*/}
+                {/*visible={this.state.visibleForInsert}*/}
+                {/*onOk={() => this.executeInsertModal(false)}*/}
+                {/*onCancel={() => this.cancelInsertModal(false)}*/}
+                {/*>*/}
+                {/*<RoleInsert/>*/}
+                {/*</Modal>*/}
 
+
+                {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
                 {/*<Table  rowKey={record=>record.id} columns={columns} dataSource={this.state.users} bordered>*/}
 
                 <Table
                     rowKey={record => record.id}
                     columns={columns}
-                    dataSource={this.state.users}
+                    dataSource={this.state.list}
                     pageSize={10}
                     bordered>
                 </Table>
@@ -235,9 +251,9 @@ class RoleList extends React.Component {
             var fromDb = response.data.data;
             console.log(fromDb);
             //赋值
-            this.setState({users: fromDb});
+            this.setState({list: fromDb});
 
-            console.log(this.state.users);
+            console.log(this.state.list);
         }).catch(function (error) {
             //异常
             console.log(error);

@@ -1,13 +1,12 @@
 import React from "react";
 import urls from '../../../../config/urls';
 
-class c extends React.Component {
+class RoleAddResource extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            roles: [
-            ]
+            roles: []
         }
     }
 

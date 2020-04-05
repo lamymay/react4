@@ -1,7 +1,7 @@
 import React from "react";
 // import RoleInsert from './RoleInsert'
 import RoleList from './RoleList'
-import RoleInsert from './RoleInsert'
+// import RoleInsert from './RoleInsert'
 import {Link} from "react-router-dom";
 
 class Role extends React.Component {
@@ -53,7 +53,6 @@ class Role extends React.Component {
             <div>
                 <div>
                     <RoleList/>
-                    <RoleInsert/>
                 </div>
                 <div>
                     <h2>GET 角色-动态传值测试</h2>
