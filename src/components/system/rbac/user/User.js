@@ -9,8 +9,8 @@ import {
     Card,
     Button,
     Modal,
-    Form,
-    Input,
+    // Form,
+    // Input,
     // Tooltip,
     // Icon,
     // Cascader,
@@ -225,7 +225,7 @@ class User extends React.Component {
                 {/*<UserInsert visibleForInsert={this.state.visibleForInsert} user={this}/>*/}
 
                 <Modal
-                    title="新增用户"
+                    title="新增"
                     wrapClassName="vertical-center-modal"
                     visible={this.state.visibleForInsert}
                     onOk={() => this.executeInsertModal(false)}

@@ -31,13 +31,14 @@ const urls = {
     //resource 完全使用 RESTFul  ?  ，项目中使用get + post 来实现
     resource: {
         // GET 扫描所有controller资源
-        scan: prefixUri + "/sys/resource/scan/controller",
-        save: prefixUri + "/sys/resource",
-        delete: prefixUri + "/sys/resource/",
-        update: prefixUri + "/sys/resource/id",
-        getByCode: prefixUri + "/resource/",
-        listPage: prefixUri + "/sys/resource/page",
-        listFileByQuery: prefixUri + "/sys/resource/list",
+        scan: prefixUri + "/sys/resources/scan/controller",
+        save: prefixUri + "/sys/resources",
+        delete: prefixUri + "/sys/resources/",
+        deleteBatch: prefixUri + "/sys/resources/delete/batch",
+        update: prefixUri + "/sys/resources/id",
+        getByCode: prefixUri + "/resources/",
+        listPage: prefixUri + "/sys/resources/page",
+        listFileByQuery: prefixUri + "/sys/resources/list",
     },
     role: {
         // GET 扫描所有controller资源

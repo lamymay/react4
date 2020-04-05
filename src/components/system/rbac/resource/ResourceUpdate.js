@@ -2,22 +2,27 @@ import React from "react";
 import url from 'url';
 import {Button, Card, Form, Input, Modal} from "antd";
 
-// 新建
-class ResourceInsert extends React.Component {
+// 更新
+class ResourceUpdate extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+
             id: -1,
             visible: false
+
 
         }
     }
 
 
     componentDidMount() {
+        console.log("ch ch ch");
+
         console.log(this.props.visibleForInsert);
         // console.log(this.state.visible);
+
         //获取列表数据
         // this.getList();
         //赋值给 list
@@ -30,7 +35,7 @@ class ResourceInsert extends React.Component {
     }
 
 
-    saveOne= () => {
+    saveOne = () => {
         console.log("save!!!!!!");
     };
 
@@ -89,4 +94,4 @@ class ResourceInsert extends React.Component {
     }
 }
 
-export default ResourceInsert;
+export default ResourceUpdate;
