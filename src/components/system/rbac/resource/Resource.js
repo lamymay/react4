@@ -39,13 +39,13 @@ class Resource extends React.Component {
         axios.post(urls.resource.listPage, {})
             .then(response => {
                 console.log("response  then ==获取到后台返回的数据");
+                console.log(response);
                 console.log(response.data);
-                if (response != null && response.data.code === 1) {
-                    var dataFromDb = response.data.data.content;
+                console.log(response.data.content);
+
                     //赋值
-                    this.setState({list: dataFromDb});
+                    this.setState({list: response.data.content});
                     console.log(this.state.list);
-                }
 
             }).catch(function (error) {
             //异常
