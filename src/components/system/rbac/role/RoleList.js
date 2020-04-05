@@ -31,8 +31,10 @@ class RoleList extends React.Component {
             deleteUrl: urls.role.delete,
             tableTitle: "角色列表",
             list: [],
+            resources: [],
+            resourceIds: [],
             visibleForInsert: false,
-            visibleForAddResource: false,
+            visibleForAddResource: true,
             test: "0002"
         }
     }
@@ -81,18 +83,39 @@ class RoleList extends React.Component {
     };
 
 
-    cancelInsertModal(visible) {
-        this.setState({visibleForInsert: visible});
-        console.log("  ----------------->取消 填充数据 cancelInsertModal");
-    }
 
-    //executeInsertModal
+    //Modal1-executeInsertModal
     executeInsertModal(visible) {
         this.setState({visibleForInsert: visible});
         console.log("  ----------------->保存 executeInsertModal");
         this.saveUser();
     }
 
+    // Modal1 -
+    cancelInsertModal(visible) {
+        this.setState({visibleForInsert: visible});
+        console.log("  ----------------->取消 填充数据 cancelInsertModal");
+    }
+
+    //Modal2
+    okModalForAddResourcesToRole(visible) {
+        this.listResource();
+
+        // this.setState({visibleForInsert: visible});
+        console.log("###################################");
+        console.log("okModalForAddResourcesToRole");
+        console.log("visible" + visible);
+        console.log("SAVE");
+        console.log(this.state.resources);
+        // this.saveUser();
+        console.log("###################################");
+    }
+
+    // Modal2
+    cancelModalForAddResourcesToRole(visible) {
+        // this.setState({visibleForInsert: visible});
+        console.log("  ----------------->取消 cancelModalForAddResourcesToRole");
+    }
 
     onInputChange(e) {
         //es6变量名是一个变量
@@ -105,6 +128,28 @@ class RoleList extends React.Component {
             [inputName]: inputValue
         })
     }
+
+
+    //获取资源列表
+    listResource = () => {
+        axios.post(urls.resource.listPage, {})
+            .then(response => {
+                console.log("response  then ==获取到后台返回的数据");
+                console.log(response.data);
+                if (response != null && response.data.code === 1) {
+                    var dataFromDb = response.data.data.content;
+                    //赋值
+                    this.setState({resources: dataFromDb});
+                    console.log(this.state.resources);
+                }
+
+            }).catch(function (error) {
+            //异常
+            console.log(error);
+            console.log('catch异常',);
+        });
+
+    };
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////  render
     render() {
@@ -160,7 +205,7 @@ class RoleList extends React.Component {
                 title: 'add/remove',
                 render: (text, record) => (
                     <span>
-                        {/*<Button onClick={this.add}>add {record.id}</Button>*/}
+                        <Button onClick={this.remove.bind(this, record.id, this.state.deleteUrl)}>保存</Button>
                         <Button onClick={this.remove.bind(this, record.id, this.state.deleteUrl)}>删除</Button>
                     </span>
                 )
@@ -193,10 +238,11 @@ class RoleList extends React.Component {
                     title="RoleAddResource"
                     wrapClassName="vertical-center-modal"
                     visible={this.state.visibleForAddResource}
-                    onOk={() => this.executeInsertModal(false)}
-                    onCancel={() => this.cancelInsertModal(false)}
+                    onOk={() => this.okModalForAddResourcesToRole(false)}
+                    onCancel={() => this.cancelModalForAddResourcesToRole(false)}
                 >
                     <RoleAddResource/>
+
                 </Modal>
 
 
@@ -312,6 +358,8 @@ class RoleList extends React.Component {
             console.log('异常',);
         });
     }
+
+
 }
 
 export default RoleList;

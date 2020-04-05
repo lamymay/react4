@@ -30,23 +30,12 @@ class RoleInsert extends React.Component {
     }
 
 
-    getUsers = () => {
-
-    };
-
 
     //字符串拼接
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////  render
     render() {
         return (<div>
-
-            <h1> 新增角色</h1>
-            <h2> 新增角色</h2>
-            <h3> 新增角色</h3>
-            <h4> 新增角色</h4>
-            <h5> 新增角色</h5>
-            <h6> 新增角色</h6>
             {/* save insert 创建    新增 新建的框框*/}
             <div>
 
@@ -77,8 +66,6 @@ class RoleInsert extends React.Component {
                 {/*/>*/}
                 {/*</div>*/}
             </div>
-
-
         </div>)
     }
 }

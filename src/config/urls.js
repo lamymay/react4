@@ -36,6 +36,7 @@ const urls = {
         delete: prefixUri + "/sys/resources/",
         deleteBatch: prefixUri + "/sys/resources/delete/batch",
         update: prefixUri + "/sys/resources/id",
+        addResourcesToRole: prefixUri + "/sys/resources/{id}/resources",
         getByCode: prefixUri + "/resources/",
         listPage: prefixUri + "/sys/resources/page",
         listFileByQuery: prefixUri + "/sys/resources/list",

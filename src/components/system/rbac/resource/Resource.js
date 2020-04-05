@@ -41,24 +41,17 @@ class Resource extends React.Component {
                 console.log("response  then ==获取到后台返回的数据");
                 console.log(response.data);
                 if (response != null && response.data.code === 1) {
-
                     var dataFromDb = response.data.data.content;
-
                     //赋值
                     this.setState({list: dataFromDb});
                     console.log(this.state.list);
-
                 }
 
-
-            })
-            .catch(function (error) {
-                //异常
-                console.log(error);
-                console.log('异常  catch =====',);
-
-            });
-
+            }).catch(function (error) {
+            //异常
+            console.log(error);
+            console.log('catch异常',);
+        });
     };
 
     scanResourceFromController = () => {

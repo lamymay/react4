@@ -1,0 +1,102 @@
+@charset "UTF-8";
+/*@import "~antd/dist/antd.css";*/
+/*顶栏样式*/
+
+.img-body {
+    width: auto;
+    height: 250px;
+    textAlign: 'center'
+}
+
+/*宋体、黑体、微软雅黑、Arial, Helvetica, sans-serif此4种字体。*/
+.img-title {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.front-ms {
+    font-family: '微软雅黑';
+}
+
+.front-Aria {
+    font-family: 'Aria';
+}
+
+.front-Helvetica {
+    font-family: 'Helvetica';
+}
+
+.front-song {
+    font-family: '宋体';
+}
+
+.front-sans-serif {
+    font-family: 'sans-serif';
+}
+
+.front-black {
+    font-family: '黑体';
+}
+
+
+.file-search-input {
+    width: 400px;
+    height: 30px;
+    textAlign: 'center';
+    font-family: 'sans-serif';
+    color: darkviolet;
+}
+
+/*FileSearch 用的css */
+.image-node {
+    width: 200px;
+    height: 200px;
+
+    /*width: 80%;*/
+    /*width: 50%;*/
+    /*height: 50%;*/
+    textAlign: 'center';
+    font-family: 'sans-serif';
+    display: inline-block;
+    content: '';
+    /*padding-left: 100%;*/
+    background: #cccccc;
+
+    float: left;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+
+/**/
+.menu-input-save {
+    /*background: #cccccc;*/
+    /*float: right;*/
+    /*margin-right: 2%;*/
+    /*margin-top: 2%;*/
+    width: 120px;
+    font-family: 'sans-serif';
+    display: inline-block;
+    content: '';
+}
+
+.menu-input-save-sort {
+    width: 100px;
+    /*background: #cccccc;*/
+    /*float: right;*/
+    /*margin-right: 2%;*/
+    /*margin-top: 2%;*/
+    font-family: 'sans-serif';
+    display: inline-block;
+    content: '';
+}
+
+.node-for-save-btn {
+    /*background: #cccccc;*/
+    float: right;
+    /*margin-right: 2%;*/
+    /*margin-top: 2%;*/
+    font-family: 'sans-serif';
+    display: inline-block;
+    content: '';
+}
+

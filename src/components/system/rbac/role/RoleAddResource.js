@@ -1,5 +1,8 @@
 import React from "react";
 import urls from '../../../../config/urls';
+import {Modal} from "antd";
+import axios from "axios";
+import "../../../../assets/css/system/rbac/role/role.css"
 
 class RoleAddResource extends React.Component {
 
@@ -23,30 +26,87 @@ class RoleAddResource extends React.Component {
         // console.log(this.props.match.params.aid);
 
         console.log("*******************");
-        console.log(urls.role);
         console.log(this.props);
         console.log("*******************");
     }
 
 
-    getUsers = () => {
-
-    };
 
 
-    //字符串拼接
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////  render
+
+
+
+//字符串拼接
+
+///////////////////////////////////////////////////////////////////////////////////////////////////  render
     render() {
         return (<div>
 
-            <h1> RoleAddResource</h1>
-            <h2> RoleAddResource</h2>
-            <h3> RoleAddResource</h3>
-            <h4> RoleAddResource</h4>
-            <h5> RoleAddResource</h5>
-            <h6> RoleAddResource</h6>
+            <div>
 
+
+                {/*渲染list 数据*/}
+
+     {/*           {this.state.resources.map((value, key) => {
+                    return (
+                        <div key={`${value.id}${value.name}`}
+                             className='image-node'
+                        >
+                            id:{value.id}
+                            <br/>
+                            systemId:{value.systemId}
+                            <br/>
+                            pId:{value.parentId}
+                            <br/>
+                            sort{value.sort} <br/>
+                            name:{value.name}
+                            <br/>
+                            level:{value.level}
+                            <br/>
+                            state:{value.state}
+                            <br/>
+                            url:{value.url}
+                            <br/>
+                            icon:{value.icon}
+                            <br/>
+                            note:{value.note}
+                            createDate:{value.createDate}
+                            <br/>
+                            updateDate:{value.updateDate}
+                            <br/>
+                            <p className='front-black'>{value.name}</p>
+                        </div>
+                    )
+                })}
+*/}
+
+                <div>
+                    昵称：<input type="text"
+                              name="name"
+                              name="name"
+                              placeholder="name"
+                              autoFocus
+                              onChange={e => this.onInputChange(e)}
+                />
+                </div>
+                <div>
+                    状态：<input type="text"
+                              id="state"
+                              name="state"
+                              placeholder="state"
+                              onChange={e => this.onInputChange(e)}
+                />
+                </div>
+                {/*<div>*/}
+                {/*    avatar：<input type="text"*/}
+                {/*              id="avatar"*/}
+                {/*              name="avatar"*/}
+                {/*              placeholder="avatar"*/}
+                {/*              onChange={e => this.onInputChange(e)}*/}
+                {/*/>*/}
+                {/*</div>*/}
+            </div>
 
         </div>)
     }
