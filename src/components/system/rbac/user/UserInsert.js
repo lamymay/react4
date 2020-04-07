@@ -1,6 +1,8 @@
 import React from "react";
-import url from 'url';
-import {Button, Card, Form, Input, Modal} from "antd";
+import {
+    // Card,
+    Button, Form, Input, Modal
+} from "antd";
 
 // 新增用户
 class UserInsert extends React.Component {

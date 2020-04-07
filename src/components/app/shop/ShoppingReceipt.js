@@ -156,7 +156,6 @@ class ShoppingReceipt extends React.Component {
                             <div>
                                 名称：<input type="text"
                                           name="name"
-                                          name="name"
                                           placeholder="name"
                                           autoFocus
                                           onChange={e => this.onInputChange(e)}
@@ -269,7 +268,7 @@ class ShoppingReceipt extends React.Component {
                 // transactionTime: this.state.transactionTime,
                 totalFinalPrice: this.state.totalFinalPrice * 10000,
                 //null / 0  其他为true
-                state: this.state.state == null || this.state.state == 0 ? false : true
+                state: this.state.state === null || this.state.state === 0 ? false : true
 
             }
         ).then(response => {

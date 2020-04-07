@@ -29,11 +29,11 @@ class File extends React.Component {
     //编辑按钮的单击事件，修改状态机display_name的取值
     showFileDownload = () => {
         // this.setState({display_name: 'block',})
-        if (this.state.display_name == 'none') {
+        if (this.state.display_name === 'none') {
             this.setState({
                 display_name: 'block',
             })
-        } else if (this.state.display_name == 'block') {
+        } else if (this.state.display_name === 'block') {
             this.setState({
                 display_name: 'none',
             })
@@ -45,19 +45,11 @@ class File extends React.Component {
     render() {
         return (
             <div>
-                <div
-                    style={{
-                        // width: '50px',
-                        // height: '50px',
-                        // float: 'left',
-                        // backgroundColor: 'yellow',
-                        // fontSize: '24px'
-                    }}>
-                    <FileUpload2/>
+                <span>
                     <FileDownload2/>
-                </div>
+                    <FileUpload2/>
+                </span>
 
-                <hr/>
 
                 {/*文件列表*/}
                 <FileManage/>

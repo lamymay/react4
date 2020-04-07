@@ -281,7 +281,7 @@ class RoleList extends React.Component {
 
     //查分页数据
     listPageForRole(listPage, query) {
-        let roleList = new Array();
+        // let roleList = new Array();
         axios.post(listPage, query).then(response => {
             console.log(response.data);
             if (response != null && response.data.code === 1) {

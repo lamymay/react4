@@ -18,7 +18,6 @@ import File from "../components/system/file/File";
 import FileManage from "../components/system/file/FileManage";
 import FileSearch from "../components/system/file/FileSearch";
 
-import React from "react";
 
 //购物小票
 import ShoppingReceipt from '../components/app/shop/ShoppingReceipt'

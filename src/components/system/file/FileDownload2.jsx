@@ -22,7 +22,7 @@ class FileDownload2 extends React.Component {
 
     getFile = (symbol) => {
         //  检索条件 symbol  校验与赋值
-        if (this.state.symbol == null || this.state.symbol.trim() == "") {
+        if (this.state.symbol === null || this.state.symbol.trim() === "") {
             alert(this.state.alertMessage);
             return;
         }

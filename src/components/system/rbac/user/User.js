@@ -2,7 +2,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import axios from 'axios';
 
-import UserInsert from "./UserInsert";
+// import UserInsert from "./UserInsert";
 
 import {
     Table,
@@ -238,7 +238,6 @@ class User extends React.Component {
 
                         <div>
                             昵称：<input type="text"
-                                      name="nickname"
                                       name="nickname"
                                       placeholder="nickname"
                                       autoFocus

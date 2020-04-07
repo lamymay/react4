@@ -1,7 +1,7 @@
 import React from "react";
-import urls from '../../../../config/urls';
-import {Modal} from "antd";
-import axios from "axios";
+// import urls from '../../../../config/urls';
+// import {Modal} from "antd";
+// import axios from "axios";
 import "../../../../assets/css/system/rbac/role/role.css"
 
 class RoleAddResource extends React.Component {
@@ -29,12 +29,6 @@ class RoleAddResource extends React.Component {
         console.log(this.props);
         console.log("*******************");
     }
-
-
-
-
-
-
 
 
 //字符串拼接
@@ -83,7 +77,6 @@ class RoleAddResource extends React.Component {
 
                 <div>
                     昵称：<input type="text"
-                              name="name"
                               name="name"
                               placeholder="name"
                               autoFocus

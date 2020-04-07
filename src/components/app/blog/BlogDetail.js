@@ -73,7 +73,7 @@ class BlogDetail extends React.Component {
         console.log("componentDidMount");
 //todo 组件间传值
         let id = 13;
-        this.getArticle(13);
+        this.getArticle(id);
 
         console.log("----------------------------");
     }

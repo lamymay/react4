@@ -1,5 +1,5 @@
 import React from "react";
-import {Modal} from "antd";
+// import {Modal} from "antd";
 
 
 class RoleInsert extends React.Component {
@@ -42,7 +42,6 @@ class RoleInsert extends React.Component {
 
                 <div>
                     昵称：<input type="text"
-                              name="name"
                               name="name"
                               placeholder="name"
                               autoFocus

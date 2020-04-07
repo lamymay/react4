@@ -89,7 +89,7 @@ class BlogMd extends React.Component {
         // this.props.form.validateFields();
         console.log("----------- md -----------------");
         let id = 13;
-        this.getArticle(13);
+        this.getArticle(id);
         //定时器
         //todo 定时器 触发
         this.interval = setInterval(() => this.tick(), 10000);
@@ -168,7 +168,7 @@ class BlogMd extends React.Component {
 
     updateArticleFun = () => {
         let uri = apis.blog.updateBlog;
-        let body = new Object();
+        let body = {};
         body.id = this.state.id;
         body.content = this.state.content;
         this.postBody(uri, body);

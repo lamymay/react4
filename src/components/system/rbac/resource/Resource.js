@@ -162,7 +162,7 @@ class Resource extends React.Component {
         console.log(ids);
 
         axios.post(urls.resource.deleteBatch, ids).then(response => {
-            if (response != null && response != 0) {
+            if (response !== null && response !== 0) {
                 console.log(response);
                 //刷新
                 this.refreshTable();
