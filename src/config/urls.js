@@ -1,5 +1,5 @@
-// const host = "http://127.0.0.1:8001";
-const host = "http://122.51.110.127:80";   //线上
+const host = "http://127.0.0.1:8001";
+// const host = "http://122.51.110.127:80";   //线上
 // const host = "http://192.168.2.101:8001";  //X230
 const prefixUri = host + "/zero";
 
