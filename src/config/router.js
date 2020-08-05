@@ -1,5 +1,7 @@
 import Index from "../components/basic/Index";
 import CssTest from "../components/test/CssTest";
+import ToolTest from "../components/test/ToolTest";
+import QRTest from "../components/test/QRTest";
 import Role from "../components/system/rbac/role/Role";
 import User from "../components/system/rbac/user/User";
 import Resource from "../components/system/rbac/resource/Resource";
@@ -28,6 +30,14 @@ const routers = [
     {
         path: "/css-test",
         component: CssTest,
+        exact: true
+    }, {
+        path: "/tool-test",
+        component: ToolTest,
+        exact: true
+    }, {
+        path: "/qr-test",
+        component: QRTest,
         exact: true
     },
     {

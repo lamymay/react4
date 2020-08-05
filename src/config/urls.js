@@ -1,7 +1,10 @@
 // const host = "http://127.0.0.1:8001";
-const host = "http://122.51.110.127:80";   //127
+// const host = "http://122.51.110.127:80";   //127
 // const host = "http://192.168.2.243:80";  //X230
-// const host = "http://30.55.112.11:8001"; //MAC
+// const host = "http://122.51.110.127:80";   //线上
+//const host = "http://192.168.2.104:8002";  //10400
+const host = "http://127.0.0.1:8002"; //MAC
+
 const prefixUri = host + "/zero";
 
 // 说明 通常来说
