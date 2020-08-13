@@ -1,7 +1,7 @@
-//import React from "react";
+import React from "react";
 //import * as QrCode from 'qrcode.react'
 
-var React = require('react');
+// var React = require('react');
 var QRCode = require('qrcode.react');
 
 class QRTest extends React.Component {
