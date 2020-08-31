@@ -3,8 +3,9 @@
 
 // const host = "http://127.0.0.1:8002"; //MAC
 
-const host = "http://127.0.0.1:8002"; //本地
+// const host = "http://127.0.0.1:8002"; //本地
 // const host = "http://122.51.110.127:80";   //线上-腾讯云
+const host = "http://https://arc.monster:8002";   //线上-vps
 
 const prefixUri = host + "/zero";
 
