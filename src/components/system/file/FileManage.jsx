@@ -171,6 +171,15 @@ class FileManage extends React.Component {
         //定义表头，一般放在render()中
         const columns = [
             {key: 'id', title: 'id', dataIndex: 'id', high: 20},
+            {
+                key: 'remove', title: '操作',
+                render: (text, record) => (
+                    <span>
+                        <Button onClick={this.download.bind(this, record.id)}>download-{record.id}</Button>
+                        <Button onClick={this.remove.bind(this, record.id)}>delete-{record.id}</Button>
+                    </span>
+                )
+            },
             // {key: 'code', title: 'code', dataIndex: 'code', width: 20, high: 20},
             {key: 'name', title: 'name', dataIndex: 'name', high: 20},
             {key: 'suffix', title: 'suffix', dataIndex: 'suffix'},
@@ -184,18 +193,10 @@ class FileManage extends React.Component {
             {
                 key: 'id',
                 title: '文件大小',
-                render: (text, record) => (<span>    {record.length} {record.lengthUnit}</span>)
-            },
-
-            {
-                key: 'remove', title: '操作',
-                render: (text, record) => (
-                    <span>
-                        <Button onClick={this.download.bind(this, record.id)}>download-{record.id}</Button>
-                        <Button onClick={this.remove.bind(this, record.id)}>remove-{record.id}</Button>
-                    </span>
-                )
+                render: (text, record) => (<span>    {record.length} {record.lengthUnit}byte</span>)
             }
+
+
         ];
         //////////////////////
 
