@@ -1,21 +1,31 @@
 import Index from "../components/basic/Index";
+
+//test
 import CssTest from "../components/test/CssTest";
-import ToolTest from "../components/test/ToolTest";
 import QRTest from "../components/test/QRTest";
-import Role from "../components/system/rbac/role/Role";
-import User from "../components/system/rbac/user/User";
-import Resource from "../components/system/rbac/resource/Resource";
-import UserInsert from "../components/system/rbac/user/UserInsert";
-import RoleInsert from "../components/system/rbac/role/RoleInsert";
+import ToolTest from "../components/test/ToolTest";
+
+//tool
+import QRScan from "../components/tool/QRScan";
+
+//app
 import Food from "../components/app/food/Food";
 import Blog from "../components/app/blog/Blog";
 import ManageBlog from "../components/app/blog/ManageBlog";
 import BlogDetail from "../components/app/blog/BlogDetail";
 import BlogMd from "../components/app/blog/BlogMd";
 import FoodDetails from "../components/app/food/FoodDetails";
-import Menu from "../components/system/menu/Menu";
 import Login from "../components/basic/Login";
 
+
+//system
+import Role from "../components/system/rbac/role/Role";
+import User from "../components/system/rbac/user/User";
+import Resource from "../components/system/rbac/resource/Resource";
+import UserInsert from "../components/system/rbac/user/UserInsert";
+import RoleInsert from "../components/system/rbac/role/RoleInsert";
+
+import Menu from "../components/system/menu/Menu";
 import File from "../components/system/file/File";
 import FileManage from "../components/system/file/FileManage";
 import FileSearch from "../components/system/file/FileSearch";
@@ -25,6 +35,13 @@ import FileSearch from "../components/system/file/FileSearch";
 import ShoppingReceipt from '../components/app/shop/ShoppingReceipt'
 
 const routers = [
+
+    //tool
+    {
+        path: "/qr-scan-test",
+        component: QRScan,
+        exact: true
+    },
 
     // test
     {
