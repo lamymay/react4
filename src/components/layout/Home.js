@@ -13,7 +13,6 @@ import axios from "axios";
 // import FoodDetails from '../app/food/FoodDetails';
 // import FileSearch from '../system/file/FileSearch';
 // import Menu from '../system/menu/Menu';
-
 //路由与 api接口地址抽取
 import routers from '../../config/router.js';
 import apis from '../../config/urls.js';
@@ -42,8 +41,9 @@ class Home extends React.Component {
     // 初始化的时候去获取菜单数据
     getMenusFun = (e) => {
         var systemId = 4;
-        var level = 0;//0 全部
+        var level = 2;// 2=表示查询的是第二级数据
         //localhost:8001/zero/menus/2/levels/0
+        //localhost:8001/zero/menus/4/levels/1
         // var url = "http://arc.com/zero/menus/" + menuId + "/levels/" + level;
 
         let url = apis.listMenusBySystemIdAndLevel;
