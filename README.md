@@ -79,3 +79,19 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+
+react 不适用模版
+react 不是一个mvc框架
+响应式
+react是一个轻量级的js库
+
+原理
+ 虚拟DOM抽象成为一个js对象
+ diff算法
+ 
+ 1 虚拟DOM确保对界面上真正发生变化的部分进行实际的DOM操作
+ 2 逐层次的节点比较
+ 
