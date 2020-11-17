@@ -87,7 +87,6 @@ export default QRTest;
 // · 中国汉字、日本汉字数据 :1,817个
 
 
-//https://jolylai.github.io/notebook-react/antd-pro/env.html#config-文件
 
 
 

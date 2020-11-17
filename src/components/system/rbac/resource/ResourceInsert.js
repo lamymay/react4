@@ -1,6 +1,5 @@
 import React from "react";
 import url from 'url';
-import {Button, Card, Form, Input, Modal} from "antd";
 
 // 新建
 class ResourceInsert extends React.Component {
@@ -41,17 +40,17 @@ class ResourceInsert extends React.Component {
     //     };
     // }
 
-    cancelInsertModal(visible) {
+    cancelInsertdiv(visible) {
         console.log(visible);
         this.setState({visible: visible});
-        console.log("  ----------------->取消 填充数据 cancelInsertModal");
+        console.log("  ----------------->取消 填充数据 cancelInsertdiv");
     }
 
-    //executeInsertModal
-    executeInsertModal(visible) {
+    //executeInsertdiv
+    executeInsertdiv(visible) {
         console.log(visible);
         this.setState({visible: visible});
-        console.log("  ----------------->保存用户 executeInsertModal");
+        console.log("  ----------------->保存用户 executeInsertdiv");
         this.saveUser();
     }
 
@@ -63,28 +62,28 @@ class ResourceInsert extends React.Component {
         return (
 
 
-            <Modal
+            <div
                 title="垂直居中的对话框"
                 wrapClassName="vertical-center-modal"
                 visible={this.props.visibleForInsert}
-                onOk={() => this.executeInsertModal(false)}
-                onCancel={() => this.cancelInsertModal(false)}
+                onOk={() => this.executeInsertdiv(false)}
+                onCancel={() => this.cancelInsertdiv(false)}
             >
 
 
                 <p>对话框的内容= {this.props.visibleForInsert}</p>
-                <Form layout="inline" onSubmit={this.updateUser}>
+                <form layout="inline" onSubmit={this.updateUser}>
 
-                    <Form.Item> <Input placeholder="nickname" onChange={event => this.handleMaxBackUp(event)}/>
-                    </Form.Item>
-                    <Form.Item> <Input placeholder="avatar"></Input> </Form.Item>
-                    <Form.Item> <Input placeholder="state"></Input> </Form.Item>
+                    <div> <input placeholder="nickname" onChange={event => this.handleMaxBackUp(event)}/>
+                    </div>
+                    <div> <input placeholder="avatar"></input> </div>
+                    <div> <input placeholder="state"></input> </div>
 
-                    <Form.Item> <Button type="primary" htmlType="submit"> Log in </Button> </Form.Item>
-                </Form>
+                    <div> <button type="primary" htmlType="submit"> Log in </button> </div>
+                </form>
 
 
-            </Modal>
+            </div>
         )
     }
 }

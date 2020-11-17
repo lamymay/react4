@@ -2,21 +2,6 @@ import React from "react";
 import axios from 'axios';
 import urls from '../../../../config/urls.js';
 
-import "antd/dist/antd.css";
-
-import {
-    Table,
-    Card,
-    Button,
-}
-    from
-        'antd';
-
-// import ReactDOM from 'react-dom'
-// import Connection from '../common/Connection';
-//引入antd，本页面主要是对list数据做渲染
-
-
 //对于 Resource 的CRUD
 class Resource extends React.Component {
 
@@ -110,8 +95,8 @@ class Resource extends React.Component {
                 key: 'remove', title: '操作',
                 render: (text, record) => (
                     <span>
-                        {/*<Button onClick={this.add}>add {record.id}</Button>*/}
-                        <Button onClick={this.remove.bind(this, record.id)}>remove</Button>
+                        {/*<button onClick={this.add}>add {record.id}</button>*/}
+                        <button onClick={this.remove.bind(this, record.id)}>remove</button>
                     </span>
                 )
             }
@@ -119,19 +104,19 @@ class Resource extends React.Component {
 
         //////////////////////
         return (<div>
-            <Card title={this.state.tableTitle}>
-                <Button type="primary" onClick={this.scanResourceFromController}>扫描</Button>
-                <Button type="danger" onClick={this.deleteAllResource}>清空</Button>
+            <div title={this.state.tableTitle}>
+                <button type="primary" onClick={this.scanResourceFromController}>扫描</button>
+                <button type="danger" onClick={this.deleteAllResource}>清空</button>
 
                 {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
-                <Table
+                <table
                     rowKey={record => record.id}
                     columns={columns}
                     dataSource={this.state.list}
                     pageSize={10}
                     bordered>hh
-                </Table>
-            </Card>
+                </table>
+            </div>
         </div>);
 
     }

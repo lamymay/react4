@@ -1,20 +1,6 @@
 import React from "react";
-import "antd/dist/antd.css";
 import axios from 'axios';
-import {
-    Table,
-    Card,
-    Button,
-    Modal,
-    Form,
-    Input,
-}
-    from
-        'antd';
 
-// import ReactDOM from 'react-dom'
-// import Connection from '../common/Connection';
-//引入antd，本页面主要是对list数据做渲染
 class ManageBlog extends React.Component {
 
     constructor(props) {
@@ -41,7 +27,7 @@ class ManageBlog extends React.Component {
         };
     }
 
-    setModal2Visible(modal2Visible) {
+    setdiv2Visible(modal2Visible) {
         this.setState({modal2Visible});
     }
 
@@ -173,8 +159,8 @@ class ManageBlog extends React.Component {
                 title: 'add/remove',
                 render: (text, record) => (
                     <span>
-                        <Button onClick={this.add}>add {record.id}</Button>
-                        <Button onClick={this.remove.bind(this)}>remove-{record.id}</Button>
+                        <button onClick={this.add}>add {record.id}</button>
+                        <button onClick={this.remove.bind(this)}>remove-{record.id}</button>
                     </span>
                 )
             }
@@ -183,45 +169,44 @@ class ManageBlog extends React.Component {
 
         return (<div>
 
-            <Card title={"基础表格"}>
-                {/*    <Button type="primary" onClick={this.updateUser}>测试 primary与后台交互</Button>
-                <Button type="dashed" onClick={this.updateUser}>测试 dashed与后台交互</Button>
-                <Button type="danger" onClick={this.updateUser}>测试 danger与后台交互</Button>*/}
+            <div title={"基础表格"}>
+                {/*    <button type="primary" onClick={this.updateUser}>测试 primary与后台交互</button>
+                <button type="dashed" onClick={this.updateUser}>测试 dashed与后台交互</button>
+                <button type="danger" onClick={this.updateUser}>测试 danger与后台交互</button>*/}
 
-                <Button type="dashed" onClick={() => this.setModal2Visible(true)}>显示垂直居中的对话框</Button>
+                <button type="dashed" onClick={() => this.setdiv2Visible(true)}>显示垂直居中的对话框</button>
 
-                <Modal
+                <div
                     title="垂直居中的对话框"
                     wrapClassName="vertical-center-modal"
                     visible={this.state.modal2Visible}
-                    // onOk={() => this.setModal2Visible(false)}
-                    //  onCancel={() => this.setModal2Visible(false)}
+                    // onOk={() => this.setdiv2Visible(false)}
+                    //  onCancel={() => this.setdiv2Visible(false)}
                 >
 
                     <p>对话框的内容</p>
-                    <Form layout="inline" onSubmit={this.updateUser}>
+                    <form layout="inline" onSubmit={this.updateUser}>
 
-                        <Form.Item> <Input placeholder="nickname" onChange={event => this.handleMaxBackUp(event)}/>
-                        </Form.Item>
-                        <Form.Item> <Input placeholder="avatar"></Input> </Form.Item>
-                        <Form.Item> <Input placeholder="state"></Input> </Form.Item>
+                        <span> <input placeholder="nickname" onChange={event => this.handleMaxBackUp(event)}/>
+                        </span>
+                        <span> <input placeholder="avatar"></input> </span>
+                        <span> <input placeholder="state"></input> </span>
+                        <span> <button type="primary" htmlType="submit"> Log in </button> </span>
+                    </form>
 
-                        <Form.Item> <Button type="primary" htmlType="submit"> Log in </Button> </Form.Item>
-                    </Form>
 
-
-                </Modal>
+                </div>
 
                 {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
                 {/*<Table  rowKey={record=>record.id} columns={columns} dataSource={this.state.users} bordered>*/}
-                <Table
+                <table
                     rowKey={record => record.id}
                     columns={columns}
                     dataSource={this.state.users}
                     pageSize={10}
                     bordered>
-                </Table>
-            </Card>
+                </table>
+            </div>
         </div>)
     }
 

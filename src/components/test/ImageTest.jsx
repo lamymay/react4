@@ -1,10 +1,5 @@
 import React from "react";
-import {
-    Upload,
-    Icon,
-    message,
-    Button
-} from 'antd';
+
 // import axios from "axios";
 import '../../../assets/css/system/file/file.css'
 // api接口地址抽取
@@ -116,15 +111,15 @@ class ImageTest extends React.Component {
             <div>
 
                 <Upload {...props}>
-                    <Button>
+                    <button>
                         <Icon type="upload"/> Click to Upload
-                    </Button>
+                    </button>
                 </Upload>
 
                 {/*<Upload {...props}>*/}
-                {/*    <Button>*/}
+                {/*    <button>*/}
                 {/*        <Icon type="upload"/> Click to Upload*/}
-                {/*    </Button>*/}
+                {/*    </button>*/}
                 {/*</Upload>*/}
 
                 {/*<input>文件上传</input>*/}
@@ -183,5 +178,4 @@ class ImageTest extends React.Component {
     }
 
 }
-
 export default ImageTest;

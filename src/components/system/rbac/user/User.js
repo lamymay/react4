@@ -1,26 +1,6 @@
 import React from "react";
-import "antd/dist/antd.css";
 import axios from 'axios';
 
-// import UserInsert from "./UserInsert";
-
-import {
-    Table,
-    Card,
-    Button,
-    Modal,
-    // Form,
-    // Input,
-    // Tooltip,
-    // Icon,
-    // Cascader,
-    // Select,
-    // Row,
-    // Col,
-    // List,
-    // Checkbox,
-    // AutoComplete,
-} from 'antd';
 import urls from "../../../../config/urls";
 
 class User extends React.Component {
@@ -204,8 +184,8 @@ class User extends React.Component {
                 title: 'add/remove',
                 render: (text, record) => (
                     <span>
-                        {/*<Button onClick={this.add}>add {record.id}</Button>*/}
-                        <Button onClick={this.remove.bind(this, record.id)}>删除-{record.id}</Button>
+                        {/*<button onClick={this.add}>add {record.id}</button>*/}
+                        <button onClick={this.remove.bind(this, record.id)}>删除-{record.id}</button>
                     </span>
                 )
             }
@@ -214,17 +194,17 @@ class User extends React.Component {
 
         return (<div>
 
-            <Card title={this.state.tableTitle}>
+            <div title={this.state.tableTitle}>
 
                 {/*点击新增按钮：1、弹出输入框 2、获取输入数据保存 3、关闭输入框*/}
-                <Button type="primary" onClick={this.showModal}>新增人员 </Button>
-                {/*<Button type="dashed" onClick={this.updateUser}>测试 dashed与后台交互</Button>*/}
-                {/*<Button type="danger" onClick={this.updateUser}>测试 danger与后台交互</Button>*/}
+                <button type="primary" onClick={this.showModal}>新增人员 </button>
+                {/*<button type="dashed" onClick={this.updateUser}>测试 dashed与后台交互</button>*/}
+                {/*<button type="danger" onClick={this.updateUser}>测试 danger与后台交互</button>*/}
 
 
                 {/*<UserInsert visibleForInsert={this.state.visibleForInsert} user={this}/>*/}
 
-                <Modal
+                <div
                     title="新增"
                     wrapClassName="vertical-center-modal"
                     visible={this.state.visibleForInsert}
@@ -263,21 +243,21 @@ class User extends React.Component {
                     </div>
 
 
-                </Modal>
+                </div>
 
 
                 {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
 
                 {/*<Table  rowKey={record=>record.id} columns={columns} dataSource={this.state.users} bordered>*/}
 
-                <Table
+                <table
                     rowKey={record => record.id}
                     columns={columns}
                     dataSource={this.state.users}
                     pageSize={10}
                     bordered>
-                </Table>
-            </Card>
+                </table>
+            </div>
         </div>);
 
     }

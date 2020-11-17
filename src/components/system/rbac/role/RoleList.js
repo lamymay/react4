@@ -3,23 +3,7 @@ import urls from '../../../../config/urls';
 import axios from "axios";
 import RoleAddResource from "./RoleAddResource"
 
-import {
-    Table,
-    Card,
-    Button,
-    Modal,
-    // Form,
-    // Input,
-    // Tooltip,
-    // Icon,
-    // Cascader,
-    // Select,
-    // Row,
-    // Col,
-    // List,
-    // Checkbox,
-    // AutoComplete,
-} from 'antd';
+
 import RoleInsert from "./RoleInsert";
 
 class RoleList extends React.Component {
@@ -47,7 +31,7 @@ class RoleList extends React.Component {
 
 
     //子父组件传值
-    showModal = () => {
+    showdiv = () => {
         // console.log(model);
         // console.log(model);
         // console.log(model);
@@ -69,7 +53,7 @@ class RoleList extends React.Component {
     };
 
     ///////// todo 抽取
-    showModalForRoleAddResource = () => {
+    showdivForRoleAddResource = () => {
         // let showAddResourceFlag = !this.state.visibleForAddResource;
         let showAddResourceFlag = true;
         console.log(showAddResourceFlag);
@@ -84,26 +68,26 @@ class RoleList extends React.Component {
 
 
 
-    //Modal1-executeInsertModal
-    executeInsertModal(visible) {
+    //div1-executeInsertdiv
+    executeInsertdiv(visible) {
         this.setState({visibleForInsert: visible});
-        console.log("  ----------------->保存 executeInsertModal");
+        console.log("  ----------------->保存 executeInsertdiv");
         this.saveUser();
     }
 
-    // Modal1 -
-    cancelInsertModal(visible) {
+    // div1 -
+    cancelInsertdiv(visible) {
         this.setState({visibleForInsert: visible});
-        console.log("  ----------------->取消 填充数据 cancelInsertModal");
+        console.log("  ----------------->取消 填充数据 cancelInsertdiv");
     }
 
-    //Modal2
-    okModalForAddResourcesToRole(visible) {
+    //div2
+    okdivForAddResourcesToRole(visible) {
         this.listResource();
 
         // this.setState({visibleForInsert: visible});
         console.log("###################################");
-        console.log("okModalForAddResourcesToRole");
+        console.log("okdivForAddResourcesToRole");
         console.log("visible" + visible);
         console.log("SAVE");
         console.log(this.state.resources);
@@ -111,10 +95,10 @@ class RoleList extends React.Component {
         console.log("###################################");
     }
 
-    // Modal2
-    cancelModalForAddResourcesToRole(visible) {
+    // div2
+    canceldivForAddResourcesToRole(visible) {
         // this.setState({visibleForInsert: visible});
-        console.log("  ----------------->取消 cancelModalForAddResourcesToRole");
+        console.log("  ----------------->取消 canceldivForAddResourcesToRole");
     }
 
     onInputChange(e) {
@@ -205,8 +189,8 @@ class RoleList extends React.Component {
                 title: 'add/remove',
                 render: (text, record) => (
                     <span>
-                        <Button onClick={this.remove.bind(this, record.id, this.state.deleteUrl)}>保存</Button>
-                        <Button onClick={this.remove.bind(this, record.id, this.state.deleteUrl)}>删除</Button>
+                        <button onClick={this.remove.bind(this, record.id, this.state.deleteUrl)}>保存</button>
+                        <button onClick={this.remove.bind(this, record.id, this.state.deleteUrl)}>删除</button>
                     </span>
                 )
             }
@@ -215,60 +199,60 @@ class RoleList extends React.Component {
 
         return (<div>
 
-            <Card title={this.state.tableTitle}>
+            <div title={this.state.tableTitle}>
 
                 {/*点击新增按钮：1、弹出输入框 2、获取输入数据保存 3、关闭输入框*/}
-                <Button type="primary" onClick={this.showModal}>新增 </Button>
-                {/*<Button type="dashed" onClick={this.updateUser}>测试 dashed与后台交互</Button>*/}
-                {/*<Button type="danger" onClick={this.updateUser}>测试 danger与后台交互</Button>*/}
+                <button type="primary" onClick={this.showdiv}>新增 </button>
+                {/*<button type="dashed" onClick={this.updateUser}>测试 dashed与后台交互</button>*/}
+                {/*<button type="danger" onClick={this.updateUser}>测试 danger与后台交互</button>*/}
 
                 {/*<UserInsert visibleForInsert={this.state.visibleForInsert} user={this}/>*/}
-                <Modal
+                <div
                     title="新增"
                     wrapClassName="vertical-center-modal"
                     visible={this.state.visibleForInsert}
-                    onOk={() => this.executeInsertModal(false)}
-                    onCancel={() => this.cancelInsertModal(false)}
+                    onOk={() => this.executeInsertdiv(false)}
+                    onCancel={() => this.cancelInsertdiv(false)}
                 >
                     <RoleInsert/>
-                </Modal>
+                </div>
 
-                <Button type="primary" onClick={this.showModalForRoleAddResource}>RoleAddResource </Button>
-                <Modal
+                <button type="primary" onClick={this.showdivForRoleAddResource}>RoleAddResource </button>
+                <div
                     title="RoleAddResource"
                     wrapClassName="vertical-center-modal"
                     visible={this.state.visibleForAddResource}
-                    onOk={() => this.okModalForAddResourcesToRole(false)}
-                    onCancel={() => this.cancelModalForAddResourcesToRole(false)}
+                    onOk={() => this.okdivForAddResourcesToRole(false)}
+                    onCancel={() => this.canceldivForAddResourcesToRole(false)}
                 >
                     <RoleAddResource/>
 
-                </Modal>
+                </div>
 
 
-                {/*<Button type="primary" onClick={this.showModal}>测试RoleAddResource </Button>*/}
-                {/*<Modal*/}
+                {/*<button type="primary" onClick={this.showdiv}>测试RoleAddResource </button>*/}
+                {/*<div*/}
                 {/*title="测试RoleAddResource"*/}
                 {/*wrapClassName="vertical-center-modal"*/}
                 {/*visible={this.state.visibleForInsert}*/}
-                {/*onOk={() => this.executeInsertModal(false)}*/}
-                {/*onCancel={() => this.cancelInsertModal(false)}*/}
+                {/*onOk={() => this.executeInsertdiv(false)}*/}
+                {/*onCancel={() => this.cancelInsertdiv(false)}*/}
                 {/*>*/}
                 {/*<RoleInsert/>*/}
-                {/*</Modal>*/}
+                {/*</div>*/}
 
 
                 {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
                 {/*<Table  rowKey={record=>record.id} columns={columns} dataSource={this.state.users} bordered>*/}
 
-                <Table
+                <table
                     rowKey={record => record.id}
                     columns={columns}
                     dataSource={this.state.list}
                     pageSize={10}
                     bordered>
-                </Table>
-            </Card>
+                </table>
+            </div>
         </div>);
 
     }

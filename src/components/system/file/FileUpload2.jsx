@@ -1,14 +1,11 @@
 import React from "react";
-import {
-    Upload,
-    Icon,
-    message,
-    Button
-} from 'antd';
+
 // import axios from "axios";
 import '../../../assets/css/system/file/file.css'
 // api接口地址抽取
 import urls from '../../../config/urls.js';
+
+var message;
 
 class FileUpload2 extends React.Component {
 
@@ -36,7 +33,6 @@ class FileUpload2 extends React.Component {
         console.log(this.props.routes);
         console.log("######################");
     }
-
     render() {
         const props = {
             name: 'file',
@@ -100,12 +96,12 @@ class FileUpload2 extends React.Component {
 
         return (
             <div>
-
+{/*
                 <Upload {...props}>
-                    <Button>
+                    <button>
                         <Icon type="upload"/> 上传
-                    </Button>
-                </Upload>
+                    </button>
+                </Upload>*/}
             </div>
         );
     }

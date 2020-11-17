@@ -2,32 +2,8 @@ import React from "react";
 import axios from 'axios';
 import urls from '../../../config/urls.js';
 
-import "antd/dist/antd.css";
-
-import {
-    Table,
-    Card,
-    Button,
-    // Modal,
-    // Form,
-    // Input,
-    // Tooltip,
-    // Icon,
-    // Cascader,
-    // Select,
-    // Row,
-    // Col,
-    // List,
-    // Checkbox,
-    // AutoComplete,
-}
-    from
-        'antd';
 import FileDownload from "react-file-download";
 
-// import ReactDOM from 'react-dom'
-// import Connection from '../common/Connection';
-//引入antd，本页面主要是对list数据做渲染
 
 //对于 File 的CRUD
 class FileManage extends React.Component {
@@ -175,8 +151,8 @@ class FileManage extends React.Component {
                 key: 'remove', title: '操作',
                 render: (text, record) => (
                     <span>
-                        <Button onClick={this.download.bind(this, record.id)}>download-{record.id}</Button>
-                        <Button onClick={this.remove.bind(this, record.id)}>delete-{record.id}</Button>
+                        <button onClick={this.download.bind(this, record.id)}>download-{record.id}</button>
+                        <button onClick={this.remove.bind(this, record.id)}>delete-{record.id}</button>
                     </span>
                 )
             },
@@ -202,17 +178,17 @@ class FileManage extends React.Component {
 
         return (<div>
 
-            <Card title={this.state.tableTitle}>
+            <div title={this.state.tableTitle}>
 
                 {/*columns:指定表头          dataSource:指定数据源          borderd:加边框*/}
-                <Table
+                <table
                     rowKey={record => record.id}
                     columns={columns}
                     dataSource={this.state.list}
                     pageSize={10}
                     bordered>
-                </Table>
-            </Card>
+                </table>
+            </div>
         </div>);
     }
 

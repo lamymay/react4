@@ -1,7 +1,5 @@
 import React from "react";
 import axios from 'axios';
-// import {Form, Icon, Input, Button, Checkbox,} from 'antd';
-// import "antd/dist/antd.css";
 import '../../assets/css/layout/login.css'
 
 class Login extends React.Component {

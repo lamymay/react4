@@ -1,6 +1,4 @@
 import React from "react";
-import url from 'url';
-import {Button, Card, Form, Input, Modal} from "antd";
 
 // 更新
 class ResourceUpdate extends React.Component {

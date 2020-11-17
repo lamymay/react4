@@ -1,6 +1,4 @@
 import React from "react";
-// import {Modal} from "antd";
-
 
 class RoleInsert extends React.Component {
 

@@ -1,5 +1,4 @@
 import React from "react";
-import {Timeline} from 'antd';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 
@@ -111,27 +110,18 @@ class Blog extends React.Component {
 
         return (
             <div>
-                {/*<Timeline>*/}
-                {/*    <Timeline.Item color="green">AAA</Timeline.Item>*/}
-                {/*    <Timeline.Item color="green">BB</Timeline.Item>*/}
-                {/*    <Timeline.Item color="green">C</Timeline.Item>*/}
-                {/*    <Timeline.Item color="red">Create</Timeline.Item>*/}
-                {/*</Timeline>*/}
-
-                <Timeline className='list'>
                     {
                         this.state.list.map((value, key) => {
                             return (
-                                <Timeline.Item key={key}
+                                <div   key={key}
                                                // onClick={this.onClick()}
                                 >
                                     <Link to={'/blog-detail'} type="span">{value.timeLine}     </Link>
-                                </Timeline.Item>
+                                </div>
 
                             )
                         })
                     }
-                </Timeline>
             </div>);
     }
 }

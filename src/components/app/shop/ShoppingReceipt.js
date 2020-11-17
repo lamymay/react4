@@ -1,14 +1,7 @@
 import React from "react";
-import "antd/dist/antd.css";
 import axios from 'axios';
 import urls from "../../../config/urls";
 
-import {
-    Table,
-    Card,
-    Button,
-    Modal,
-} from 'antd';
 
 class ShoppingReceipt extends React.Component {
 
@@ -127,8 +120,8 @@ class ShoppingReceipt extends React.Component {
             {
                 key: 'remove', title: '操作', render: (text, record) => (
                     <span>
-                    <Button onClick={this.update}>update {record.id}</Button>
-                    <Button onClick={this.remove.bind(this, record.id)}>remove-{record.id}</Button>
+                    <button onClick={this.update}>update {record.id}</button>
+                    <button onClick={this.remove.bind(this, record.id)}>remove-{record.id}</button>
                     </span>)
             }
         ];
@@ -136,12 +129,12 @@ class ShoppingReceipt extends React.Component {
 
         return (<div>
 
-                <Card title={this.state.tableTitle}>
+                <input title={this.state.tableTitle}>
 
                     {/*点击新增按钮：1、弹出输入框 2、获取输入数据保存 3、关闭输入框*/}
-                    <Button type="primary" onClick={this.showModal}>新增 </Button>
+                    <button type="primary" onClick={this.showModal}>新增 </button>
 
-                    <Modal
+                    <input
                         title="新增"
                         wrapClassName="vertical-center-modal"
                         visible={this.state.visibleForInsert}
@@ -198,17 +191,17 @@ class ShoppingReceipt extends React.Component {
                             /></div>
 
                         </div>
-                    </Modal>
+                    </input>
 
 
-                    <Table
+                    <table
                         rowKey={record => record.id}
                         columns={columns}
                         dataSource={this.state.list}
                         pageSize={10}
                         bordered>
-                    </Table>
-                </Card>
+                    </table>
+                </input>
             </div>
         );
 

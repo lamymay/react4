@@ -1,6 +1,5 @@
 import React from "react";
 // import urls from '../../../../config/urls';
-// import {Modal} from "antd";
 // import axios from "axios";
 import "../../../../assets/css/system/rbac/role/role.css"
 
