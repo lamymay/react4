@@ -1,7 +1,7 @@
 import React from "react";
 
 // import axios from "axios";
-import '../../../assets/css/system/file/file.css'
+import '../../../assets/css/system/file/file-server.css'
 // api接口地址抽取
 import apis from '../../../config/urls.js';
 

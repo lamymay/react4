@@ -1,7 +1,7 @@
 // import React from "react";
 // //备份 FileUpload2
 // // import axios from "axios";
-// import '../../../assets/css/system/file/file.css'
+// import '../../../assets/css/system/file/file-server.css'
 // // api接口地址抽取
 // import urls from '../../../config/urls.js';
 //

@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 // import {Link} from "react-router-dom";
 
-import '../../../assets/css/system/file/file.css'
+import '../../../assets/css/system/file/file-server.css'
 import apis from '../../../config/urls.js';
 
 

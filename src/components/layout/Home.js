@@ -6,12 +6,12 @@ import axios from "axios";
 // import User from '../system/rbac/user/User';
 // import UserInsert from '../system/user/UserInsert';
 // import RoleInsert from '../system/rbac/RoleInsert';
-// import File from '../system/file/File';
+// import FileServer from '../system/file/FileServer';
 // import Login from '../basic/Login';
 // import Food from '../app/food/Food';
 // import Index from '../basic/Index';
 // import FoodDetails from '../app/food/FoodDetails';
-// import FileSearch from '../system/file/FileSearch';
+// import FileLocalSearch from '../system/file/FileLocalSearch';
 // import Menu from '../system/menu/Menu';
 //路由与 api接口地址抽取
 import routers from '../../config/router.js';
@@ -121,11 +121,11 @@ class Home extends React.Component {
                     {/*<Route exact path="/userInsert" component={UserInsert}/>*/}
                     {/*<Route exact path="/food" component={Food}/>*/}
                     {/*<Route exact path="/foodDetails" component={FoodDetails}/>*/}
-                    {/*<Route exact path="/file" component={File}/>*/}
+                    {/*<Route exact path="/file" component={FileServer}/>*/}
                     {/*<Route exact path="/login" component={Login}/>*/}
                     {/*<Route exact path="/index" component={Index}/>*/}
                     {/*<Route exact path="/user-list" component={UserList}/>*/}
-                    {/*<Route exact path="/file-search" component={FileSearch}/>*/}
+                    {/*<Route exact path="/file-search" component={FileLocalSearch}/>*/}
                     {/*<Route exact path="/menu" component={Menu}/>*/}
 
 

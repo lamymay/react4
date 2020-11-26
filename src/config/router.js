@@ -27,6 +27,7 @@ import RoleInsert from "../components/system/rbac/role/RoleInsert";
 
 import Menu from "../components/system/menu/Menu";
 import File from "../components/system/file/File";
+import FileServer from "../components/system/file-server/FileServer";
 import FileManage from "../components/system/file/FileManage";
 import FileSearch from "../components/system/file/FileSearch";
 
@@ -72,6 +73,8 @@ const routers = [
         component: UserInsert,
         exact: true
     },
+
+
     //app 模块的
     {
         path: "/blog",
@@ -131,6 +134,15 @@ const routers = [
         component: FileSearch,
         exact: true
     },
+
+    {
+        path: "/file-server",
+        component: FileServer,
+        exact: true
+    },
+
+
+
 
     //system 模块的
 

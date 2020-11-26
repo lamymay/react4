@@ -5,7 +5,7 @@ import urls from '../../../config/urls.js';
 import FileDownload from "react-file-download";
 
 
-//对于 File 的CRUD
+//对于 FileServer 的CRUD
 class FileManage extends React.Component {
 
     constructor(props) {
