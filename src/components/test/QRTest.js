@@ -1,6 +1,6 @@
 import React from "react";
 //import * as QrCode from 'qrcode.react'
-
+import '../../assets/css/system/file/file.css'
 // var React = require('react');
 var QRCode = require('qrcode.react');
 

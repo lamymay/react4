@@ -21,6 +21,7 @@ class FileLocalDownload extends React.Component {
     //第一个方法
     testFun = () => {
         console.log("hello" + this.state.display_title)
+/*
 
 
         result.blob().then(blob=>{
@@ -49,6 +50,7 @@ class FileLocalDownload extends React.Component {
             //    a.click();
             //}
         });
+*/
 
     };
 
